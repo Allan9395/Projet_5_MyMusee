@@ -159,9 +159,6 @@
             "public/.htaccess"
         ]
     },
-    "symfony/asset": {
-        "version": "v4.3.3"
-    },
     "symfony/browser-kit": {
         "version": "v4.3.3"
     },

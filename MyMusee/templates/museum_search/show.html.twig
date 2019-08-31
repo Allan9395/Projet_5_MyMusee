@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyMuseum : {{ museum.NomOfficiel }}{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+{% endblock %}
+{% block body %}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h3 class="display-4">Visitez le <span id="museumName">{{ museum.NomOfficiel }}</span></h3>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card border-success">
+                <div class="card-header">
+                    <h5 class="card-title">Le Thème du musée et le(s) Artiste(s) et/où Personnages</h5>
+                </div>
+                <div class="card-body text-success">
+                    <p>Thème: {{museum.Themes}}</p>
+                    <p>Artiste(s): {{museum.Artiste}}</p>
+                    <p>Personnages: {{museum.PersonnagePhare}}</p>
+                </div>
+            </div>
+            <br>
+             <div class="card border-info">
+                <div class="card-header">
+                    <h5 class="card-title">Histoire du musée</h5>
+                </div>
+                <div class="card-body text-info">
+                    {{museum.Histoire}}
+                </div>
+            </div>
+            <br>
+            <div class="card border-info">
+                <div class="card-header">
+                    <h5 class="card-title">Coup d'oeil sur le Batîment</h5>
+                </div>
+                <div class="card-body text-info">
+                   <p>Le batîment : {{museum.Protectionbatiment}}</p>
+                   <p>Le site : {{museum.ProtectionEspace}}</p> 
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+             <div class="card border-info">
+                <div class="card-header">
+                    <h5 class="card-title">Coordonnées <span class="coordinates" style="display:none;">{{museum.geolocalisation}}</span></h5>
+                </div>
+                <div class="card-body text-info">
+                    <p>{{museum.Adresse}}</p>
+                    <p>{{museum.Departement}}</p>
+                    <p>{{museum.Ville}} {{museum.CodePostal}} </p>
+                    <p>{{museum.Telephone}}</p>
+                    <a href="{{museum.URL}}">{{museum.URL}}</a>
+                </div>
+            </div>
+            <br>
+             <div class="card border-success">
+            <div class="card-header">
+                <h5 class="card-title">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Localisation du Musée
+                </h5>
+            </div>
+            <div id="map">
+                <div id="mapid"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xl-12">
+           
+        </div>
+    </div>
+</div>
+{% endblock %}
+    {% block javascripts %}
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+    <script src="{{ asset("js/showJs.js") }}"></script>
+    {% endblock %}

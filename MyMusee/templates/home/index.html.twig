@@ -1,18 +1,78 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+    integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+    crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js"
+    integrity="sha512-WXoSHqw/t26DszhdMhOXOkI7qCiv5QWXhH9R7CgvgZMHz1ImlkVQ3uNsiQKu5wwbbxtPzFXd1hK4tzno2VqhpA=="
+    crossorigin=""></script>
+<script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js">
+</script>
+
+<script src="{{ asset("js/merkerCluster/leaflet.markercluster.js") }}"></script>
+<script src="{{ asset("js/merkerCluster/leaflet.markercluster-src.js") }}"></script> 
+
+
+<link rel="stylesheet" href="{{ asset("css/merkerCluster/MarkerCluster.css")}}">
+<link rel="stylesheet" href="{{ asset("css/merkerCluster/MarkerCluster.Default.css")}}">
+{% endblock %}
 
 {% block body %}
-<header>
+
 <div class="jumbotron">
     <h1>Bienvenue chez MyMuseum</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero exercitationem corrupti nesciunt laborum
-        laudantium cum voluptate, totam veniam, suscipit mollitia assumenda, fuga debitis quo. Accusantium natus nihil
-        cum sint ad.</p>
+    <h2>Découvrez les plus beaux musées de France</h2>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <img src="{{ asset("images/musee_de_france.jpg") }}" class="img-fluid" alt="Musée du Louvre">
+        </div>
+        <div class="col-lg-6 presentation ">
+            <h3>Bonjour,</h3>
+            <p>La France compte 1240 musées. La mojorité possède le label "Musée de France" attribué par le ministère de
+                la
+                Culture.
+                Ces musées ont pour vocations de restaurer et conserver leurs collections pour pouvoir ainsi les
+                présenter
+                au public.</p>
+            <p>Ils proposent les thématiques les plus variées : Beaux-Arts, sciences, technologie, histoire,
+                archéologie,
+                nature, religion, etc...</p>
+            <p>Tous les musées répertoriés sont listés par communes, départements et régions.
+                Un moteur de recherche en haut à droite de la page vous permettra d'arriver directement à destination.
+            </p>
+            <p>Pour chaque musée vous trouverez toutes ses informations pratiques comme les coordonnées, les périodes
+                d'ouvertures, de fermeture, la localisation, etc...</p>
+            <p>N'attendez plus et partez à la découverte des musées français !</p>
+        </div>
+    </div>
 
-</header>
-{% endblock %}
+    <footer>
+        <div class="card border-success">
+            <div class="card-header">
+                <h3 class="panel-title">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Localisation de tout les Musées de France
+                </h3>
+            </div>
+            <div id="map">
+                <div id="mapid"></div>
+            </div>
+        </div>
+    </footer>
 
-{% block javascripts %}
-<script src="public/index.js"></script>
-{% endblock %}
+    {% endblock %}
+
+    {% block javascripts %}
+
+    <script src="{{ asset("js/app.js") }}"></script>
+
+    {% endblock %}

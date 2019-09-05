@@ -113,6 +113,10 @@ class ComposerStaticInit43f22b32c400eec802339ff024157c96
         array (
             'Monolog\\' => 8,
         ),
+        'K' => 
+        array (
+            'Knp\\Bundle\\PaginatorBundle\\' => 27,
+        ),
         'F' => 
         array (
             'Fig\\Link\\' => 9,
@@ -444,6 +448,10 @@ class ComposerStaticInit43f22b32c400eec802339ff024157c96
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Knp\\Bundle\\PaginatorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle',
+        ),
         'Fig\\Link\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/link-util/src',
@@ -534,6 +542,13 @@ class ComposerStaticInit43f22b32c400eec802339ff024157c96
             'ProxyManager\\' => 
             array (
                 0 => __DIR__ . '/..' . '/ocramius/proxy-manager/src',
+            ),
+        ),
+        'K' => 
+        array (
+            'Knp\\Component' => 
+            array (
+                0 => __DIR__ . '/..' . '/knplabs/knp-components/src',
             ),
         ),
     );

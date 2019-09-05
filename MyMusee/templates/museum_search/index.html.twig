@@ -4,13 +4,36 @@
 
 {% block body %}
 
-
-<header class="container">
-
-    {% for museum in museums %}
-
-    <p><a href="{{ path('museum_show', {'id': museum.id}) }}" >  {{museum.NomOfficiel}} à {{museum.Ville}} </a></p>
-
+<div class="jumbotron">
+    <h2>Recherche de Musées</h2>
+    <h3>Recherché le ou les musées qui peuvent vous intéresser</h3>
+    <hr>
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
     {% endfor %}
+</div>
+<header class="container">
+    <div class="row">
+        {% for museum in museums %}
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a>
+                    </h5>
+                    <p class="card-text"> {{museum.Ville}}</p>
+                    <p class="card-text"> {{museum.themes[:100]}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="navigation">
+            {{ knp_pagination_render(museums) }}
+        </div>
+    </div>
+
 </header>
 {% endblock %}

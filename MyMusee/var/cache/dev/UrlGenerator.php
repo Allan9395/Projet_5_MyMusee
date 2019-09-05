@@ -17,5 +17,11 @@ return [
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception::cssAction'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], []],
     'museum_search' => [[], ['_controller' => 'App\\Controller\\MuseumSearchController::index'], [], [['text', '/museum/search']], [], []],
+    'museum_create' => [[], ['_controller' => 'App\\Controller\\MuseumSearchController::museumCreate'], [], [['text', '/admin/museum/new']], [], []],
+    'museum_edit' => [['id'], ['_controller' => 'App\\Controller\\MuseumSearchController::museumEdit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/museum']], [], []],
+    'museum_delete' => [['id'], ['_controller' => 'App\\Controller\\MuseumSearchController::museumDelete'], [], [['text', '/delete'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/museum']], [], []],
     'museum_show' => [['id'], ['_controller' => 'App\\Controller\\MuseumSearchController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/museum']], [], []],
+    'security_registration' => [[], ['_controller' => 'App\\Controller\\SecurityController::registration'], [], [['text', '/inscription']], [], []],
+    'security_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/connexion']], [], []],
+    'security_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/deconnexion']], [], []],
 ];

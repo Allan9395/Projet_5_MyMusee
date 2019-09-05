@@ -116,18 +116,65 @@ class __TwigTemplate_0b5c35090fe633f34af78715b4f73e93218fa1e1dc6b15c754dcadb3bfa
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_search");
         echo "\">Trouver un Musée</a>
                 </li>
-        </div>
+                ";
+        // line 36
+        if ( !twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 36, $this->source); })()), "user", [], "any", false, false, false, 36)) {
+            // line 37
+            echo "                <li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"";
+            // line 38
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("security_login");
+            echo "\">Connexion</a>
+                </li>
+                <li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"";
+            // line 41
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("security_registration");
+            echo "\">Inscription</a>
+                </li>
+                ";
+        } else {
+            // line 44
+            echo "
+                <li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"";
+            // line 46
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("security_logout");
+            echo "\">Déconnexion</a>
+                </li>
+                ";
+        }
+        // line 49
+        echo "                ";
+        if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
+            // line 50
+            echo "                <li class=\"nav-item\">
+                    <a class=\"nav-link ";
+            // line 51
+            if (((isset($context["current_menu"]) || array_key_exists("current_menu", $context)) && ((isset($context["current_menu"]) || array_key_exists("current_menu", $context) ? $context["current_menu"] : (function () { throw new RuntimeError('Variable "current_menu" does not exist.', 51, $this->source); })()) == "properties_museumCreate"))) {
+                echo "active ";
+            }
+            echo "\"
+                        href=\"";
+            // line 52
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_create");
+            echo "\">Créer un Musée</a>
+                </li>
+                ";
+        }
+        // line 55
+        echo "        </div>
     </nav>
 
     ";
-        // line 39
+        // line 58
         $this->displayBlock('body', $context, $blocks);
-        // line 40
+        // line 59
         echo "
     ";
-        // line 41
+        // line 60
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 42
+        // line 61
         echo "    <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\"
         integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\">
     </script>
@@ -185,7 +232,7 @@ class __TwigTemplate_0b5c35090fe633f34af78715b4f73e93218fa1e1dc6b15c754dcadb3bfa
 
     }
 
-    // line 39
+    // line 58
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -203,7 +250,7 @@ class __TwigTemplate_0b5c35090fe633f34af78715b4f73e93218fa1e1dc6b15c754dcadb3bfa
 
     }
 
-    // line 41
+    // line 60
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -233,7 +280,7 @@ class __TwigTemplate_0b5c35090fe633f34af78715b4f73e93218fa1e1dc6b15c754dcadb3bfa
 
     public function getDebugInfo()
     {
-        return array (  207 => 41,  189 => 39,  171 => 15,  152 => 6,  131 => 42,  129 => 41,  126 => 40,  124 => 39,  116 => 34,  110 => 33,  104 => 30,  98 => 29,  86 => 20,  80 => 16,  78 => 15,  74 => 14,  70 => 13,  66 => 12,  62 => 11,  54 => 6,  47 => 1,);
+        return array (  254 => 60,  236 => 58,  218 => 15,  199 => 6,  178 => 61,  176 => 60,  173 => 59,  171 => 58,  166 => 55,  160 => 52,  154 => 51,  151 => 50,  148 => 49,  142 => 46,  138 => 44,  132 => 41,  126 => 38,  123 => 37,  121 => 36,  116 => 34,  110 => 33,  104 => 30,  98 => 29,  86 => 20,  80 => 16,  78 => 15,  74 => 14,  70 => 13,  66 => 12,  62 => 11,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -273,6 +320,25 @@ class __TwigTemplate_0b5c35090fe633f34af78715b4f73e93218fa1e1dc6b15c754dcadb3bfa
                     <a class=\"nav-link {% if current_menu is defined and current_menu == 'properties_museumSearch' %}active {% endif %}\"
                         href=\"{{path('museum_search')}}\">Trouver un Musée</a>
                 </li>
+                {% if not app.user %}
+                <li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"{{ path('security_login') }}\">Connexion</a>
+                </li>
+                <li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"{{ path('security_registration') }}\">Inscription</a>
+                </li>
+                {% else %}
+
+                <li class=\"nav-item\">
+                    <a class=\"nav-link\" href=\"{{ path('security_logout') }}\">Déconnexion</a>
+                </li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class=\"nav-item\">
+                    <a class=\"nav-link {% if current_menu is defined and current_menu == 'properties_museumCreate' %}active {% endif %}\"
+                        href=\"{{path('museum_create')}}\">Créer un Musée</a>
+                </li>
+                {% endif %}
         </div>
     </nav>
 

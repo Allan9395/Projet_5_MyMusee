@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MuseumsRepository")
@@ -23,11 +26,19 @@ class Museums
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      minMessage = "L'Adresse est trop courte elle doit contenir {{ limit }} characters minimum",
+     * )
      */
     private $Artiste;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(
+     *      min = 6,
+     *      minMessage = "Le message est trop court il doit contenir {{ limit }} characters minimum",
+     * )
      */
     private $Atout;
 
@@ -48,11 +59,21 @@ class Museums
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 50,
+     *      minMessage = "Le message est trop court il doit contenir {{ limit }} characters minimum",
+     *      maxMessage = "Le message est trop long il doit contenir {{ limit }} characters maximum"
+     * )
      */
     private $Departement;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(
+     *      min = 20,
+     *      minMessage = "Le message est trop court il doit contenir {{ limit }} characters minimum",
+     * )
      */
     private $Histoire;
 
@@ -63,11 +84,23 @@ class Museums
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 50,
+     *      minMessage = "Le message est trop court il doit contenir {{ limit }} characters minimum",
+     *      maxMessage = "Le message est trop long il doit contenir {{ limit }} characters maximum"
+     * )
      */
     private $Lieu;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 255,
+     *      minMessage = "Le message est trop court il doit contenir {{ limit }} characters minimum",
+     *      maxMessage = "Le message est trop long il doit contenir {{ limit }} characters maximum"
+     * )
      */
     private $Nom_Officiel;
 
@@ -78,48 +111,99 @@ class Museums
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      minMessage = "Le message est trop court il doit contenir {{ limit }} characters minimum",
+     * )
      */
     private $Personnage_Phare;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      minMessage = "Le message est trop court il doit contenir {{ limit }} characters minimum",
+     * )
      */
     private $Protection_batiment;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(
+     *      min = 10,
+     *      minMessage = "Le message est trop court il doit contenir {{ limit }} characters minimum",
+     * )
      */
     private $Protection_Espace;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 50,
+     *      minMessage = "Le message est trop court il doit contenir {{ limit }} characters minimum",
+     *      maxMessage = "Le message est trop long il doit contenir {{ limit }} characters maximum"
+     * )
      */
     private $Region;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * 
      */
     private $Telephone;
+    /*@Assert\Regex(
+      "#^0[1-68]([-. ]?[0-9]{2}){4}$#",
+      message="Le numéro de Téléphone n'est pas correct"
+     )*/
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(
+     *      min = 4,
+     *      minMessage = "Le message est trop court il doit contenir {{ limit }} characters minimum",
+     * )
      */
     private $Themes;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Regex(
+     * "#^www\.[\w.-]+\.[a-z]{2,4}$#",
+     * message="L'URL doit se présenter comme ceci : www.monmusee.fr"
+     * )
      */
     private $URL;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 255,
+     *      minMessage = "Le message est trop court il doit contenir {{ limit }} characters minimum",
+     *      maxMessage = "Le message est trop long il doit contenir {{ limit }} characters maximum"
+     * )
      */
     private $Ville;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Regex(
+     * "#^([-+]?)([\d]{1,2})(((\.)(\d+)(,)))(\s*)(([-+]?)([\d]{1,3})((\.)(\d+))?)$#",
+     * message="Les degrés décimaux de localisation doivent se présenter de cette manière: 48.8608893, -2.3368494"
+     * )
      */
     private $geolocalisation;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="museumId", orphanRemoval=true)
+     */
+    private $comments;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -374,6 +458,37 @@ class Museums
     public function setGeolocalisation(?string $geolocalisation): self
     {
         $this->geolocalisation = $geolocalisation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setMuseumId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getMuseumId() === $this) {
+                $comment->setMuseumId(null);
+            }
+        }
 
         return $this;
     }

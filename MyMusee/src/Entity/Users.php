@@ -3,11 +3,20 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
+ * @UniqueEntity(
+ * fields={"email"},
+ * message="L'email que vous avez indiqué est déjà utilisé !"
+ * )
  */
-class Users
+class Users implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -20,6 +29,30 @@ class Users
      * @ORM\Column(type="string", length=255)
      */
     private $username;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 8,
+     *      minMessage = "Le mot de passe doit contenir {{ limit }} characters minimum",
+     * )
+     */
+    private $password;
+        /**
+         * @Assert\EqualTo(propertyPath="password", message="Votre mot de passe n'est identique")
+         */
+    public $confirm_password;
+
+    /**
+     * @ORM\Column(type="json_array", nullable=true)
+     */
+    private $roles;
 
     public function getId(): ?int
     {
@@ -34,6 +67,48 @@ class Users
     public function setUsername(string $username): self
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function eraseCredentials() {}
+    public function getSalt() {}
+    public function getRoles(): array 
+    {
+        $roles = $this->roles;
+
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles($roles): self
+    {
+        $this->roles = $roles;
 
         return $this;
     }

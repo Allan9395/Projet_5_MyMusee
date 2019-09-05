@@ -22,6 +22,7 @@
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="MakerBundle">Symfony\Bundle\MakerBundle\MakerBundle</parameter>
       <parameter key="WebServerBundle">Symfony\Bundle\WebServerBundle\WebServerBundle</parameter>
+      <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -76,6 +77,10 @@
         <parameter key="path">/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/web-server-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\WebServerBundle</parameter>
       </parameter>
+      <parameter key="KnpPaginatorBundle" type="collection">
+        <parameter key="path">/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle</parameter>
+        <parameter key="namespace">Knp\Bundle\PaginatorBundle</parameter>
+      </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">srcApp_KernelDevDebugContainer</parameter>
@@ -85,7 +90,7 @@
     <parameter key="kernel.secret">%env(APP_SECRET)%</parameter>
     <parameter key="kernel.http_method_override">true</parameter>
     <parameter key="kernel.trusted_hosts" type="collection"/>
-    <parameter key="kernel.default_locale">en</parameter>
+    <parameter key="kernel.default_locale">fr</parameter>
     <parameter key="templating.helper.code.file_link_format">null</parameter>
     <parameter key="debug.file_link_format">null</parameter>
     <parameter key="session.metadata.storage_key">_sf2_meta</parameter>
@@ -264,6 +269,7 @@
     <parameter key="twig.exception_listener.controller">twig.controller.exception::showAction</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>bootstrap_4_layout.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
@@ -287,6 +293,10 @@
       </parameter>
     </parameter>
     <parameter key="env(VAR_DUMPER_SERVER)">127.0.0.1:9912</parameter>
+    <parameter key="knp_paginator.template.pagination">@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig</parameter>
+    <parameter key="knp_paginator.template.filtration">@KnpPaginator/Pagination/filtration.html.twig</parameter>
+    <parameter key="knp_paginator.template.sortable">@KnpPaginator/Pagination/sortable_link.html.twig</parameter>
+    <parameter key="knp_paginator.page_range">5</parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">
         <parameter>request</parameter>
@@ -397,7 +407,23 @@
         <argument type="service" id=".service_locator.CDOTD6..App\Controller\MuseumSearchController"/>
       </call>
     </service>
-    <service id="App\Repository\CommentsRepository" class="App\Repository\CommentsRepository" autowire="true" autoconfigure="true">
+    <service id="App\Controller\SecurityController" class="App\Controller\SecurityController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CDOTD6..App\Controller\SecurityController"/>
+      </call>
+    </service>
+    <service id="App\Form\CommentType" class="App\Form\CommentType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\MuseumsType" class="App\Form\MuseumsType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Repository\CommentRepository" class="App\Repository\CommentRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -429,7 +455,7 @@
       <tag name="container.hot_path"/>
       <tag name="container.hot_path"/>
       <argument type="service" id="request_stack"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <argument type="service" id="router.default" on-invalid="ignore"/>
     </service>
     <service id="validate_request_listener" class="Symfony\Component\HttpKernel\EventListener\ValidateRequestListener" public="false">
@@ -704,7 +730,7 @@
       <argument type="service" id="translation.writer"/>
       <argument type="service" id="translation.reader"/>
       <argument type="service" id="translation.extractor"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/translations</argument>
       <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/templates</argument>
       <argument type="collection">
@@ -736,9 +762,13 @@
       <argument type="service" id="form.registry"/>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
+        <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\CommentType</argument>
+        <argument>App\Form\MuseumsType</argument>
+        <argument>App\Form\RegistrationType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -1004,7 +1034,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.Fck5jT9"/>
+      <argument type="service" id=".service_locator.AKJsBj4"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1193,7 +1223,7 @@
       <tag name="kernel.locale_aware"/>
       <argument type="service" id=".service_locator.yQVjGlt"/>
       <argument type="service" id="translator.formatter.default"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <argument type="collection">
         <argument key="translation.loader.php" type="collection">
           <argument>php</argument>
@@ -1242,6 +1272,7 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.ar.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.ar.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.ar.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ar.xliff</argument>
           </argument>
           <argument key="az" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.az.xlf</argument>
@@ -1257,6 +1288,7 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.bg.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.bg.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.bg.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.bg.xliff</argument>
           </argument>
           <argument key="ca" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.ca.xlf</argument>
@@ -1267,6 +1299,7 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.cs.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.cs.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.cs.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.cs.xliff</argument>
           </argument>
           <argument key="cy" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.cy.xlf</argument>
@@ -1275,11 +1308,13 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.da.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.da.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.da.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.da.xliff</argument>
           </argument>
           <argument key="de" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.de.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.de.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.de.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.de.xliff</argument>
           </argument>
           <argument key="el" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.el.xlf</argument>
@@ -1290,11 +1325,13 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.en.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.en.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.en.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.en.xliff</argument>
           </argument>
           <argument key="es" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.es.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.es.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.es.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.es.xliff</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.et.xlf</argument>
@@ -1304,11 +1341,13 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.eu.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.eu.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.eu.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.eu.xliff</argument>
           </argument>
           <argument key="fa" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.fa.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.fa.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.fa.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.fa.xliff</argument>
           </argument>
           <argument key="fi" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.fi.xlf</argument>
@@ -1318,6 +1357,8 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.fr.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.fr.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.fr.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.fr.xliff</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/translations/knpPaginatorBundle.fr.yml</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.gl.xlf</argument>
@@ -1338,6 +1379,7 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.hu.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.hu.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.hu.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.hu.xliff</argument>
           </argument>
           <argument key="hy" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.hy.xlf</argument>
@@ -1347,16 +1389,19 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.id.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.id.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.id.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.id.xliff</argument>
           </argument>
           <argument key="it" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.it.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.it.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.it.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.it.xliff</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.ja.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.ja.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.ja.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ja.xliff</argument>
           </argument>
           <argument key="lb" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.lb.xlf</argument>
@@ -1367,6 +1412,7 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.lt.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.lt.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.lt.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.lt.xliff</argument>
           </argument>
           <argument key="lv" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.lv.xlf</argument>
@@ -1386,6 +1432,7 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.nl.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.nl.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.nl.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.nl.xliff</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.nn.xlf</argument>
@@ -1396,11 +1443,13 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.no.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.no.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.no.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.no.xliff</argument>
           </argument>
           <argument key="pl" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.pl.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.pl.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.pl.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.pl.xliff</argument>
           </argument>
           <argument key="pt" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.pt.xlf</argument>
@@ -1410,16 +1459,19 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.pt_BR.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.pt_BR.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.pt_BR.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.pt_BR.xliff</argument>
           </argument>
           <argument key="ro" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.ro.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.ro.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.ro.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ro.xliff</argument>
           </argument>
           <argument key="ru" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.ru.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.ru.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.ru.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ru.xliff</argument>
           </argument>
           <argument key="sk" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.sk.xlf</argument>
@@ -1448,6 +1500,7 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.sv.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.sv.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.sv.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.sv.xliff</argument>
           </argument>
           <argument key="th" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.th.xlf</argument>
@@ -1467,6 +1520,7 @@
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.uk.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations/validators.uk.xlf</argument>
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.uk.xlf</argument>
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.uk.xliff</argument>
           </argument>
           <argument key="vi" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations/validators.vi.xlf</argument>
@@ -1484,11 +1538,18 @@
           <argument key="pt_PT" type="collection">
             <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations/security.pt_PT.xlf</argument>
           </argument>
+          <argument key="ky" type="collection">
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ky.xliff</argument>
+          </argument>
+          <argument key="sw" type="collection">
+            <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.sw.xliff</argument>
+          </argument>
         </argument>
         <argument key="scanned_directories" type="collection">
           <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/validator/Resources/translations</argument>
           <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/form/Resources/translations</argument>
           <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/security-core/Resources/translations</argument>
+          <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/translations</argument>
           <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/translations</argument>
           <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/framework-bundle/Resources/translations</argument>
           <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/src/Resources/FrameworkBundle/translations</argument>
@@ -1516,6 +1577,7 @@
           <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/src/Resources/MakerBundle/translations</argument>
           <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/web-server-bundle/Resources/translations</argument>
           <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/src/Resources/WebServerBundle/translations</argument>
+          <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/src/Resources/KnpPaginatorBundle/translations</argument>
           <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/src/Resources/translations</argument>
         </argument>
       </argument>
@@ -1955,6 +2017,14 @@
         <argument>0</argument>
       </call>
       <call method="addListener">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
           <argument type="service" id="response_listener"/>
@@ -2370,6 +2440,46 @@
         </argument>
         <argument>0</argument>
       </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.paginate"/>
+          <argument>before</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.paginate"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.sortable"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.filtration"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
     </service>
     <service id="debug.controller_resolver" class="Symfony\Component\HttpKernel\Controller\TraceableControllerResolver" public="false">
       <tag name="monolog.logger" channel="request"/>
@@ -2461,7 +2571,7 @@
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
       <argument type="service" id="parameter_bag" on-invalid="ignore"/>
       <argument type="service" id="monolog.logger.router" on-invalid="ignore"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <call method="setConfigCacheFactory">
         <argument type="service" id="config_cache_factory"/>
       </call>
@@ -2937,7 +3047,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.1Oxht7G"/>
+      <argument type="service" id=".service_locator.he8iJY7"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -3201,6 +3311,7 @@
     </service>
     <service id="security.authentication.manager" class="Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager" public="false">
       <argument type="iterator">
+        <argument type="service" id="security.authentication.provider.dao.main"/>
         <argument type="service" id="security.authentication.provider.anonymous.main"/>
       </argument>
       <argument>true</argument>
@@ -3219,7 +3330,14 @@
       <argument>none</argument>
     </service>
     <service id="security.encoder_factory.generic" class="Symfony\Component\Security\Core\Encoder\EncoderFactory" public="false">
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="App\Entity\Users" type="collection">
+          <argument key="class">Symfony\Component\Security\Core\Encoder\BCryptPasswordEncoder</argument>
+          <argument key="arguments" type="collection">
+            <argument>13</argument>
+          </argument>
+        </argument>
+      </argument>
     </service>
     <service id="security.user_password_encoder.generic" class="Symfony\Component\Security\Core\Encoder\UserPasswordEncoder" public="false">
       <argument type="service" id="security.encoder_factory.generic"/>
@@ -3279,6 +3397,14 @@
       <argument type="service" id="request_stack" on-invalid="null"/>
       <argument type="service" id="router.default" on-invalid="null"/>
       <argument type="service" id="security.token_storage" on-invalid="null"/>
+      <call method="registerListener">
+        <argument>main</argument>
+        <argument>security_logout</argument>
+        <argument>logout</argument>
+        <argument>_csrf_token</argument>
+        <argument>null</argument>
+        <argument>null</argument>
+      </call>
     </service>
     <service id="security.user.provider.missing" class="Symfony\Component\Security\Core\User\MissingUserProvider" public="false" abstract="true">
       <argument></argument>
@@ -3335,12 +3461,21 @@
       <argument type="service" id="security.authentication.retry_entry_point"/>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
     </service>
-    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false"/>
+    <service id="security.access_map" class="Symfony\Component\Security\Http\AccessMap" public="false">
+      <call method="add">
+        <argument type="service" id=".security.request_matcher.5dJADCx"/>
+        <argument type="collection">
+          <argument>ROLE_ADMIN</argument>
+        </argument>
+        <argument>null</argument>
+      </call>
+    </service>
     <service id="security.context_listener" class="Symfony\Component\Security\Http\Firewall\ContextListener" public="false">
       <tag name="monolog.logger" channel="security"/>
       <argument type="service" id="security.token_storage"/>
       <argument type="iterator">
         <argument type="service" id="security.user.provider.concrete.in_memory"/>
+        <argument type="service" id="security.user.provider.concrete.in_database"/>
       </argument>
       <argument></argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -3638,6 +3773,12 @@
     <service id="security.user.provider.concrete.in_memory" class="Symfony\Component\Security\Core\User\InMemoryUserProvider" public="false">
       <argument type="collection"/>
     </service>
+    <service id="security.user.provider.concrete.in_database" class="Symfony\Bridge\Doctrine\Security\User\EntityUserProvider" public="false">
+      <argument type="service" id="doctrine"/>
+      <argument>App\Entity\Users</argument>
+      <argument>username</argument>
+      <argument>null</argument>
+    </service>
     <service id="security.firewall.map.config.dev" class="Symfony\Bundle\SecurityBundle\Security\FirewallConfig" public="false">
       <argument>dev</argument>
       <argument>security.user_checker</argument>
@@ -3667,12 +3808,13 @@
       <argument>null</argument>
       <argument>true</argument>
       <argument>false</argument>
-      <argument>security.user.provider.concrete.in_memory</argument>
+      <argument>security.user.provider.concrete.in_database</argument>
       <argument>main</argument>
-      <argument>null</argument>
+      <argument>security.authentication.form_entry_point.main</argument>
       <argument>null</argument>
       <argument>null</argument>
       <argument type="collection">
+        <argument>form_login</argument>
         <argument>anonymous</argument>
       </argument>
       <argument>null</argument>
@@ -3681,11 +3823,98 @@
       <argument type="service" id="security.token_storage"/>
       <argument type="iterator">
         <argument type="service" id="security.user.provider.concrete.in_memory"/>
+        <argument type="service" id="security.user.provider.concrete.in_database"/>
       </argument>
       <argument>main</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
       <argument type="service" id="security.authentication.trust_resolver"/>
+    </service>
+    <service id="security.logout_listener.main" class="Symfony\Component\Security\Http\Firewall\LogoutListener" public="false">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument type="service" id="security.logout.success_handler.main"/>
+      <argument type="collection">
+        <argument key="csrf_parameter">_csrf_token</argument>
+        <argument key="csrf_token_id">logout</argument>
+        <argument key="logout_path">security_logout</argument>
+      </argument>
+      <call method="addHandler">
+        <argument type="service" id="security.logout.handler.csrf_token_clearing"/>
+      </call>
+      <call method="addHandler">
+        <argument type="service" id="security.logout.handler.session"/>
+      </call>
+    </service>
+    <service id="security.logout.success_handler.main" class="Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler" public="false">
+      <argument type="service" id="security.http_utils"/>
+      <argument>/</argument>
+    </service>
+    <service id="security.authentication.provider.dao.main" class="Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider" public="false">
+      <argument type="service" id="security.user.provider.concrete.in_database"/>
+      <argument type="service" id="security.user_checker"/>
+      <argument>main</argument>
+      <argument type="service" id="security.encoder_factory.generic"/>
+      <argument>true</argument>
+    </service>
+    <service id="security.authentication.success_handler.main.form_login" class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler" public="false">
+      <argument type="service" id="security.http_utils"/>
+      <argument type="collection"/>
+      <call method="setOptions">
+        <argument type="collection">
+          <argument key="login_path">security_login</argument>
+          <argument key="always_use_default_target_path">false</argument>
+          <argument key="default_target_path">/</argument>
+          <argument key="target_path_parameter">_target_path</argument>
+          <argument key="use_referer">false</argument>
+        </argument>
+      </call>
+      <call method="setProviderKey">
+        <argument>main</argument>
+      </call>
+    </service>
+    <service id="security.authentication.failure_handler.main.form_login" class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler" public="false">
+      <argument type="service" id="http_kernel"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument type="collection"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <call method="setOptions">
+        <argument type="collection">
+          <argument key="login_path">security_login</argument>
+          <argument key="failure_path">null</argument>
+          <argument key="failure_forward">false</argument>
+          <argument key="failure_path_parameter">_failure_path</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="security.authentication.listener.form.main" class="Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener" public="false">
+      <tag name="security.remember_me_aware" id="main" provider="security.user.provider.concrete.in_database"/>
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.authentication.manager"/>
+      <argument type="service" id="security.authentication.session_strategy"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument>main</argument>
+      <argument type="service" id="security.authentication.success_handler.main.form_login"/>
+      <argument type="service" id="security.authentication.failure_handler.main.form_login"/>
+      <argument type="collection">
+        <argument key="check_path">security_login</argument>
+        <argument key="use_forward">false</argument>
+        <argument key="require_previous_session">false</argument>
+        <argument key="username_parameter">_username</argument>
+        <argument key="password_parameter">_password</argument>
+        <argument key="csrf_parameter">_csrf_token</argument>
+        <argument key="csrf_token_id">authenticate</argument>
+        <argument key="post_only">true</argument>
+      </argument>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <argument type="service" id="debug.event_dispatcher" on-invalid="null"/>
+      <argument>null</argument>
+    </service>
+    <service id="security.authentication.form_entry_point.main" class="Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint" public="false">
+      <argument type="service" id="http_kernel"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument>security_login</argument>
+      <argument>false</argument>
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -3701,7 +3930,7 @@
       <argument type="service" id="security.authentication.trust_resolver"/>
       <argument type="service" id="security.http_utils"/>
       <argument>main</argument>
-      <argument>null</argument>
+      <argument type="service" id="security.authentication.form_entry_point.main"/>
       <argument>null</argument>
       <argument>null</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -3711,11 +3940,12 @@
       <argument type="iterator">
         <argument type="service" id="security.channel_listener"/>
         <argument type="service" id="security.context_listener.0"/>
+        <argument type="service" id="security.authentication.listener.form.main"/>
         <argument type="service" id="security.authentication.listener.anonymous.main"/>
         <argument type="service" id="security.access_listener"/>
       </argument>
       <argument type="service" id="security.exception_listener.main"/>
-      <argument>null</argument>
+      <argument type="service" id="security.logout_listener.main"/>
       <argument type="service" id="security.firewall.map.config.main"/>
     </service>
     <service id=".service_locator.ko2dQVn" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -3725,10 +3955,15 @@
         <argument key="security.firewall.map.context.main" type="service" id="security.firewall.map.context.main"/>
       </argument>
     </service>
+    <service id=".security.request_matcher.5dJADCx" class="Symfony\Component\HttpFoundation\RequestMatcher" public="false">
+      <argument>^/admin</argument>
+    </service>
     <service id="security.command.user_password_encoder" class="Symfony\Bundle\SecurityBundle\Command\UserPasswordEncoderCommand" public="false">
       <tag name="console.command" command="security:encode-password"/>
       <argument type="service" id="security.encoder_factory.generic"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument>App\Entity\Users</argument>
+      </argument>
       <call method="setName">
         <argument>security:encode-password</argument>
       </call>
@@ -3835,10 +4070,11 @@
         <argument key="default_path">/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/templates</argument>
         <argument key="debug">true</argument>
         <argument key="strict_variables">true</argument>
-        <argument key="exception_controller">twig.controller.exception::showAction</argument>
         <argument key="form_themes" type="collection">
           <argument>form_div_layout.html.twig</argument>
+          <argument>bootstrap_4_layout.html.twig</argument>
         </argument>
+        <argument key="exception_controller">twig.controller.exception::showAction</argument>
         <argument key="autoescape">name</argument>
         <argument key="cache">/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/var/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
@@ -3907,6 +4143,9 @@
       </call>
       <call method="addExtension">
         <argument type="service" id="twig.extension.webprofiler"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="knp_paginator.twig.extension.pagination"/>
       </call>
       <call method="addGlobal">
         <argument>app</argument>
@@ -4013,6 +4252,14 @@
       <call method="addPath">
         <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/symfony/debug-bundle/Resources/views</argument>
         <argument>!Debug</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
+        <argument>KnpPaginator</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
+        <argument>!KnpPaginator</argument>
       </call>
       <call method="addPath">
         <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/templates</argument>
@@ -4500,14 +4747,65 @@
         <argument>server:log</argument>
       </call>
     </service>
+    <service id="knp_paginator" class="Knp\Component\Pager\Paginator" public="true" lazy="true">
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="request_stack"/>
+      <call method="setDefaultPaginatorOptions">
+        <argument type="collection">
+          <argument key="pageParameterName">page</argument>
+          <argument key="sortFieldParameterName">sort</argument>
+          <argument key="sortDirectionParameterName">direction</argument>
+          <argument key="filterFieldParameterName">filterField</argument>
+          <argument key="filterValueParameterName">filterValue</argument>
+          <argument key="distinct">true</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="knp_paginator.subscriber.paginate" class="Knp\Component\Pager\Event\Subscriber\Paginate\PaginationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sortable" class="Knp\Component\Pager\Event\Subscriber\Sortable\SortableSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.filtration" class="Knp\Component\Pager\Event\Subscriber\Filtration\FiltrationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sliding_pagination" class="Knp\Bundle\PaginatorBundle\Subscriber\SlidingPaginationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <tag name="container.hot_path"/>
+      <argument type="collection">
+        <argument key="defaultPaginationTemplate">@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig</argument>
+        <argument key="defaultSortableTemplate">@KnpPaginator/Pagination/sortable_link.html.twig</argument>
+        <argument key="defaultFiltrationTemplate">@KnpPaginator/Pagination/filtration.html.twig</argument>
+        <argument key="defaultPageRange">5</argument>
+      </argument>
+    </service>
+    <service id="knp_paginator.helper.processor" class="Knp\Bundle\PaginatorBundle\Helper\Processor">
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="knp_paginator.twig.extension.pagination" class="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="knp_paginator.helper.processor"/>
+    </service>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MuseumSearchController" class="App\Controller\MuseumSearchController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MuseumSearchController" class="App\Controller\MuseumSearchController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\MuseumSearchController" class="App\Controller\MuseumSearchController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommentsRepository" class="App\Repository\CommentsRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Repository\CommentsRepository" class="App\Repository\CommentsRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CommentType" class="App\Form\CommentType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CommentType" class="App\Form\CommentType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MuseumsType" class="App\Form\MuseumsType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\MuseumsType" class="App\Form\MuseumsType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommentRepository" class="App\Repository\CommentRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CommentRepository" class="App\Repository\CommentRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\MuseumsRepository" class="App\Repository\MuseumsRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\MuseumsRepository" class="App\Repository\MuseumsRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UsersRepository" class="App\Repository\UsersRepository" autowire="true" abstract="true"/>
@@ -4674,9 +4972,55 @@
         <argument>make:migration</argument>
       </call>
     </service>
-    <service id=".service_locator.9_yeNH1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.ASezHR8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument key="paginator" type="service" id="knp_paginator"/>
+        <argument key="repo" type="service" id="App\Repository\MuseumsRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.L3sV_kn" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator..xsEcvu" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="museum" type="service" id=".errored..service_locator..xsEcvu.App\Entity\Museums"/>
+      </argument>
+    </service>
+    <service id=".service_locator.qUk3ozV" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="museums" type="service" id=".errored..service_locator.qUk3ozV.App\Entity\Museums"/>
+      </argument>
+    </service>
+    <service id=".service_locator.czKK4py" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="encoder" type="service" id="security.user_password_encoder.generic"/>
+        <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Eg55zFH" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\MuseumSearchController::index" type="service" id=".service_locator.ASezHR8"/>
+        <argument key="App\Controller\MuseumSearchController::museumCreate" type="service" id=".service_locator.L3sV_kn"/>
+        <argument key="App\Controller\MuseumSearchController::museumDelete" type="service" id=".service_locator..xsEcvu"/>
+        <argument key="App\Controller\MuseumSearchController::museumEdit" type="service" id=".service_locator.L3sV_kn"/>
+        <argument key="App\Controller\MuseumSearchController::show" type="service" id=".service_locator.qUk3ozV"/>
+        <argument key="App\Controller\SecurityController::registration" type="service" id=".service_locator.czKK4py"/>
+        <argument key="App\Controller\MuseumSearchController:index" type="service" id=".service_locator.ASezHR8"/>
+        <argument key="App\Controller\MuseumSearchController:museumCreate" type="service" id=".service_locator.L3sV_kn"/>
+        <argument key="App\Controller\MuseumSearchController:museumDelete" type="service" id=".service_locator..xsEcvu"/>
+        <argument key="App\Controller\MuseumSearchController:museumEdit" type="service" id=".service_locator.L3sV_kn"/>
+        <argument key="App\Controller\MuseumSearchController:show" type="service" id=".service_locator.qUk3ozV"/>
+        <argument key="App\Controller\SecurityController:registration" type="service" id=".service_locator.czKK4py"/>
+      </argument>
     </service>
     <service id=".service_locator.LtnrEkg" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
@@ -4737,9 +5081,12 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.Fck5jT9" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.AKJsBj4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\CommentType" type="service" id="App\Form\CommentType"/>
+        <argument key="App\Form\MuseumsType" type="service" id="App\Form\MuseumsType"/>
+        <argument key="App\Form\RegistrationType" type="service" id="App\Form\RegistrationType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service" id="form.type.file"/>
@@ -4752,10 +5099,10 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.1Oxht7G" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.he8iJY7" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Repository\CommentsRepository" type="service" id="App\Repository\CommentsRepository"/>
+        <argument key="App\Repository\CommentRepository" type="service" id="App\Repository\CommentRepository"/>
         <argument key="App\Repository\MuseumsRepository" type="service" id="App\Repository\MuseumsRepository"/>
         <argument key="App\Repository\UsersRepository" type="service" id="App\Repository\UsersRepository"/>
       </argument>
@@ -4990,6 +5337,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.CDOTD6." method="withContext"/>
     </service>
+    <service id=".service_locator.CDOTD6..App\Controller\SecurityController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\SecurityController"/>
+      <argument>App\Controller\SecurityController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CDOTD6." method="withContext"/>
+    </service>
     <service id=".service_locator._pu.0Tb" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5083,13 +5436,15 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.9_yeNH1"/>
+      <argument type="service" id=".service_locator.Eg55zFH"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.9_yeNH1"/>
+      <argument type="service" id=".service_locator.Eg55zFH"/>
     </service>
+    <service id=".errored..service_locator..xsEcvu.App\Entity\Museums" class="App\Entity\Museums"/>
+    <service id=".errored..service_locator.qUk3ozV.App\Entity\Museums" class="App\Entity\Museums"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.UvMMnf."/>
       <argument type="collection">
@@ -5420,7 +5775,6 @@
     <service id="Symfony\Component\Security\Http\HttpUtils" alias="security.http_utils" public="false"/>
     <service id="Symfony\Component\Security\Guard\GuardAuthenticatorHandler" alias="security.authentication.guard_handler" public="false"/>
     <service id="security.firewall" alias="debug.security.firewall" public="false"/>
-    <service id="Symfony\Component\Security\Core\User\UserProviderInterface" alias="security.user.provider.concrete.in_memory"/>
     <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.main" alias="security.user_checker" public="false"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
@@ -5440,7 +5794,8 @@
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.9_yeNH1"/>
+    <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.Eg55zFH"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="validator" alias="debug.validator" public="true"/>

@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{#{% form_theme formComment 'bootstrap_4_layout.html.twig' %}#}
 {% block title %}MyMuseum : {{ museum.NomOfficiel }}{% endblock %}
 {% block stylesheets %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
@@ -12,6 +12,26 @@
     <div class="container">
         <h3 class="display-4">Visitez le <span id="museumName">{{ museum.NomOfficiel }}</span></h3>
         <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        <div class="row">
+            {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('museum_edit', {'id': museum.id}) }}" class="btn btn-success">Modifier les informations</a>
+            <form method="post" action="{{ path('museum_delete', {'id': museum.id}) }}"
+                onsubmit="return confirm('Voulez vous vraiment supprimer ce musée')">
+                <input type="hidden " name="_method" value="DELETE" style="display: none;">
+                <input type="hidden " name="_token" value="{{ csrf_token('delete' ~ museum.id) }}"
+                    style="display: none;">
+                <button class="btn btn-danger">Supprimer</button>
+            </form>
+            {% endif %}
+        </div>
+        <hr>
+        <br>
+        {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endfor %}
+
     </div>
 </div>
 <div class="container">
@@ -28,7 +48,7 @@
                 </div>
             </div>
             <br>
-             <div class="card border-info">
+            <div class="card border-info">
                 <div class="card-header">
                     <h5 class="card-title">Histoire du musée</h5>
                 </div>
@@ -42,49 +62,86 @@
                     <h5 class="card-title">Coup d'oeil sur le Batîment</h5>
                 </div>
                 <div class="card-body text-info">
-                   <p>Le batîment : {{museum.Protectionbatiment}}</p>
-                   <p>Le site : {{museum.ProtectionEspace}}</p> 
+                    <p>Le batîment : {{museum.Protectionbatiment}}</p>
+                    <p>Le site : {{museum.ProtectionEspace}}</p>
                 </div>
             </div>
         </div>
         <div class="col-xl-6">
-             <div class="card border-info">
+            <div class="card border-info">
                 <div class="card-header">
-                    <h5 class="card-title">Coordonnées <span class="coordinates" style="display:none;">{{museum.geolocalisation}}</span></h5>
+                    <h5 class="card-title">Coordonnées <span class="coordinates"
+                            style="display:none;">{{museum.geolocalisation}}</span></h5>
                 </div>
                 <div class="card-body text-info">
                     <p>{{museum.Adresse}}</p>
                     <p>{{museum.Departement}}</p>
                     <p>{{museum.Ville}} {{museum.CodePostal}} </p>
                     <p>{{museum.Telephone}}</p>
-                    <a href="{{museum.URL}}">{{museum.URL}}</a>
+                    <a href="http://{{museum.URL}}">{{museum.URL}}</a>
                 </div>
             </div>
             <br>
-             <div class="card border-success">
-            <div class="card-header">
-                <h5 class="card-title">
-                    <i class="fas fa-map-marker-alt"></i>
-                    Localisation du Musée
-                </h5>
+            <div class="card border-success">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Localisation du Musée
+                    </h5>
+                </div>
+                <div id="map">
+                    <div id="mapid"></div>
+                </div>
             </div>
-            <div id="map">
-                <div id="mapid"></div>
-            </div>
-        </div>
         </div>
     </div>
     <br>
-    <div class="row">
-        <div class="col-xl-12">
-           
+    <br>
+    <section id="comments">
+        <div class="comments">
+            <div class="card border-success">
+                <div class="card-header">
+                    <h3 class="card-title">{{museum.comments | length }} Commentaires :</h3>
+                </div>
+                <div class="card-body text-success">
+                    {% for comment in museum.comments %}
+                    <div class="comment">
+                        <div class="row">
+                            <div class="col-md-3">
+                                {{ comment.author }} ( <small> {{comment.createdAt | date('d/m/Y à H:i')}} </small> )
+                            </div>
+                            <div class="col-md">
+                                {{comment.content | raw}}
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="row commentForm">
+            <div class="col-xl-12">
+                {% if app.user %}
+                {{ form_start(formComment) }}
+                {{ form_row(formComment.author, {'label': "Auteur : ", 'attr': {'placeholder': "Votre Nom"}, 'required': 'required'})}}
+                {{ form_row(formComment.content, {'label': "Le commentaire : ", 'attr': {'placeholder': "Votre Commentaire"}, 'required': 'required'})}}
+                {{ form_row(formComment.content, {'label': "Le commentaire : ", 'attr': {'placeholder': "Votre Commentaire"}, 'required': 'required'})}}
+                <button type="submit" class="btn btn-success">Créer un commentaire</button>
+                {{ form_end(formComment) }}
+                {% else %}
+                <h4>Vous ne pouvez pas commenter sans être connécté </h4>
+                {% endif %}
+            </div>
+        </div>
+    </section>
 </div>
+
+
 {% endblock %}
-    {% block javascripts %}
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-        crossorigin=""></script>
-    <script src="{{ asset("js/showJs.js") }}"></script>
-    {% endblock %}
+{% block javascripts %}
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+<script src="{{ asset("js/showJs.js") }}"></script>
+{% endblock %}

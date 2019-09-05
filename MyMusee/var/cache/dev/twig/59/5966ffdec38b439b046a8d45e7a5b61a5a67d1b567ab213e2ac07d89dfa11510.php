@@ -86,32 +86,69 @@ class __TwigTemplate_b8af6ff469d5ca36a10818a4560d52602e92a5e2e7a4884b1a0915c91d7
 
         // line 6
         echo "
-
-<header class=\"container\">
-
+<div class=\"jumbotron\">
+    <h2>Recherche de Musées</h2>
+    <h3>Recherché le ou les musées qui peuvent vous intéresser</h3>
+    <hr>
     ";
-        // line 10
+        // line 11
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["museums"]) || array_key_exists("museums", $context) ? $context["museums"] : (function () { throw new RuntimeError('Variable "museums" does not exist.', 10, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["museum"]) {
-            // line 11
-            echo "
-    <p><a href=\"";
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "flashes", [0 => "success"], "method", false, false, false, 11));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
             // line 12
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_show", ["id" => twig_get_attribute($this->env, $this->source, $context["museum"], "id", [], "any", false, false, false, 12)]), "html", null, true);
-            echo "\" >  ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "NomOfficiel", [], "any", false, false, false, 12), "html", null, true);
-            echo " à ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "Ville", [], "any", false, false, false, 12), "html", null, true);
-            echo " </a></p>
-
+            echo "    <div class=\"alert alert-success\">
+        ";
+            // line 13
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+    </div>
     ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 16
+        echo "</div>
+<header class=\"container\">
+    <div class=\"row\">
+        ";
+        // line 19
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["museums"]) || array_key_exists("museums", $context) ? $context["museums"] : (function () { throw new RuntimeError('Variable "museums" does not exist.', 19, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["museum"]) {
+            // line 20
+            echo "
+        <div class=\"col-md-4\">
+            <div class=\"card mb-4\">
+                <div class=\"card-body\">
+                    <h5 class=\"card-title\">
+                        <a href=\"";
+            // line 25
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_show", ["id" => twig_get_attribute($this->env, $this->source, $context["museum"], "id", [], "any", false, false, false, 25)]), "html", null, true);
+            echo "\"> ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "NomOfficiel", [], "any", false, false, false, 25), "html", null, true);
+            echo "</a>
+                    </h5>
+                    <p class=\"card-text\"> ";
+            // line 27
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "Ville", [], "any", false, false, false, 27), "html", null, true);
+            echo "</p>
+                    <p class=\"card-text\"> ";
+            // line 28
+            echo twig_escape_filter($this->env, twig_slice($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "themes", [], "any", false, false, false, 28), 0, 100), "html", null, true);
+            echo "</p>
+                </div>
+            </div>
+        </div>
+        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['museum'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 15
-        echo "</header>
+        // line 33
+        echo "    </div>
+
+</header>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -133,7 +170,7 @@ class __TwigTemplate_b8af6ff469d5ca36a10818a4560d52602e92a5e2e7a4884b1a0915c91d7
 
     public function getDebugInfo()
     {
-        return array (  114 => 15,  101 => 12,  98 => 11,  94 => 10,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  149 => 33,  138 => 28,  134 => 27,  127 => 25,  120 => 20,  116 => 19,  111 => 16,  102 => 13,  99 => 12,  95 => 11,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -144,16 +181,35 @@ class __TwigTemplate_b8af6ff469d5ca36a10818a4560d52602e92a5e2e7a4884b1a0915c91d7
 
 {% block body %}
 
-
-<header class=\"container\">
-
-    {% for museum in museums %}
-
-    <p><a href=\"{{ path('museum_show', {'id': museum.id}) }}\" >  {{museum.NomOfficiel}} à {{museum.Ville}} </a></p>
-
+<div class=\"jumbotron\">
+    <h2>Recherche de Musées</h2>
+    <h3>Recherché le ou les musées qui peuvent vous intéresser</h3>
+    <hr>
+    {% for message in app.flashes('success') %}
+    <div class=\"alert alert-success\">
+        {{ message }}
+    </div>
     {% endfor %}
+</div>
+<header class=\"container\">
+    <div class=\"row\">
+        {% for museum in museums %}
+
+        <div class=\"col-md-4\">
+            <div class=\"card mb-4\">
+                <div class=\"card-body\">
+                    <h5 class=\"card-title\">
+                        <a href=\"{{ path('museum_show', {'id': museum.id}) }}\"> {{museum.NomOfficiel}}</a>
+                    </h5>
+                    <p class=\"card-text\"> {{museum.Ville}}</p>
+                    <p class=\"card-text\"> {{museum.themes[:100]}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
 </header>
-{% endblock %}
-", "museum_search/index.html.twig", "/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/templates/museum_search/index.html.twig");
+{% endblock %}", "museum_search/index.html.twig", "/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/templates/museum_search/index.html.twig");
     }
 }

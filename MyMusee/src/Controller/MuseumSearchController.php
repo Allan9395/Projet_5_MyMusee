@@ -18,6 +18,11 @@ use App\Repository\MuseumsRepository;
 use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Form\MuseumsType;
+use App\Entity\MuseumSearch;
+use App\Form\MuseumSearchType;
+
+
+
 
 
 
@@ -28,16 +33,21 @@ class MuseumSearchController extends AbstractController
      */
     public function index(MuseumsRepository $repo, PaginatorInterface $paginator, Request $request)
     {
-        //$museums = $repo->findAll();
+
+        $search = new MuseumSearch();
+        $form = $this->createForm(MuseumSearchType::class, $search);
+        $form->handleRequest($request);
+
         $museums = $paginator->paginate(
-            $repo->findAll(),
+            $repo->findAllVisibleQuery($search),
             $request->query->getInt('page', 1), 12
         );
 
         return $this->render('museum_search/index.html.twig', [
             'controller_name' => 'MuseumSearchController',
             'current_menu' => 'properties_museumSearch',
-            'museums'=> $museums
+            'museums'=> $museums,
+            'formSearch' => $form->createView()
         ]);
     }
 

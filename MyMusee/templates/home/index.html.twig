@@ -17,7 +17,7 @@
 </script>
 
 <script src="{{ asset("js/merkerCluster/leaflet.markercluster.js") }}"></script>
-<script src="{{ asset("js/merkerCluster/leaflet.markercluster-src.js") }}"></script> 
+<script src="{{ asset("js/merkerCluster/leaflet.markercluster-src.js") }}"></script>
 
 
 <link rel="stylesheet" href="{{ asset("css/merkerCluster/MarkerCluster.css")}}">
@@ -54,25 +54,83 @@
             <p>N'attendez plus et partez à la découverte des musées français !</p>
         </div>
     </div>
-
-    <footer>
-        <div class="card border-success">
-            <div class="card-header">
-                <h3 class="panel-title">
-                    <i class="fas fa-map-marker-alt"></i>
-                    Localisation de tout les Musées de France
-                </h3>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card border-success mb-4 MuseumsRegionCard">
+                    <div class="card-header">
+                        <h5 class="card-title info"> Les musées par régions</h5>
+                    </div>
+                    <div class="card-body text-success">
+                        <p> <a href="{{ path('museum_region', {'region': 'Auvergne-Rhône-Alpes'})  }}">Musée en
+                                Auvergne-Rhône-Alpes</a></p>
+                        <p> <a href="{{ path('museum_region', {'region': 'Bourgogne-Franche-Comté'})  }}">Musée en
+                                Bourgogne-Franche-Comté</a></p>
+                        <p> <a href="{{ path('museum_region', {'region': 'Bretagne'})  }}">Musée en Bretagne</a></p>
+                        <p> <a href="{{ path('museum_region', {'region': 'Centre-Val de Loire'})  }}">Musée en
+                                Centre-Val de Loire</a></p>
+                        <p> <a href="{{ path('museum_region', {'region': 'Corse'})  }}">Musée en Corse</a></p>
+                        <p> <a href="{{ path('museum_region', {'region': 'Grand Est'})  }}">Musée en Grand Est</a></p>
+                        <p> <a href="{{ path('museum_region', {'region': 'Hauts-de-France'})  }}">Musée en
+                                Hauts-de-France</a></p>
+                        <p> <a href="{{ path('museum_region', {'region': 'Île-de-France'})  }}">Musée en
+                                Île-de-France</a></p>
+                        <p> <a href="{{ path('museum_region', {'region': 'Normandie'})  }}">Musée en Normandie</a></p>
+                        <p> <a href="{{ path('museum_region', {'region': 'Nouvelle-Aquitaine'})  }}">Musée en
+                                Nouvelle-Aquitaine</a></p>
+                        <p> <a href="{{ path('museum_region', {'region': 'Occitanie'})  }}">Musée en Occitanie</a></p>
+                        <p> <a href="{{ path('museum_region', {'region': 'Pays-de-la-Loire'})  }}">Musée en Pays de la
+                                Loire</a></p>
+                        <p> <a href="{{ path('museum_region', {'region': 'Provence-Alpes-Côte d\'Azur'})  }}">Musée en
+                                Provence-Alpes-Côte d'Azur</a></p>
+                    </div>
+                </div>
             </div>
-            <div id="map">
-                <div id="mapid"></div>
+            <div class="col">
+                <div class="card border-success mb-4 MuseumsRegionCard">
+                    <div class="card-header">
+                        <h5 class="card-title info"> Les musées par régions</h5>
+                    </div>
+                    <div class="card-body text-success">
+
+                        <p> <a href="{{ path('museum_show', {'id': museum.id} ) }}">{{museum.NomOfficiel}}</a></p>
+                        <p> <a href="{{ path('museum_show', {'id': museum1.id} ) }}">{{museum1.NomOfficiel}}</a></p>
+                        <p> <a href="{{ path('museum_show', {'id': museum2.id} ) }}">{{museum2.NomOfficiel}}</a></p>
+                        <p> <a href="{{ path('museum_show', {'id': museum3.id} ) }}">{{museum3.NomOfficiel}}</a></p>
+                        <p> <a href="{{ path('museum_show', {'id': museum4.id} ) }}">{{museum4.NomOfficiel}}</a></p>
+                        <p> <a href="{{ path('museum_show', {'id': museum5.id} ) }}">{{museum5.NomOfficiel}}</a></p>
+                        <p> <a href="{{ path('museum_show', {'id': museum6.id} ) }}">{{museum6.NomOfficiel}}</a></p>
+                        <p> <a href="{{ path('museum_show', {'id': museum7.id} ) }}">{{museum7.NomOfficiel}}</a></p>
+                        <p> <a href="{{ path('museum_show', {'id': museum8.id} ) }}">{{museum8.NomOfficiel}}</a></p>
+                        <p> <a href="{{ path('museum_show', {'id': museum9.id} ) }}">{{museum9.NomOfficiel}}</a></p>
+                        <p> <a href="{{ path('museum_show', {'id': museum10.id} ) }}">{{museum10.NomOfficiel}}</a></p>
+                        <p> <a href="{{ path('museum_show', {'id': museum11.id} ) }}">{{museum11.NomOfficiel}}</a></p>
+
+
+
+
+                    </div>
+                </div>
             </div>
-        </div>
-    </footer>
 
-    {% endblock %}
+            <!--<footer>
+                <div class="card border-success">
+                    <div class="card-header">
+                        <h3 class="panel-title">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Localisation de tout les Musées de France
+                        </h3>
+                    </div>
+                    <div id="map">
+                        <div id="mapid"></div>
+                    </div>
+                </div>
+            </footer>-->
 
-    {% block javascripts %}
+            {% endblock %}
 
-    <script src="{{ asset("js/app.js") }}"></script>
+            {% block javascripts %}
 
-    {% endblock %}
+            <script src="{{ asset("js/app.js") }}"></script>
+
+            {% endblock %}

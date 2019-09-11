@@ -215,12 +215,7 @@ class Museums
         return $this->Adresse;
     }
 
-    public function setAdresse(?string $Adresse): self
-    {
-        $this->Adresse = $Adresse;
-
-        return $this;
-    }
+     
 
     public function getArtiste(): ?string
     {

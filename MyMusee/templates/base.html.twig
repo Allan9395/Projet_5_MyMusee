@@ -33,6 +33,12 @@
                     <a class="nav-link {% if current_menu is defined and current_menu == 'properties_museumSearch' %}active {% endif %}"
                         href="{{path('museum_search')}}">Trouver un Musée</a>
                 </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link {% if current_menu is defined and current_menu == 'properties_museumCreate' %}active {% endif %}"
+                        href="{{path('museum_create')}}">Créer un Musée</a>
+                </li>
+                {% endif %}
                 {% if not app.user %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
@@ -46,12 +52,7 @@
                     <a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>
                 </li>
                 {% endif %}
-                {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item">
-                    <a class="nav-link {% if current_menu is defined and current_menu == 'properties_museumCreate' %}active {% endif %}"
-                        href="{{path('museum_create')}}">Créer un Musée</a>
-                </li>
-                {% endif %}
+                
         </div>
     </nav>
 

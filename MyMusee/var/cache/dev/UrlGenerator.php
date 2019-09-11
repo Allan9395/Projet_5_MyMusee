@@ -15,6 +15,7 @@ return [
     '_profiler_router' => [['token'], ['_controller' => 'web_profiler.controller.router::panelAction'], [], [['text', '/router'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception::showAction'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception::cssAction'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
+    'museum_region' => [['region'], ['_controller' => 'App\\Controller\\HomeController::regionsList'], [], [['variable', '/', '[^/]++', 'region', true], ['text', '/museum/region']], [], []],
     'home' => [[], ['_controller' => 'App\\Controller\\HomeController::index'], [], [['text', '/']], [], []],
     'museum_search' => [[], ['_controller' => 'App\\Controller\\MuseumSearchController::index'], [], [['text', '/museum/search']], [], []],
     'museum_create' => [[], ['_controller' => 'App\\Controller\\MuseumSearchController::museumCreate'], [], [['text', '/admin/museum/new']], [], []],

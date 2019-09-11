@@ -1,0 +1,185 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyMuseum : Trouver un Musée{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <h1>Les Musées de la région Occitanie</h1>
+    <p><a href="{{path('home')}}">Musées de France</a>/ Musées d'Occitanie</p>
+</div>
+
+<header class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées dans l'Ariège</h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Ariège' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées dans l'Aude </h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Aude' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées dans l'Aveyron</h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Aveyron' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées dans le Gard</h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Gard' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées en Haute-Garonne</h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Haute-Garonne' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées dans le Gers</h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Gers' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées dans l'Hérault</h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Hérault' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées dans le Lot</h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Lot' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées en Lozère</h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Lozère' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées en Hautes-Pyrénées</h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Hautes-Pyrénées' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées dans les Pyrénées-Orientales</h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Pyrénées-Orientales' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées dans le Tarn</h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Tarn' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-success mb-4 MuseumsRegionDepartementCard">
+                <div class="card-header">
+                    <h5 class="card-title info"> Les musées dans le Tarn-et-Garonne</h5>
+                </div>
+                <div class="card-body text-success">
+                    {% for museum in museum if museum.Departement == 'Tarn-et-Garonne' %}
+                    <p><a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a> à
+                            {{museum.Ville}}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+</header>
+
+{% endblock %}

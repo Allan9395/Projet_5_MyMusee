@@ -8,6 +8,22 @@
     <h2>Recherche de Musées</h2>
     <h3>Recherché le ou les musées qui peuvent vous intéresser</h3>
     <hr>
+
+    {{ form_start(formSearch)}}
+    <div class="form-row formSerach">
+        <div class="col-md-2">
+            {{form_row(formSearch.region)}}
+        </div>
+        <div class="col-md-2">
+            {{form_row(formSearch.departement)}}
+        </div>
+        <div class="col-md-2">
+            {{form_row(formSearch.ville)}}
+        </div>
+        <button class="col-md-1 btn btn-primary btnFormSearch">Rechercher</button>
+    </div>
+    {{ form_end(formSearch)}}
+
     {% for message in app.flashes('success') %}
     <div class="alert alert-success">
         {{ message }}
@@ -19,7 +35,7 @@
         {% for museum in museums %}
 
         <div class="col-md-4">
-            <div class="card mb-4">
+            <div class="card mb-4 museumCard">
                 <div class="card-body">
                     <h5 class="card-title">
                         <a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a>

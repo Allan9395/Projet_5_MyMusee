@@ -1,0 +1,16 @@
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container text-center">
+        <h1>Oops</h1>
+        <p>Une erreur c'est produite ! </p>
+        <p>
+            <h4>{{status_code}} - Cette adresse est inconue</h4>
+        </p>
+        <p><a href="{{path('home')}}" class="btn btn-primary">Accueil</a></p>
+    </div>
+</div>
+{% endblock %}

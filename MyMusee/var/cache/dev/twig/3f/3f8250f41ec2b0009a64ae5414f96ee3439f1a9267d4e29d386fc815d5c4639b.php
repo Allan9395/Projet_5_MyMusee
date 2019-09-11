@@ -90,15 +90,46 @@ class __TwigTemplate_8adb2651d461d177406825f6d49579f5c56d678df60e50e1badd4d68fa0
     <h2>Recherche de Musées</h2>
     <h3>Recherché le ou les musées qui peuvent vous intéresser</h3>
     <hr>
+
     ";
-        // line 11
+        // line 12
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formSearch"]) || array_key_exists("formSearch", $context) ? $context["formSearch"] : (function () { throw new RuntimeError('Variable "formSearch" does not exist.', 12, $this->source); })()), 'form_start');
+        echo "
+    <div class=\"form-row formSerach\">
+        <div class=\"col-md-2\">
+            ";
+        // line 15
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formSearch"]) || array_key_exists("formSearch", $context) ? $context["formSearch"] : (function () { throw new RuntimeError('Variable "formSearch" does not exist.', 15, $this->source); })()), "region", [], "any", false, false, false, 15), 'row');
+        echo "
+        </div>
+        <div class=\"col-md-2\">
+            ";
+        // line 18
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formSearch"]) || array_key_exists("formSearch", $context) ? $context["formSearch"] : (function () { throw new RuntimeError('Variable "formSearch" does not exist.', 18, $this->source); })()), "departement", [], "any", false, false, false, 18), 'row');
+        echo "
+        </div>
+        <div class=\"col-md-2\">
+            ";
+        // line 21
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formSearch"]) || array_key_exists("formSearch", $context) ? $context["formSearch"] : (function () { throw new RuntimeError('Variable "formSearch" does not exist.', 21, $this->source); })()), "ville", [], "any", false, false, false, 21), 'row');
+        echo "
+        </div>
+        <button class=\"col-md-1 btn btn-primary btnFormSearch\">Rechercher</button>
+    </div>
+    ";
+        // line 25
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formSearch"]) || array_key_exists("formSearch", $context) ? $context["formSearch"] : (function () { throw new RuntimeError('Variable "formSearch" does not exist.', 25, $this->source); })()), 'form_end');
+        echo "
+
+    ";
+        // line 27
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 11, $this->source); })()), "flashes", [0 => "success"], "method", false, false, false, 11));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 27, $this->source); })()), "flashes", [0 => "success"], "method", false, false, false, 27));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 12
+            // line 28
             echo "    <div class=\"alert alert-success\">
         ";
-            // line 13
+            // line 29
             echo twig_escape_filter($this->env, $context["message"], "html", null, true);
             echo "
     </div>
@@ -107,35 +138,35 @@ class __TwigTemplate_8adb2651d461d177406825f6d49579f5c56d678df60e50e1badd4d68fa0
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 16
+        // line 32
         echo "</div>
 <header class=\"container\">
     <div class=\"row\">
         ";
-        // line 19
+        // line 35
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["museums"]) || array_key_exists("museums", $context) ? $context["museums"] : (function () { throw new RuntimeError('Variable "museums" does not exist.', 19, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["museums"]) || array_key_exists("museums", $context) ? $context["museums"] : (function () { throw new RuntimeError('Variable "museums" does not exist.', 35, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["museum"]) {
-            // line 20
+            // line 36
             echo "
         <div class=\"col-md-4\">
-            <div class=\"card mb-4\">
+            <div class=\"card mb-4 museumCard\">
                 <div class=\"card-body\">
                     <h5 class=\"card-title\">
                         <a href=\"";
-            // line 25
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_show", ["id" => twig_get_attribute($this->env, $this->source, $context["museum"], "id", [], "any", false, false, false, 25)]), "html", null, true);
+            // line 41
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_show", ["id" => twig_get_attribute($this->env, $this->source, $context["museum"], "id", [], "any", false, false, false, 41)]), "html", null, true);
             echo "\"> ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "NomOfficiel", [], "any", false, false, false, 25), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "NomOfficiel", [], "any", false, false, false, 41), "html", null, true);
             echo "</a>
                     </h5>
                     <p class=\"card-text\"> ";
-            // line 27
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "Ville", [], "any", false, false, false, 27), "html", null, true);
+            // line 43
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "Ville", [], "any", false, false, false, 43), "html", null, true);
             echo "</p>
                     <p class=\"card-text\"> ";
-            // line 28
-            echo twig_escape_filter($this->env, twig_slice($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "themes", [], "any", false, false, false, 28), 0, 100), "html", null, true);
+            // line 44
+            echo twig_escape_filter($this->env, twig_slice($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "themes", [], "any", false, false, false, 44), 0, 100), "html", null, true);
             echo "</p>
                 </div>
             </div>
@@ -145,11 +176,11 @@ class __TwigTemplate_8adb2651d461d177406825f6d49579f5c56d678df60e50e1badd4d68fa0
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['museum'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 33
+        // line 49
         echo "        <div class=\"navigation\">
             ";
-        // line 34
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["museums"]) || array_key_exists("museums", $context) ? $context["museums"] : (function () { throw new RuntimeError('Variable "museums" does not exist.', 34, $this->source); })()));
+        // line 50
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["museums"]) || array_key_exists("museums", $context) ? $context["museums"] : (function () { throw new RuntimeError('Variable "museums" does not exist.', 50, $this->source); })()));
         echo "
         </div>
     </div>
@@ -176,7 +207,7 @@ class __TwigTemplate_8adb2651d461d177406825f6d49579f5c56d678df60e50e1badd4d68fa0
 
     public function getDebugInfo()
     {
-        return array (  152 => 34,  149 => 33,  138 => 28,  134 => 27,  127 => 25,  120 => 20,  116 => 19,  111 => 16,  102 => 13,  99 => 12,  95 => 11,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  183 => 50,  180 => 49,  169 => 44,  165 => 43,  158 => 41,  151 => 36,  147 => 35,  142 => 32,  133 => 29,  130 => 28,  126 => 27,  121 => 25,  114 => 21,  108 => 18,  102 => 15,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -191,6 +222,22 @@ class __TwigTemplate_8adb2651d461d177406825f6d49579f5c56d678df60e50e1badd4d68fa0
     <h2>Recherche de Musées</h2>
     <h3>Recherché le ou les musées qui peuvent vous intéresser</h3>
     <hr>
+
+    {{ form_start(formSearch)}}
+    <div class=\"form-row formSerach\">
+        <div class=\"col-md-2\">
+            {{form_row(formSearch.region)}}
+        </div>
+        <div class=\"col-md-2\">
+            {{form_row(formSearch.departement)}}
+        </div>
+        <div class=\"col-md-2\">
+            {{form_row(formSearch.ville)}}
+        </div>
+        <button class=\"col-md-1 btn btn-primary btnFormSearch\">Rechercher</button>
+    </div>
+    {{ form_end(formSearch)}}
+
     {% for message in app.flashes('success') %}
     <div class=\"alert alert-success\">
         {{ message }}
@@ -202,7 +249,7 @@ class __TwigTemplate_8adb2651d461d177406825f6d49579f5c56d678df60e50e1badd4d68fa0
         {% for museum in museums %}
 
         <div class=\"col-md-4\">
-            <div class=\"card mb-4\">
+            <div class=\"card mb-4 museumCard\">
                 <div class=\"card-body\">
                     <h5 class=\"card-title\">
                         <a href=\"{{ path('museum_show', {'id': museum.id}) }}\"> {{museum.NomOfficiel}}</a>

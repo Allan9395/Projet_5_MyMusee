@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyMuseum : Trouver un Musée{% endblock %}
+
+{% block body %}
+ <h1>Bonjour les region</h1>
+
+<header class="container">
+    <div class="row">
+        {% for museum in museums %}
+
+        <div class="col-md-4">
+            <div class="card mb-4 museumCard">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel}}</a>
+                    </h5>
+                    <p class="card-text"> {{museum.Ville}}</p>
+                    <p class="card-text"> {{museum.themes[:100]}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</header>
+
+ {% endblock %}

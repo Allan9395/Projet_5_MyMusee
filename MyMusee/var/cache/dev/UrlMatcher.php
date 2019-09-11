@@ -37,11 +37,14 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/admin/museum/([^/]++)/(?'
-                    .'|edit(*:199)'
-                    .'|delete(*:213)'
+                .'|/museum/(?'
+                    .'|region/([^/]++)(*:195)'
+                    .'|([^/]++)(*:211)'
                 .')'
-                .'|/museum/([^/]++)(*:238)'
+                .'|/admin/museum/([^/]++)/(?'
+                    .'|edit(*:250)'
+                    .'|delete(*:264)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -52,10 +55,11 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        199 => [[['_route' => 'museum_edit', '_controller' => 'App\\Controller\\MuseumSearchController::museumEdit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        213 => [[['_route' => 'museum_delete', '_controller' => 'App\\Controller\\MuseumSearchController::museumDelete'], ['id'], ['DELETE' => 0], null, false, false, null]],
-        238 => [
-            [['_route' => 'museum_show', '_controller' => 'App\\Controller\\MuseumSearchController::show'], ['id'], null, null, false, true, null],
+        195 => [[['_route' => 'museum_region', '_controller' => 'App\\Controller\\HomeController::regionsList'], ['region'], null, null, false, true, null]],
+        211 => [[['_route' => 'museum_show', '_controller' => 'App\\Controller\\MuseumSearchController::show'], ['id'], null, null, false, true, null]],
+        250 => [[['_route' => 'museum_edit', '_controller' => 'App\\Controller\\MuseumSearchController::museumEdit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        264 => [
+            [['_route' => 'museum_delete', '_controller' => 'App\\Controller\\MuseumSearchController::museumDelete'], ['id'], ['DELETE' => 0], null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

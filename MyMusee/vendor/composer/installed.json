@@ -3814,6 +3814,61 @@
         "homepage": "https://symfony.com"
     },
     {
+        "name": "symfony/google-mailer",
+        "version": "v4.3.4",
+        "version_normalized": "4.3.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/google-mailer.git",
+            "reference": "bfc741e3391b65072eb8fcc631df6191ccdbf38a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/google-mailer/zipball/bfc741e3391b65072eb8fcc631df6191ccdbf38a",
+            "reference": "bfc741e3391b65072eb8fcc631df6191ccdbf38a",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1.3",
+            "symfony/mailer": "^4.3"
+        },
+        "require-dev": {
+            "symfony/http-client": "^4.3"
+        },
+        "time": "2019-03-30T12:09:36+00:00",
+        "type": "symfony-bridge",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.3-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Mailer\\Bridge\\Google\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Google Mailer Bridge",
+        "homepage": "https://symfony.com"
+    },
+    {
         "name": "symfony/http-client",
         "version": "v4.3.3",
         "version_normalized": "4.3.3.0",
@@ -4223,6 +4278,70 @@
             "l10n",
             "localization"
         ]
+    },
+    {
+        "name": "symfony/mailer",
+        "version": "v4.3.4",
+        "version_normalized": "4.3.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/mailer.git",
+            "reference": "35ee889540acc47ba4603397037f8fba39caa83f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/mailer/zipball/35ee889540acc47ba4603397037f8fba39caa83f",
+            "reference": "35ee889540acc47ba4603397037f8fba39caa83f",
+            "shasum": ""
+        },
+        "require": {
+            "egulias/email-validator": "^2.1.10",
+            "php": "^7.1.3",
+            "psr/log": "~1.0",
+            "symfony/event-dispatcher": "^4.3",
+            "symfony/mime": "^4.3.3"
+        },
+        "require-dev": {
+            "symfony/amazon-mailer": "^4.3",
+            "symfony/google-mailer": "^4.3",
+            "symfony/http-client-contracts": "^1.1",
+            "symfony/mailchimp-mailer": "^4.3.3",
+            "symfony/mailgun-mailer": "^4.3.3",
+            "symfony/postmark-mailer": "^4.3.3",
+            "symfony/sendgrid-mailer": "^4.3.3"
+        },
+        "time": "2019-08-22T08:16:11+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.3-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Mailer\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Mailer Component",
+        "homepage": "https://symfony.com"
     },
     {
         "name": "symfony/maker-bundle",
@@ -5591,6 +5710,61 @@
             }
         ],
         "description": "Symfony Security Component - HTTP Integration",
+        "homepage": "https://symfony.com"
+    },
+    {
+        "name": "symfony/sendgrid-mailer",
+        "version": "v4.3.4",
+        "version_normalized": "4.3.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/sendgrid-mailer.git",
+            "reference": "f48c722d475506c63cfcaf2e38aa57b8a576fea9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/sendgrid-mailer/zipball/f48c722d475506c63cfcaf2e38aa57b8a576fea9",
+            "reference": "f48c722d475506c63cfcaf2e38aa57b8a576fea9",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1.3",
+            "symfony/mailer": "^4.3.4"
+        },
+        "require-dev": {
+            "symfony/http-client": "^4.3"
+        },
+        "time": "2019-08-22T08:16:11+00:00",
+        "type": "symfony-bridge",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.3-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Mailer\\Bridge\\Sendgrid\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Sendgrid Mailer Bridge",
         "homepage": "https://symfony.com"
     },
     {

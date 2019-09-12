@@ -148,7 +148,7 @@ class __TwigTemplate_5e8343f148c7270f7beb19a574e7125ef56a5f3e94d66a7d7fe22d2528b
                     <a class=\"nav-link\" href=\"";
             // line 47
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("security_registration");
-            echo "\">Inscription</a>
+            echo "\">S'inscrire</a>
                 </li>
                 ";
         } else {
@@ -163,19 +163,31 @@ class __TwigTemplate_5e8343f148c7270f7beb19a574e7125ef56a5f3e94d66a7d7fe22d2528b
                 ";
         }
         // line 55
-        echo "                
+        echo "                <li class=\"nav-item\">
+                    <a class=\"nav-link ";
+        // line 56
+        if (((isset($context["current_menu"]) || array_key_exists("current_menu", $context)) && ((isset($context["current_menu"]) || array_key_exists("current_menu", $context) ? $context["current_menu"] : (function () { throw new RuntimeError('Variable "current_menu" does not exist.', 56, $this->source); })()) == "properties_contact"))) {
+            echo "active ";
+        }
+        echo "\"
+                        href=\"";
+        // line 57
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_contact");
+        echo "\">Nous Contactez</a>
+                </li>
+                
         </div>
     </nav>
 
     ";
-        // line 59
+        // line 63
         $this->displayBlock('body', $context, $blocks);
-        // line 60
+        // line 64
         echo "
     ";
-        // line 61
+        // line 65
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 62
+        // line 66
         echo "    <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\"
         integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\">
     </script>
@@ -233,7 +245,7 @@ class __TwigTemplate_5e8343f148c7270f7beb19a574e7125ef56a5f3e94d66a7d7fe22d2528b
 
     }
 
-    // line 59
+    // line 63
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -251,7 +263,7 @@ class __TwigTemplate_5e8343f148c7270f7beb19a574e7125ef56a5f3e94d66a7d7fe22d2528b
 
     }
 
-    // line 61
+    // line 65
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -281,7 +293,7 @@ class __TwigTemplate_5e8343f148c7270f7beb19a574e7125ef56a5f3e94d66a7d7fe22d2528b
 
     public function getDebugInfo()
     {
-        return array (  255 => 61,  237 => 59,  219 => 15,  200 => 6,  179 => 62,  177 => 61,  174 => 60,  172 => 59,  166 => 55,  160 => 52,  156 => 50,  150 => 47,  144 => 44,  141 => 43,  138 => 42,  132 => 39,  126 => 38,  123 => 37,  121 => 36,  116 => 34,  110 => 33,  104 => 30,  98 => 29,  86 => 20,  80 => 16,  78 => 15,  74 => 14,  70 => 13,  66 => 12,  62 => 11,  54 => 6,  47 => 1,);
+        return array (  267 => 65,  249 => 63,  231 => 15,  212 => 6,  191 => 66,  189 => 65,  186 => 64,  184 => 63,  175 => 57,  169 => 56,  166 => 55,  160 => 52,  156 => 50,  150 => 47,  144 => 44,  141 => 43,  138 => 42,  132 => 39,  126 => 38,  123 => 37,  121 => 36,  116 => 34,  110 => 33,  104 => 30,  98 => 29,  86 => 20,  80 => 16,  78 => 15,  74 => 14,  70 => 13,  66 => 12,  62 => 11,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -332,7 +344,7 @@ class __TwigTemplate_5e8343f148c7270f7beb19a574e7125ef56a5f3e94d66a7d7fe22d2528b
                     <a class=\"nav-link\" href=\"{{ path('security_login') }}\">Connexion</a>
                 </li>
                 <li class=\"nav-item\">
-                    <a class=\"nav-link\" href=\"{{ path('security_registration') }}\">Inscription</a>
+                    <a class=\"nav-link\" href=\"{{ path('security_registration') }}\">S'inscrire</a>
                 </li>
                 {% else %}
 
@@ -340,6 +352,10 @@ class __TwigTemplate_5e8343f148c7270f7beb19a574e7125ef56a5f3e94d66a7d7fe22d2528b
                     <a class=\"nav-link\" href=\"{{ path('security_logout') }}\">Déconnexion</a>
                 </li>
                 {% endif %}
+                <li class=\"nav-item\">
+                    <a class=\"nav-link {% if current_menu is defined and current_menu == 'properties_contact' %}active {% endif %}\"
+                        href=\"{{path('museum_contact')}}\">Nous Contactez</a>
+                </li>
                 
         </div>
     </nav>

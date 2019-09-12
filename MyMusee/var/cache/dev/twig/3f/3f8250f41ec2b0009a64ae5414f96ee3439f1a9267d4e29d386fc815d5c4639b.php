@@ -157,7 +157,7 @@ class __TwigTemplate_8adb2651d461d177406825f6d49579f5c56d678df60e50e1badd4d68fa0
             // line 41
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_show", ["id" => twig_get_attribute($this->env, $this->source, $context["museum"], "id", [], "any", false, false, false, 41)]), "html", null, true);
             echo "\"> ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "NomOfficiel", [], "any", false, false, false, 41), "html", null, true);
+            echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "NomOfficiel", [], "any", false, false, false, 41)), "html", null, true);
             echo "</a>
                     </h5>
                     <p class=\"card-text\"> ";
@@ -252,7 +252,7 @@ class __TwigTemplate_8adb2651d461d177406825f6d49579f5c56d678df60e50e1badd4d68fa0
             <div class=\"card mb-4 museumCard\">
                 <div class=\"card-body\">
                     <h5 class=\"card-title\">
-                        <a href=\"{{ path('museum_show', {'id': museum.id}) }}\"> {{museum.NomOfficiel}}</a>
+                        <a href=\"{{ path('museum_show', {'id': museum.id}) }}\"> {{museum.NomOfficiel|capitalize}}</a>
                     </h5>
                     <p class=\"card-text\"> {{museum.Ville}}</p>
                     <p class=\"card-text\"> {{museum.themes[:100]}}</p>

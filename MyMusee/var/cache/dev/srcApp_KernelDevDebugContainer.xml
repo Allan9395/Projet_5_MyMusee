@@ -417,6 +417,9 @@
     <service id="App\Form\CommentType" class="App\Form\CommentType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\ContactType" class="App\Form\ContactType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Form\MuseumSearchType" class="App\Form\MuseumSearchType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
@@ -425,6 +428,10 @@
     </service>
     <service id="App\Form\RegistrationType" class="App\Form\RegistrationType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
+    </service>
+    <service id="App\Notification\ContactNotification" class="App\Notification\ContactNotification" autowire="true" autoconfigure="true">
+      <argument type="service" id="swiftmailer.mailer.default"/>
+      <argument type="service" id="twig"/>
     </service>
     <service id="App\Repository\CommentRepository" class="App\Repository\CommentRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
@@ -770,6 +777,7 @@
       </argument>
       <argument type="collection">
         <argument>App\Form\CommentType</argument>
+        <argument>App\Form\ContactType</argument>
         <argument>App\Form\MuseumSearchType</argument>
         <argument>App\Form\MuseumsType</argument>
         <argument>App\Form\RegistrationType</argument>
@@ -1038,7 +1046,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.sl4xKkz"/>
+      <argument type="service" id=".service_locator.KNLfIRG"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -2397,6 +2405,14 @@
         <argument>-128</argument>
       </call>
       <call method="addListener">
+        <argument>Symfony\Component\Mailer\Event\MessageEvent</argument>
+        <argument type="collection">
+          <argument type="service" id="twig.mailer.message_listener"/>
+          <argument>onMessage</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
           <argument type="service" id="web_profiler.debug_toolbar"/>
@@ -2811,6 +2827,21 @@
         <argument type="service" id="monolog.logger.http_client" on-invalid="ignore"/>
       </call>
       <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
+    </service>
+    <service id="mailer.mailer" class="Symfony\Component\Mailer\Mailer">
+      <argument type="service" id="mailer.default_transport"/>
+      <argument>null</argument>
+    </service>
+    <service id="mailer.default_transport" class="Symfony\Component\Mailer\Transport\TransportInterface">
+      <argument>%env(MAILER_DSN)%</argument>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="http_client" on-invalid="ignore"/>
+      <argument type="service" id="monolog.logger" on-invalid="ignore"/>
+      <factory class="Symfony\Component\Mailer\Transport" method="fromDsn"/>
+    </service>
+    <service id="mailer.messenger.message_handler" class="Symfony\Component\Mailer\Messenger\MessageHandler">
+      <tag name="messenger.message_handler"/>
+      <argument type="service" id="mailer.default_transport"/>
     </service>
     <service id="web_link.add_link_header_listener" class="Symfony\Component\WebLink\EventListener\AddLinkHeaderListener" public="false">
       <tag name="kernel.event_subscriber"/>
@@ -4398,6 +4429,14 @@
         <argument>lint:twig</argument>
       </call>
     </service>
+    <service id="twig.mailer.message_listener" class="Symfony\Component\Mailer\EventListener\MessageListener">
+      <tag name="kernel.event_subscriber"/>
+      <argument>null</argument>
+      <argument type="service" id="twig.mime_body_renderer"/>
+    </service>
+    <service id="twig.mime_body_renderer" class="Symfony\Bridge\Twig\Mime\BodyRenderer">
+      <argument type="service" id="twig"/>
+    </service>
     <service id=".2_HtmlDumper~AQjdjT8" class="Symfony\Component\VarDumper\Dumper\HtmlDumper" public="false">
       <argument>null</argument>
       <argument>UTF-8</argument>
@@ -4808,6 +4847,8 @@
     <service id=".abstract.instanceof.App\Controller\SecurityController" class="App\Controller\SecurityController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CommentType" class="App\Form\CommentType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\CommentType" class="App\Form\CommentType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContactType" class="App\Form\ContactType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ContactType" class="App\Form\ContactType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MuseumSearchType" class="App\Form\MuseumSearchType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\MuseumSearchType" class="App\Form\MuseumSearchType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MuseumsType" class="App\Form\MuseumsType" autowire="true" abstract="true"/>
@@ -4982,6 +5023,13 @@
         <argument>make:migration</argument>
       </call>
     </service>
+    <service id=".service_locator.fkaj4ua" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="notification" type="service" id="App\Notification\ContactNotification"/>
+      </argument>
+    </service>
     <service id=".service_locator.h_R3xFD" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5021,9 +5069,10 @@
         <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.4pyjX_A" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.gP_LTzd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\HomeController::contact" type="service" id=".service_locator.fkaj4ua"/>
         <argument key="App\Controller\HomeController::index" type="service" id=".service_locator.h_R3xFD"/>
         <argument key="App\Controller\HomeController::regionsList" type="service" id=".service_locator.h_R3xFD"/>
         <argument key="App\Controller\MuseumSearchController::index" type="service" id=".service_locator.ASezHR8"/>
@@ -5032,6 +5081,7 @@
         <argument key="App\Controller\MuseumSearchController::museumEdit" type="service" id=".service_locator.L3sV_kn"/>
         <argument key="App\Controller\MuseumSearchController::show" type="service" id=".service_locator.qUk3ozV"/>
         <argument key="App\Controller\SecurityController::registration" type="service" id=".service_locator.czKK4py"/>
+        <argument key="App\Controller\HomeController:contact" type="service" id=".service_locator.fkaj4ua"/>
         <argument key="App\Controller\HomeController:index" type="service" id=".service_locator.h_R3xFD"/>
         <argument key="App\Controller\HomeController:regionsList" type="service" id=".service_locator.h_R3xFD"/>
         <argument key="App\Controller\MuseumSearchController:index" type="service" id=".service_locator.ASezHR8"/>
@@ -5101,10 +5151,11 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.sl4xKkz" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.KNLfIRG" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\CommentType" type="service" id="App\Form\CommentType"/>
+        <argument key="App\Form\ContactType" type="service" id="App\Form\ContactType"/>
         <argument key="App\Form\MuseumSearchType" type="service" id="App\Form\MuseumSearchType"/>
         <argument key="App\Form\MuseumsType" type="service" id="App\Form\MuseumsType"/>
         <argument key="App\Form\RegistrationType" type="service" id="App\Form\RegistrationType"/>
@@ -5457,12 +5508,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.4pyjX_A"/>
+      <argument type="service" id=".service_locator.gP_LTzd"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.4pyjX_A"/>
+      <argument type="service" id=".service_locator.gP_LTzd"/>
     </service>
     <service id=".errored..service_locator..xsEcvu.App\Entity\Museums" class="App\Entity\Museums"/>
     <service id=".errored..service_locator.qUk3ozV.App\Entity\Museums" class="App\Entity\Museums"/>
@@ -5764,6 +5815,9 @@
     <service id="Symfony\Component\PropertyInfo\PropertyListExtractorInterface" alias="property_info" public="false"/>
     <service id="Symfony\Component\PropertyInfo\PropertyInitializableExtractorInterface" alias="property_info" public="false"/>
     <service id="Symfony\Contracts\HttpClient\HttpClientInterface" alias="http_client"/>
+    <service id="mailer" alias="swiftmailer.mailer.default" public="true"/>
+    <service id="Symfony\Component\Mailer\MailerInterface" alias="mailer.mailer"/>
+    <service id="Symfony\Component\Mailer\Transport\TransportInterface" alias="mailer.default_transport"/>
     <service id="sensio_framework_extra.converter.doctrine.orm.expression_language" alias="sensio_framework_extra.converter.doctrine.orm.expression_language.default" public="false"/>
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default" public="false"/>
     <service id="Doctrine\DBAL\Driver\Connection" alias="doctrine.dbal.default_connection" public="false"/>
@@ -5810,13 +5864,12 @@
     <service id="swiftmailer.transport" alias="swiftmailer.mailer.default.transport.spool" public="true"/>
     <service id="Swift_Mailer" alias="swiftmailer.mailer.default" public="false"/>
     <service id="Swift_Transport" alias="swiftmailer.mailer.default.transport.spool" public="false"/>
-    <service id="mailer" alias="swiftmailer.mailer.default" public="true"/>
     <service id="Twig_Environment" alias="twig" public="false"/>
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.4pyjX_A"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.gP_LTzd"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="validator" alias="debug.validator" public="true"/>

@@ -1,27 +1,20 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin="" />
-<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-    crossorigin=""></script>
+
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
     integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
     crossorigin="" />
 <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet-src.js"
     integrity="sha512-WXoSHqw/t26DszhdMhOXOkI7qCiv5QWXhH9R7CgvgZMHz1ImlkVQ3uNsiQKu5wwbbxtPzFXd1hK4tzno2VqhpA=="
     crossorigin=""></script>
-<script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js">
-</script>
-
-<script src="{{ asset("js/merkerCluster/leaflet.markercluster.js") }}"></script>
-<script src="{{ asset("js/merkerCluster/leaflet.markercluster-src.js") }}"></script>
 
 
 <link rel="stylesheet" href="{{ asset("css/merkerCluster/MarkerCluster.css")}}">
 <link rel="stylesheet" href="{{ asset("css/merkerCluster/MarkerCluster.Default.css")}}">
+
+
+
 {% endblock %}
 
 {% block body %}
@@ -29,6 +22,11 @@
 <div class="jumbotron">
     <h1>Bienvenue chez MyMuseum</h1>
     <h2>Découvrez les plus beaux musées de France</h2>
+    {% for message in app.flashes('successMail') %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+    {% endfor %}
 </div>
 <div class="container">
     <div class="row">
@@ -89,48 +87,42 @@
             <div class="col">
                 <div class="card border-success mb-4 MuseumsRegionCard">
                     <div class="card-header">
-                        <h5 class="card-title info"> Les musées par régions</h5>
+                        <h5 class="card-title info">Quelques musées au hasard</h5>
                     </div>
                     <div class="card-body text-success">
 
-                        <p> <a href="{{ path('museum_show', {'id': museum.id} ) }}">{{museum.NomOfficiel}}</a></p>
-                        <p> <a href="{{ path('museum_show', {'id': museum1.id} ) }}">{{museum1.NomOfficiel}}</a></p>
-                        <p> <a href="{{ path('museum_show', {'id': museum2.id} ) }}">{{museum2.NomOfficiel}}</a></p>
-                        <p> <a href="{{ path('museum_show', {'id': museum3.id} ) }}">{{museum3.NomOfficiel}}</a></p>
-                        <p> <a href="{{ path('museum_show', {'id': museum4.id} ) }}">{{museum4.NomOfficiel}}</a></p>
-                        <p> <a href="{{ path('museum_show', {'id': museum5.id} ) }}">{{museum5.NomOfficiel}}</a></p>
-                        <p> <a href="{{ path('museum_show', {'id': museum6.id} ) }}">{{museum6.NomOfficiel}}</a></p>
-                        <p> <a href="{{ path('museum_show', {'id': museum7.id} ) }}">{{museum7.NomOfficiel}}</a></p>
-                        <p> <a href="{{ path('museum_show', {'id': museum8.id} ) }}">{{museum8.NomOfficiel}}</a></p>
-                        <p> <a href="{{ path('museum_show', {'id': museum9.id} ) }}">{{museum9.NomOfficiel}}</a></p>
-                        <p> <a href="{{ path('museum_show', {'id': museum10.id} ) }}">{{museum10.NomOfficiel}}</a></p>
-                        <p> <a href="{{ path('museum_show', {'id': museum11.id} ) }}">{{museum11.NomOfficiel}}</a></p>
+                        {% for museum in museums %}
 
+                        <p> <a
+                                href="{{ path('museum_show', {'id': museum.id} ) }}">{{museum.NomOfficiel|capitalize}}</a>
+                        </p>
 
-
+                        {% endfor %}
 
                     </div>
                 </div>
             </div>
+        </div>
 
-            <!--<footer>
-                <div class="card border-success">
-                    <div class="card-header">
-                        <h3 class="panel-title">
-                            <i class="fas fa-map-marker-alt"></i>
-                            Localisation de tout les Musées de France
-                        </h3>
-                    </div>
-                    <div id="map">
-                        <div id="mapid"></div>
-                    </div>
+        <footer>
+            <div class="card border-success">
+                <div class="card-header">
+                    <h3 class="panel-title">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Localisation de tout les Musées de France
+                    </h3>
                 </div>
-            </footer>-->
+                <div id="map">
+                    <div id="mapid"></div>
+                </div>
+            </div>
+        </footer>
 
-            {% endblock %}
+        {% endblock %}
 
-            {% block javascripts %}
+        {% block javascripts %}
+        <script src="{{ asset("js/merkerCluster/leaflet.markercluster.js") }}"></script>
 
-            <script src="{{ asset("js/app.js") }}"></script>
+        <script src="{{ asset("js/app.js") }}"></script>
 
-            {% endblock %}
+        {% endblock %}

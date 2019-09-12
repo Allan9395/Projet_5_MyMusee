@@ -3,9 +3,12 @@
 {% block title %}Hello SecurityController!{% endblock %}
 
 {% block body %}
-<div class="container">
-    <h2>Inscription sur le site </h1>
 
+<div class="jumbotron">
+    <h2>Inscription sur le site</h1>
+</div>
+
+<div class="container">
     {{ form_start(form) }}
     {{ form_row(form.username, {'label': "Nom d'utilisateur : ", 'attr': {'placeholder': "Votre Nom"}, 'required': 'required'})}}
     {{ form_row(form.email, {'label': "Email : ", 'attr': {'placeholder': "Votre adresse email"}, 'required': 'required'})}}

@@ -85,12 +85,15 @@ class __TwigTemplate_d2ae613946a3c692c09a2bd9efd143e293e2a149ce81734f21d350f1500
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "<div class=\"container\">
+        echo "
+<div class=\"jumbotron\">
+    <h2>Connexion</h1>
+</div>
 
-    <h1>Connexion</h1>
+<div class=\"container\">
 
     <form action=\"";
-        // line 10
+        // line 13
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("security_login");
         echo "\" method=\"post\">
 
@@ -128,7 +131,7 @@ class __TwigTemplate_d2ae613946a3c692c09a2bd9efd143e293e2a149ce81734f21d350f1500
 
     public function getDebugInfo()
     {
-        return array (  94 => 10,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  97 => 13,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -138,9 +141,12 @@ class __TwigTemplate_d2ae613946a3c692c09a2bd9efd143e293e2a149ce81734f21d350f1500
 {% block title %}Bienenue!{% endblock %}
 
 {% block body %}
-<div class=\"container\">
 
-    <h1>Connexion</h1>
+<div class=\"jumbotron\">
+    <h2>Connexion</h1>
+</div>
+
+<div class=\"container\">
 
     <form action=\"{{ path('security_login')}}\" method=\"post\">
 

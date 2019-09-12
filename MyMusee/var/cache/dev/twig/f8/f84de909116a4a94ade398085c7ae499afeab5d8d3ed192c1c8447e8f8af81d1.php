@@ -116,7 +116,7 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
     <div class=\"container\">
         <h3 class=\"display-4\">Visitez le <span id=\"museumName\">";
         // line 13
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 13, $this->source); })()), "NomOfficiel", [], "any", false, false, false, 13), "html", null, true);
+        echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 13, $this->source); })()), "NomOfficiel", [], "any", false, false, false, 13)), "html", null, true);
         echo "</span></h3>
         <p class=\"lead\">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
         <div class=\"row\">
@@ -418,7 +418,7 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
 
 <div class=\"jumbotron jumbotron-fluid\">
     <div class=\"container\">
-        <h3 class=\"display-4\">Visitez le <span id=\"museumName\">{{ museum.NomOfficiel }}</span></h3>
+        <h3 class=\"display-4\">Visitez le <span id=\"museumName\">{{ museum.NomOfficiel|capitalize }}</span></h3>
         <p class=\"lead\">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
         <div class=\"row\">
             {% if is_granted('ROLE_ADMIN') %}

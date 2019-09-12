@@ -3,12 +3,16 @@
 
  {% block title %}MyMuseum : Création d'un Musée{% endblock %}
  {% block body %}
- <div class="container">
+
+ <div class="jumbotron">
      {% if editMode %}
      <h1>Modification du Musée</h1>
-    {% else  %}
+     {% else  %}
      <h1>Création d'un nouveau Musée</h1>
-    {% endif  %}
+     {% endif  %}
+ </div>
+
+ <div class="container">
      <br>
      {{ form_start(formMuseum) }}
      <h2>Description du musée</h2>
@@ -70,15 +74,15 @@
          </div>
      </div>
 
-    {% if editMode %}
-    <button type="submit" class="btn btn-success">Modifier</button>
-    {% else  %}
-    <button type="submit" class="btn btn-success">Créer un musée</button>
-    {% endif  %}
+     {% if editMode %}
+     <button type="submit" class="btn btn-success">Modifier</button>
+     {% else  %}
+     <button type="submit" class="btn btn-success">Créer un musée</button>
+     {% endif  %}
 
      {{ form_end(formMuseum) }}
 
-</div>
+ </div>
 
 
  {% endblock %}

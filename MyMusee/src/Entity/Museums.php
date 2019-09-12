@@ -457,6 +457,7 @@ class Museums
         return $this;
     }
 
+
     /**
      * @return Collection|Comment[]
      */
@@ -486,5 +487,10 @@ class Museums
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->Nom_Officiel;
     }
 }

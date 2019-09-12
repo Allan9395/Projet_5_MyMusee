@@ -88,63 +88,67 @@ class __TwigTemplate_a359dc55ac24d2fb21b8e197977ccb3830ba051bd41146d1f9558335994
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo " <div class=\"container\">
+        echo "
+ <div class=\"jumbotron\">
      ";
-        // line 7
-        if ((isset($context["editMode"]) || array_key_exists("editMode", $context) ? $context["editMode"] : (function () { throw new RuntimeError('Variable "editMode" does not exist.', 7, $this->source); })())) {
-            // line 8
+        // line 8
+        if ((isset($context["editMode"]) || array_key_exists("editMode", $context) ? $context["editMode"] : (function () { throw new RuntimeError('Variable "editMode" does not exist.', 8, $this->source); })())) {
+            // line 9
             echo "     <h1>Modification du Musée</h1>
-    ";
-        } else {
-            // line 10
-            echo "     <h1>Création d'un nouveau Musée</h1>
-    ";
-        }
-        // line 12
-        echo "     <br>
      ";
+        } else {
+            // line 11
+            echo "     <h1>Création d'un nouveau Musée</h1>
+     ";
+        }
         // line 13
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 13, $this->source); })()), 'form_start');
+        echo " </div>
+
+ <div class=\"container\">
+     <br>
+     ";
+        // line 17
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 17, $this->source); })()), 'form_start');
         echo "
      <h2>Description du musée</h2>
      <div class=\"row\">
          <div class=\"col-xl-6\">
              <div class=\"form-group\">
                  ";
-        // line 18
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 18, $this->source); })()), "Nom_Officiel", [], "any", false, false, false, 18), 'row', ["label" => "Nom du musée : ", "attr" => ["placeholder" => "Nom du musée"], "required" => "required"]);
+        // line 22
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 22, $this->source); })()), "Nom_Officiel", [], "any", false, false, false, 22), 'row', ["label" => "Nom du musée : ", "attr" => ["placeholder" => "Nom du musée"], "required" => "required"]);
         echo "
              </div>
              <div class=\"form-group\">
                  ";
-        // line 21
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 21, $this->source); })()), "Themes", [], "any", false, false, false, 21), 'row', ["label" => "Thèmes du Musée : ", "attr" => ["placeholder" => "Le ou les Thèmes du musée"], "required" => "required"]);
+        // line 25
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 25, $this->source); })()), "Themes", [], "any", false, false, false, 25), 'row', ["label" => "Thèmes du Musée : ", "attr" => ["placeholder" => "Le ou les Thèmes du musée"], "required" => "required"]);
         echo "
              </div>
              <div class=\"form-group\">
                  ";
-        // line 24
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 24, $this->source); })()), "Artiste", [], "any", false, false, false, 24), 'row', ["label" => "Le ou les Artiste(s) du Musée : ", "attr" => ["placeholder" => "Le ou les Artiste(s) du Musée"]]);
+        // line 28
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 28, $this->source); })()), "Artiste", [], "any", false, false, false, 28), 'row', ["label" => "Le ou les Artiste(s) du Musée : ", "attr" => ["placeholder" => "Le ou les Artiste(s) du Musée"]]);
         echo "
              </div>
          </div>
          <div class=\"col-xl-6\">
              <div class=\"form-group\">
                  ";
-        // line 29
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 29, $this->source); })()), "Personnage_Phare", [], "any", false, false, false, 29), 'row', ["label" => "Les personages du Musée : ", "attr" => ["placeholder" => "Le ou less personages importants du Musée"]]);
+        // line 33
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 33, $this->source); })()), "Personnage_Phare", [], "any", false, false, false, 33), 'row', ["label" => "Les personages du Musée : ", "attr" => ["placeholder" => "Le ou less personages importants du Musée"]]);
         echo "
              </div>
              <div class=\"form-group\">
                  ";
-        // line 32
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 32, $this->source); })()), "Protection_batiment", [], "any", false, false, false, 32), 'row', ["label" => "Spécificité du bâtiment : ", "attr" => ["placeholder" => "Spécificité du bâtiment"]]);
+        // line 36
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 36, $this->source); })()), "Protection_batiment", [], "any", false, false, false, 36), 'row', ["label" => "Spécificité du bâtiment : ", "attr" => ["placeholder" => "Spécificité du bâtiment"]]);
         echo "
              </div>
              <div class=\"form-group\">
                  ";
-        // line 35
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 35, $this->source); })()), "Protection_Espace", [], "any", false, false, false, 35), 'row', ["label" => "Spécificité du site : ", "attr" => ["placeholder" => "Spécificité du site"]]);
+        // line 39
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 39, $this->source); })()), "Protection_Espace", [], "any", false, false, false, 39), 'row', ["label" => "Spécificité du site : ", "attr" => ["placeholder" => "Spécificité du site"]]);
         echo "
              </div>
          </div>
@@ -152,8 +156,8 @@ class __TwigTemplate_a359dc55ac24d2fb21b8e197977ccb3830ba051bd41146d1f9558335994
 
      <div class=\"form-group\">
          ";
-        // line 41
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 41, $this->source); })()), "Histoire", [], "any", false, false, false, 41), 'row', ["label" => "L'histoire du Musée : ", "attr" => ["placeholder" => "Écrit la petite histoire du Musée"], "required" => "required"]);
+        // line 45
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 45, $this->source); })()), "Histoire", [], "any", false, false, false, 45), 'row', ["label" => "L'histoire du Musée : ", "attr" => ["placeholder" => "Écrit la petite histoire du Musée"], "required" => "required"]);
         echo "
      </div>
 
@@ -162,70 +166,70 @@ class __TwigTemplate_a359dc55ac24d2fb21b8e197977ccb3830ba051bd41146d1f9558335994
          <div class=\"col-xl-6\">
              <div class=\"form-group\">
                  ";
-        // line 48
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 48, $this->source); })()), "Adresse", [], "any", false, false, false, 48), 'row', ["label" => "Adresse : ", "attr" => ["placeholder" => "Adresse du musée"], "required" => "required"]);
+        // line 52
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 52, $this->source); })()), "Adresse", [], "any", false, false, false, 52), 'row', ["label" => "Adresse : ", "attr" => ["placeholder" => "Adresse du musée"], "required" => "required"]);
         echo "
              </div>
              <div class=\"form-group\">
                  ";
-        // line 51
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 51, $this->source); })()), "Departement", [], "any", false, false, false, 51), 'row', ["label" => "Département : ", "attr" => ["placeholder" => "Département du musée"], "required" => "required"]);
+        // line 55
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 55, $this->source); })()), "Departement", [], "any", false, false, false, 55), 'row', ["label" => "Département : ", "attr" => ["placeholder" => "Département du musée"], "required" => "required"]);
         echo "
              </div>
              <div class=\"form-group\">
                  ";
-        // line 54
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 54, $this->source); })()), "Ville", [], "any", false, false, false, 54), 'row', ["label" => "Ville du Musée : ", "attr" => ["placeholder" => "Ville du Musée"], "required" => "required"]);
+        // line 58
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 58, $this->source); })()), "Ville", [], "any", false, false, false, 58), 'row', ["label" => "Ville du Musée : ", "attr" => ["placeholder" => "Ville du Musée"], "required" => "required"]);
         echo "
              </div>
              <div class=\"form-group\">
                  ";
-        // line 57
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 57, $this->source); })()), "Code_Postal", [], "any", false, false, false, 57), 'row', ["label" => "Code Postal du Musée : ", "attr" => ["placeholder" => "Code Postal du Musée"], "required" => "required"]);
+        // line 61
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 61, $this->source); })()), "Code_Postal", [], "any", false, false, false, 61), 'row', ["label" => "Code Postal du Musée : ", "attr" => ["placeholder" => "Code Postal du Musée"], "required" => "required"]);
         echo "
              </div>
          </div>
          <div class=\"col-xl-6\">
              <div class=\"form-group\">
                  ";
-        // line 62
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 62, $this->source); })()), "Telephone", [], "any", false, false, false, 62), 'row', ["label" => "Téléphone du Musée: ", "attr" => ["placeholder" => "Téléphone du Musée"]]);
+        // line 66
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 66, $this->source); })()), "Telephone", [], "any", false, false, false, 66), 'row', ["label" => "Téléphone du Musée: ", "attr" => ["placeholder" => "Téléphone du Musée"]]);
         echo "
              </div>
              <div class=\"form-group\">
                  ";
-        // line 65
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 65, $this->source); })()), "URL", [], "any", false, false, false, 65), 'row', ["label" => "URL du Musée : ", "attr" => ["placeholder" => "URL du Musée"]]);
+        // line 69
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 69, $this->source); })()), "URL", [], "any", false, false, false, 69), 'row', ["label" => "URL du Musée : ", "attr" => ["placeholder" => "URL du Musée"]]);
         echo "
              </div>
              <div class=\"form-group\">
                  ";
-        // line 68
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 68, $this->source); })()), "geolocalisation", [], "any", false, false, false, 68), 'row', ["label" => "Données de géolocalisation du Musée : ", "attr" => ["placeholder" => "Données de géolocalisation du Musée"]]);
+        // line 72
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 72, $this->source); })()), "geolocalisation", [], "any", false, false, false, 72), 'row', ["label" => "Données de géolocalisation du Musée : ", "attr" => ["placeholder" => "Données de géolocalisation du Musée"]]);
         echo "
              </div>
          </div>
      </div>
 
-    ";
-        // line 73
-        if ((isset($context["editMode"]) || array_key_exists("editMode", $context) ? $context["editMode"] : (function () { throw new RuntimeError('Variable "editMode" does not exist.', 73, $this->source); })())) {
-            // line 74
-            echo "    <button type=\"submit\" class=\"btn btn-success\">Modifier</button>
-    ";
+     ";
+        // line 77
+        if ((isset($context["editMode"]) || array_key_exists("editMode", $context) ? $context["editMode"] : (function () { throw new RuntimeError('Variable "editMode" does not exist.', 77, $this->source); })())) {
+            // line 78
+            echo "     <button type=\"submit\" class=\"btn btn-success\">Modifier</button>
+     ";
         } else {
-            // line 76
-            echo "    <button type=\"submit\" class=\"btn btn-success\">Créer un musée</button>
-    ";
+            // line 80
+            echo "     <button type=\"submit\" class=\"btn btn-success\">Créer un musée</button>
+     ";
         }
-        // line 78
+        // line 82
         echo "
      ";
-        // line 79
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 79, $this->source); })()), 'form_end');
+        // line 83
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formMuseum"]) || array_key_exists("formMuseum", $context) ? $context["formMuseum"] : (function () { throw new RuntimeError('Variable "formMuseum" does not exist.', 83, $this->source); })()), 'form_end');
         echo "
 
-</div>
+ </div>
 
 
  ";
@@ -249,7 +253,7 @@ class __TwigTemplate_a359dc55ac24d2fb21b8e197977ccb3830ba051bd41146d1f9558335994
 
     public function getDebugInfo()
     {
-        return array (  225 => 79,  222 => 78,  218 => 76,  214 => 74,  212 => 73,  204 => 68,  198 => 65,  192 => 62,  184 => 57,  178 => 54,  172 => 51,  166 => 48,  156 => 41,  147 => 35,  141 => 32,  135 => 29,  127 => 24,  121 => 21,  115 => 18,  107 => 13,  104 => 12,  100 => 10,  96 => 8,  94 => 7,  91 => 6,  81 => 5,  62 => 4,  51 => 1,  49 => 2,  36 => 1,);
+        return array (  229 => 83,  226 => 82,  222 => 80,  218 => 78,  216 => 77,  208 => 72,  202 => 69,  196 => 66,  188 => 61,  182 => 58,  176 => 55,  170 => 52,  160 => 45,  151 => 39,  145 => 36,  139 => 33,  131 => 28,  125 => 25,  119 => 22,  111 => 17,  105 => 13,  101 => 11,  97 => 9,  95 => 8,  91 => 6,  81 => 5,  62 => 4,  51 => 1,  49 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -259,12 +263,16 @@ class __TwigTemplate_a359dc55ac24d2fb21b8e197977ccb3830ba051bd41146d1f9558335994
 
  {% block title %}MyMuseum : Création d'un Musée{% endblock %}
  {% block body %}
- <div class=\"container\">
+
+ <div class=\"jumbotron\">
      {% if editMode %}
      <h1>Modification du Musée</h1>
-    {% else  %}
+     {% else  %}
      <h1>Création d'un nouveau Musée</h1>
-    {% endif  %}
+     {% endif  %}
+ </div>
+
+ <div class=\"container\">
      <br>
      {{ form_start(formMuseum) }}
      <h2>Description du musée</h2>
@@ -326,15 +334,15 @@ class __TwigTemplate_a359dc55ac24d2fb21b8e197977ccb3830ba051bd41146d1f9558335994
          </div>
      </div>
 
-    {% if editMode %}
-    <button type=\"submit\" class=\"btn btn-success\">Modifier</button>
-    {% else  %}
-    <button type=\"submit\" class=\"btn btn-success\">Créer un musée</button>
-    {% endif  %}
+     {% if editMode %}
+     <button type=\"submit\" class=\"btn btn-success\">Modifier</button>
+     {% else  %}
+     <button type=\"submit\" class=\"btn btn-success\">Créer un musée</button>
+     {% endif  %}
 
      {{ form_end(formMuseum) }}
 
-</div>
+ </div>
 
 
  {% endblock %}", "museum_search/create.html.twig", "/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/templates/museum_search/create.html.twig");

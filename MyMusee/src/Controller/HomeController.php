@@ -14,11 +14,40 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\MuseumsRepository;
 use App\Entity\MuseumSearch;
 use App\Entity\Museums;
+use App\Entity\Contact;
+use App\Form\ContactType;
+
+use App\Notification\ContactNotification;
+
+
 
 
 class HomeController extends AbstractController
 {
-     
+    
+    /**
+     * @Route("/contact", name="museum_contact")
+     */
+    public function contact(Request $request, ObjectManager $manager, ContactNotification $notification)
+    {
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+
+            $notification->notify($contact);
+
+            $this->addFlash('successMail', 'Votre email à bien été envoyé');
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('home/contact.html.twig', [
+            'current_menu' => 'properties_contact',
+            'formContact'  => $form->createView()
+        ]);
+    }
+
     /**
      * @Route("/museum/region/{region}", name="museum_region")
      */
@@ -143,80 +172,23 @@ class HomeController extends AbstractController
         }
 
     }
-    public function shufflepageAction()
-{ 
 
-    function shuffle_assoc($array)
-    {
-        // Initialize
-            $shuffled_array = array();
 
-        // Get array's keys and shuffle them.
-            $shuffled_keys = array_keys($array);
-            shuffle($shuffled_keys);
 
-        // Create same array, but in shuffled order.
-            foreach ( $shuffled_keys AS $shuffled_key ) 
-            {
-                $shuffled_array[  $shuffled_key  ] = $array[  $shuffled_key  ];
-            } 
-        // Return
-            return $shuffled_array;
-    }
-
-    $images = $this->get('doctrine')->getRepository('GabrielUploadBundle:Image')->findAll();
-    $simages = shuffle_assoc($images); //randomize
-    //ladybug_dump($simages);
-    //$this->get('ladybug')->log($simages);
-    return $this->render('GabrielLayoutBundle:Worldpage:shuffle.html.twig',array('images'=>$simages));
-}
     /**
      * @Route("/", name="home")
      */
     public function index(MuseumsRepository $repo)
     {
-        $id  = random_int(1,1213);
-        $id1 = random_int(1,1213);
-        $id2 = random_int(1,1213);
-        $id3 = random_int(1,1213);
-        $id4 = random_int(1,1213);
-        $id5 = random_int(1,1213);
-        $id6 = random_int(1,1213);
-        $id7 = random_int(1,1213);
-        $id8 = random_int(1,1213);
-        $id9 = random_int(1,1213);
-        $id10 = random_int(1,1213);
-        $id11 = random_int(1,1213);
 
-        $museums = $repo->find($id);
-        $museums1 = $repo->find($id1);
-        $museums2 = $repo->find($id2);
-        $museums3 = $repo->find($id3);
-        $museums4 = $repo->find($id4);
-        $museums5 = $repo->find($id5);
-        $museums6 = $repo->find($id6);
-        $museums7 = $repo->find($id7);
-        $museums8 = $repo->find($id8);
-        $museums9 = $repo->find($id9);
-        $museums10 = $repo->find($id10);
-        $museums11 = $repo->find($id11);
-        
-
+        $museumsRandom = array_rand($repo->findAll(), 15);
+        $museums = $repo->findBy([
+            'id' => $museumsRandom
+        ]);
 
         return $this->render('home/index.html.twig', [
             'current_menu' => 'properties',
-            'museum'=> $museums,
-            'museum1'=> $museums1,
-            'museum2'=> $museums2,
-            'museum3'=> $museums3,
-            'museum4'=> $museums4,
-            'museum5'=> $museums5,
-            'museum6'=> $museums6,
-            'museum7'=> $museums7,
-            'museum8'=> $museums8,
-            'museum9'=> $museums9,
-            'museum10'=> $museums10,
-            'museum11'=> $museums11
+            'museums'=> $museums,
         ]);
     }
 }

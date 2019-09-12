@@ -23,6 +23,7 @@ class MuseumsRepository extends ServiceEntityRepository
         parent::__construct($registry, Museums::class);
     }
 
+
     public function findAllVisibleRegionQuery($region): Query
     {
         $query = $this->findVisibleQuery();

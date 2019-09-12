@@ -49,6 +49,7 @@ class MuseumSearchType extends AbstractType
         ]);
     }
 
+    // Permet de retirer le prefix (longue Url)
     public function getBlockPrefix()
     {
         return '';

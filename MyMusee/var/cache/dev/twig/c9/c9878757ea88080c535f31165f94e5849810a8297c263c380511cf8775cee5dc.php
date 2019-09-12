@@ -31,7 +31,7 @@ class __TwigTemplate_f59fba42a0b0e22a7e285fb046962f422549ebbc02f6c5d93d5677e85aa
 
     protected function doGetParent(array $context)
     {
-        // line 2
+        // line 3
         return "base.html.twig";
     }
 
@@ -44,7 +44,7 @@ class __TwigTemplate_f59fba42a0b0e22a7e285fb046962f422549ebbc02f6c5d93d5677e85aa
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "@Twig/Exception/error404.html.twig"));
 
-        $this->parent = $this->loadTemplate("base.html.twig", "@Twig/Exception/error404.html.twig", 2);
+        $this->parent = $this->loadTemplate("base.html.twig", "@Twig/Exception/error404.html.twig", 3);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e->leave($__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e_prof);
@@ -54,7 +54,7 @@ class __TwigTemplate_f59fba42a0b0e22a7e285fb046962f422549ebbc02f6c5d93d5677e85aa
 
     }
 
-    // line 4
+    // line 5
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -64,16 +64,23 @@ class __TwigTemplate_f59fba42a0b0e22a7e285fb046962f422549ebbc02f6c5d93d5677e85aa
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 5
-        echo "    <h1>Page not found</h1>
-
-    <p>
-        The requested page couldn't be located. Checkout for any URL
-        misspelling or <a href=\"";
-        // line 9
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage");
-        echo "\">return to the homepage</a>.
-    </p>
+        // line 6
+        echo "<div class=\"jumbotron\">
+    <div class=\"container text-center\">
+        <h1>Oops</h1>
+        <p>Une erreur c'est produite ! </p>
+        <p>
+            <h4>";
+        // line 11
+        echo twig_escape_filter($this->env, (isset($context["status_code"]) || array_key_exists("status_code", $context) ? $context["status_code"] : (function () { throw new RuntimeError('Variable "status_code" does not exist.', 11, $this->source); })()), "html", null, true);
+        echo " - Cette adresse est inconue</h4>
+        </p>
+        <p><a href=\"";
+        // line 13
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("home");
+        echo "\" class=\"btn btn-primary\">Accueil</a></p>
+    </div>
+</div>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -95,21 +102,26 @@ class __TwigTemplate_f59fba42a0b0e22a7e285fb046962f422549ebbc02f6c5d93d5677e85aa
 
     public function getDebugInfo()
     {
-        return array (  74 => 9,  68 => 5,  58 => 4,  35 => 2,);
+        return array (  80 => 13,  75 => 11,  68 => 6,  58 => 5,  35 => 3,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+        return new Source("{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Page not found</h1>
-
-    <p>
-        The requested page couldn't be located. Checkout for any URL
-        misspelling or <a href=\"{{ path('homepage') }}\">return to the homepage</a>.
-    </p>
+<div class=\"jumbotron\">
+    <div class=\"container text-center\">
+        <h1>Oops</h1>
+        <p>Une erreur c'est produite ! </p>
+        <p>
+            <h4>{{status_code}} - Cette adresse est inconue</h4>
+        </p>
+        <p><a href=\"{{path('home')}}\" class=\"btn btn-primary\">Accueil</a></p>
+    </div>
+</div>
 {% endblock %}", "@Twig/Exception/error404.html.twig", "/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/templates/bundles/TwigBundle/Exception/error404.html.twig");
     }
 }

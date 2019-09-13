@@ -16,47 +16,54 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand navbar-dark bg-success">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <a class="navbar-brand" href="{{path('home')}}">MyMuseum</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <div class="nav-group nav-groupeOne">
+                    <li class="nav-item">
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active {% endif %}"
+                            href="{{path('home')}}">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'properties_museumSearch' %}active {% endif %}"
+                            href="{{path('museum_search')}}">Trouver un Musée</a>
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'properties_museumCreate' %}active {% endif %}"
+                            href="{{path('museum_create')}}">Créer un Musée</a>
+                    </li>
+                    {% endif %}
+                </div>
+                <div class="nav-group">
+                    {% if not app.user %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'properties_museumConnexion' %}active {% endif %}"
+                            href="{{ path('security_login') }}">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'properties_museumRegistration' %}active {% endif %}"
+                            href="{{ path('security_registration') }}">S'inscrire</a>
+                    </li>
+                    {% else %}
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %}active {% endif %}"
-                        href="{{path('home')}}">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {% if current_menu is defined and current_menu == 'properties_museumSearch' %}active {% endif %}"
-                        href="{{path('museum_search')}}">Trouver un Musée</a>
-                </li>
-                {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item">
-                    <a class="nav-link {% if current_menu is defined and current_menu == 'properties_museumCreate' %}active {% endif %}"
-                        href="{{path('museum_create')}}">Créer un Musée</a>
-                </li>
-                {% endif %}
-                {% if not app.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('security_login') }}">Connexion</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('security_registration') }}">S'inscrire</a>
-                </li>
-                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'properties_contact' %}active {% endif %}"
+                            href="{{path('museum_contact')}}">Nous Contactez</a>
+                    </li>
+                </div>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>
-                </li>
-                {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link {% if current_menu is defined and current_menu == 'properties_contact' %}active {% endif %}"
-                        href="{{path('museum_contact')}}">Nous Contactez</a>
-                </li>
-                
+
+            </ul>
         </div>
     </nav>
 

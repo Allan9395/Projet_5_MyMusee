@@ -91,32 +91,42 @@ class __TwigTemplate_4f54ef1867e76ba9b1c92525ab4bb3061de50b1c047f51592a134f423a1
 </div>
 
 <div class=\"container\">
-    ";
-        // line 12
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 12, $this->source); })()), 'form_start');
+    <div class=\"formContact-CreateEdit-Registration-connexion\">
+        <div class=\"titleContact-CreateEdit-Registration-connexion\">
+            <h4>S'inscrire</h4>
+            <p>Inscrivez-vous pour pouvoir comenter un musée</p>
+        </div>
+        ";
+        // line 17
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 17, $this->source); })()), 'form_start');
         echo "
-    ";
-        // line 13
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 13, $this->source); })()), "username", [], "any", false, false, false, 13), 'row', ["label" => "Nom d'utilisateur : ", "attr" => ["placeholder" => "Votre Nom"], "required" => "required"]);
-        echo "
-    ";
-        // line 14
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 14, $this->source); })()), "email", [], "any", false, false, false, 14), 'row', ["label" => "Email : ", "attr" => ["placeholder" => "Votre adresse email"], "required" => "required"]);
-        echo "
-    ";
-        // line 15
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 15, $this->source); })()), "password", [], "any", false, false, false, 15), 'row', ["label" => "Mot de passe : ", "attr" => ["placeholder" => "Votre mot de passe"], "required" => "required"]);
-        echo "
-    ";
-        // line 16
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 16, $this->source); })()), "confirm_password", [], "any", false, false, false, 16), 'row', ["label" => "Confirmer votre mot de passe : ", "attr" => ["placeholder" => "Repetez votre mot de passe"], "required" => "required"]);
-        echo "
-    <button type=\"submit\" class=\"btn btn-success\">Inscription</button>
-    ";
+        ";
         // line 18
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 18, $this->source); })()), 'form_end');
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 18, $this->source); })()), "username", [], "any", false, false, false, 18), 'row', ["label" => "Nom d'utilisateur : ", "attr" => ["placeholder" => "Votre Nom"], "required" => "required"]);
         echo "
+        ";
+        // line 19
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 19, $this->source); })()), "email", [], "any", false, false, false, 19), 'row', ["label" => "Email : ", "attr" => ["placeholder" => "Votre adresse email"], "required" => "required"]);
+        echo "
+        ";
+        // line 20
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 20, $this->source); })()), "password", [], "any", false, false, false, 20), 'row', ["label" => "Mot de passe : ", "attr" => ["placeholder" => "Votre mot de passe"], "required" => "required"]);
+        echo "
+        ";
+        // line 21
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 21, $this->source); })()), "confirm_password", [], "any", false, false, false, 21), 'row', ["label" => "Confirmer votre mot de passe : ", "attr" => ["placeholder" => "Repetez votre mot de passe"], "required" => "required"]);
+        echo "
+        <div class=\"btnGroup-btnContact-CreateEdit-Registration-connexion\">
+            <button type=\"submit\"
+                class=\"btn btn-success btn-btnContact-CreateEdit-Registration-connexion\">Inscription</button>
+        </div>
+        ";
+        // line 26
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 26, $this->source); })()), 'form_end');
+        echo "
+    </div>
 </div>
+
 
 ";
         
@@ -139,7 +149,7 @@ class __TwigTemplate_4f54ef1867e76ba9b1c92525ab4bb3061de50b1c047f51592a134f423a1
 
     public function getDebugInfo()
     {
-        return array (  117 => 18,  112 => 16,  108 => 15,  104 => 14,  100 => 13,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  125 => 26,  117 => 21,  113 => 20,  109 => 19,  105 => 18,  101 => 17,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -155,14 +165,24 @@ class __TwigTemplate_4f54ef1867e76ba9b1c92525ab4bb3061de50b1c047f51592a134f423a1
 </div>
 
 <div class=\"container\">
-    {{ form_start(form) }}
-    {{ form_row(form.username, {'label': \"Nom d'utilisateur : \", 'attr': {'placeholder': \"Votre Nom\"}, 'required': 'required'})}}
-    {{ form_row(form.email, {'label': \"Email : \", 'attr': {'placeholder': \"Votre adresse email\"}, 'required': 'required'})}}
-    {{ form_row(form.password, {'label': \"Mot de passe : \", 'attr': {'placeholder': \"Votre mot de passe\"}, 'required': 'required'})}}
-    {{ form_row(form.confirm_password, {'label': \"Confirmer votre mot de passe : \", 'attr': {'placeholder': \"Repetez votre mot de passe\"}, 'required': 'required'})}}
-    <button type=\"submit\" class=\"btn btn-success\">Inscription</button>
-    {{ form_end(form) }}
+    <div class=\"formContact-CreateEdit-Registration-connexion\">
+        <div class=\"titleContact-CreateEdit-Registration-connexion\">
+            <h4>S'inscrire</h4>
+            <p>Inscrivez-vous pour pouvoir comenter un musée</p>
+        </div>
+        {{ form_start(form) }}
+        {{ form_row(form.username, {'label': \"Nom d'utilisateur : \", 'attr': {'placeholder': \"Votre Nom\"}, 'required': 'required'})}}
+        {{ form_row(form.email, {'label': \"Email : \", 'attr': {'placeholder': \"Votre adresse email\"}, 'required': 'required'})}}
+        {{ form_row(form.password, {'label': \"Mot de passe : \", 'attr': {'placeholder': \"Votre mot de passe\"}, 'required': 'required'})}}
+        {{ form_row(form.confirm_password, {'label': \"Confirmer votre mot de passe : \", 'attr': {'placeholder': \"Repetez votre mot de passe\"}, 'required': 'required'})}}
+        <div class=\"btnGroup-btnContact-CreateEdit-Registration-connexion\">
+            <button type=\"submit\"
+                class=\"btn btn-success btn-btnContact-CreateEdit-Registration-connexion\">Inscription</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
 </div>
+
 
 {% endblock %}", "security/registration.html.twig", "/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/templates/security/registration.html.twig");
     }

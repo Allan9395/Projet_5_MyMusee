@@ -9,79 +9,88 @@
      <h1>Modification du Musée</h1>
      {% else  %}
      <h1>Création d'un nouveau Musée</h1>
+     <p>Les champs obligatoire sont renseignés par une * </p>
+
      {% endif  %}
  </div>
 
  <div class="container">
      <br>
-     {{ form_start(formMuseum) }}
-     <h2>Description du musée</h2>
-     <div class="row">
-         <div class="col-xl-6">
-             <div class="form-group">
-                 {{ form_row(formMuseum.Nom_Officiel, {'label': "Nom du musée : ", 'attr': {'placeholder': "Nom du musée"}, 'required': 'required'})}}
+     <div class="formContact-CreateEdit-Registration-connexion">
+         {{ form_start(formMuseum) }}
+
+             <h2>Description du musée</h2>
+             <br>
+         <div class="row">
+             <div class="col-xl-6">
+                 <div class="form-group">
+                     {{ form_row(formMuseum.Nom_Officiel, {'label': "Nom du musée* : ", 'attr': {'placeholder': "Nom du musée"}, 'required': 'required'})}}
+                 </div>
+                 <div class="form-group">
+                     {{ form_row(formMuseum.Themes, {'label': "Thèmes du Musée* : ", 'attr': {'placeholder': "Le ou les Thèmes du musée"}, 'required': 'required' })}}
+                 </div>
+                 <div class="form-group">
+                     {{ form_row(formMuseum.Artiste, {'label': "Le ou les Artiste(s) du Musée : ", 'attr': {'placeholder': "Le ou les Artiste(s) du Musée"} })}}
+                 </div>
              </div>
-             <div class="form-group">
-                 {{ form_row(formMuseum.Themes, {'label': "Thèmes du Musée : ", 'attr': {'placeholder': "Le ou les Thèmes du musée"}, 'required': 'required' })}}
-             </div>
-             <div class="form-group">
-                 {{ form_row(formMuseum.Artiste, {'label': "Le ou les Artiste(s) du Musée : ", 'attr': {'placeholder': "Le ou les Artiste(s) du Musée"} })}}
+             <div class="col-xl-6">
+                 <div class="form-group">
+                     {{ form_row(formMuseum.Personnage_Phare, {'label': "Les personages du Musée : ", 'attr': {'placeholder': "Le ou less personages importants du Musée"}})}}
+                 </div>
+                 <div class="form-group">
+                     {{ form_row(formMuseum.Protection_batiment, {'label': "Spécificité du bâtiment : ", 'attr': {'placeholder': "Spécificité du bâtiment"}})}}
+                 </div>
+                 <div class="form-group">
+                     {{ form_row(formMuseum.Protection_Espace, {'label': "Spécificité du site : ", 'attr': {'placeholder': "Spécificité du site"}})}}
+                 </div>
              </div>
          </div>
-         <div class="col-xl-6">
-             <div class="form-group">
-                 {{ form_row(formMuseum.Personnage_Phare, {'label': "Les personages du Musée : ", 'attr': {'placeholder': "Le ou less personages importants du Musée"}})}}
+
+         <div class="form-group">
+             {{ form_row(formMuseum.Histoire, {'label': "L'histoire du Musée* : ", 'attr': {'placeholder': "Écrit la petite histoire du Musée"}, 'required': 'required' })}}
+         </div>
+
+         <h2>Coordonées du musée</h2>
+         <br>
+         <div class="row">
+             <div class="col-xl-6">
+                 <div class="form-group">
+                     {{ form_row(formMuseum.Adresse, {'label': "Adresse* : ", 'attr': {'placeholder': "Adresse du musée"}, 'required': 'required' })}}
+                 </div>
+                 <div class="form-group">
+                     {{ form_row(formMuseum.Departement, {'label': "Département* : ", 'attr': {'placeholder': "Département du musée"}, 'required': 'required' })}}
+                 </div>
+                 <div class="form-group">
+                     {{ form_row(formMuseum.Ville, {'label': "Ville du Musée* : ", 'attr': {'placeholder': "Ville du Musée"}, 'required': 'required' })}}
+                 </div>
+                 <div class="form-group">
+                     {{ form_row(formMuseum.Code_Postal, {'label': "Code Postal du Musée* : ", 'attr': {'placeholder': "Code Postal du Musée"}, 'required': 'required' })}}
+                 </div>
              </div>
-             <div class="form-group">
-                 {{ form_row(formMuseum.Protection_batiment, {'label': "Spécificité du bâtiment : ", 'attr': {'placeholder': "Spécificité du bâtiment"}})}}
-             </div>
-             <div class="form-group">
-                 {{ form_row(formMuseum.Protection_Espace, {'label': "Spécificité du site : ", 'attr': {'placeholder': "Spécificité du site"}})}}
+             <div class="col-xl-6">
+                 <div class="form-group">
+                     {{ form_row(formMuseum.Telephone, {'label': "Téléphone du Musée: ", 'attr': {'placeholder': "Téléphone du Musée"} })}}
+                 </div>
+                 <div class="form-group">
+                     {{ form_row(formMuseum.URL, {'label': "URL du Musée : ", 'attr': {'placeholder': "URL du Musée"} })}}
+                 </div>
+                 <div class="form-group">
+                     {{ form_row(formMuseum.geolocalisation, {'label': "Données de géolocalisation du Musée : ", 'attr': {'placeholder': "Données de géolocalisation du Musée"} })}}
+                 </div>
              </div>
          </div>
+         <div class="btnGroup-btnContact-CreateEdit-Registration-connexion">
+             {% if editMode %}
+             <button type="submit" class="btn btn-success btn-btnContact-CreateEdit-Registration-connexion">Modifier</button>
+             {% else  %}
+             <button type="submit" class="btn btn-success btn-btnContact-CreateEdit-Registration-connexion">Créer un musée</button>
+             {% endif  %}
+         </div>
+
+
+         {{ form_end(formMuseum) }}
+
      </div>
-
-     <div class="form-group">
-         {{ form_row(formMuseum.Histoire, {'label': "L'histoire du Musée : ", 'attr': {'placeholder': "Écrit la petite histoire du Musée"}, 'required': 'required' })}}
-     </div>
-
-     <h2>Coordonées du musée</h2>
-     <div class="row">
-         <div class="col-xl-6">
-             <div class="form-group">
-                 {{ form_row(formMuseum.Adresse, {'label': "Adresse : ", 'attr': {'placeholder': "Adresse du musée"}, 'required': 'required' })}}
-             </div>
-             <div class="form-group">
-                 {{ form_row(formMuseum.Departement, {'label': "Département : ", 'attr': {'placeholder': "Département du musée"}, 'required': 'required' })}}
-             </div>
-             <div class="form-group">
-                 {{ form_row(formMuseum.Ville, {'label': "Ville du Musée : ", 'attr': {'placeholder': "Ville du Musée"}, 'required': 'required' })}}
-             </div>
-             <div class="form-group">
-                 {{ form_row(formMuseum.Code_Postal, {'label': "Code Postal du Musée : ", 'attr': {'placeholder': "Code Postal du Musée"}, 'required': 'required' })}}
-             </div>
-         </div>
-         <div class="col-xl-6">
-             <div class="form-group">
-                 {{ form_row(formMuseum.Telephone, {'label': "Téléphone du Musée: ", 'attr': {'placeholder': "Téléphone du Musée"} })}}
-             </div>
-             <div class="form-group">
-                 {{ form_row(formMuseum.URL, {'label': "URL du Musée : ", 'attr': {'placeholder': "URL du Musée"} })}}
-             </div>
-             <div class="form-group">
-                 {{ form_row(formMuseum.geolocalisation, {'label': "Données de géolocalisation du Musée : ", 'attr': {'placeholder': "Données de géolocalisation du Musée"} })}}
-             </div>
-         </div>
-     </div>
-
-     {% if editMode %}
-     <button type="submit" class="btn btn-success">Modifier</button>
-     {% else  %}
-     <button type="submit" class="btn btn-success">Créer un musée</button>
-     {% endif  %}
-
-     {{ form_end(formMuseum) }}
-
  </div>
 
 

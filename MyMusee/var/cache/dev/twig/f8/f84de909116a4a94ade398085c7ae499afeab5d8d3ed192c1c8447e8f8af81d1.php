@@ -119,42 +119,43 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
         echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 13, $this->source); })()), "NomOfficiel", [], "any", false, false, false, 13)), "html", null, true);
         echo "</span></h3>
         <p class=\"lead\">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-        <div class=\"row\">
+        <div class=\"row divBtnShow\">
             ";
         // line 16
         if ($this->extensions['Symfony\Bridge\Twig\Extension\SecurityExtension']->isGranted("ROLE_ADMIN")) {
             // line 17
             echo "            <a href=\"";
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 17, $this->source); })()), "id", [], "any", false, false, false, 17)]), "html", null, true);
-            echo "\" class=\"btn btn-success\">Modifier les informations</a>
+            echo "\" class=\"btn btn-success btnShowOne\">Modifier les
+                informations</a>
             <form method=\"post\" action=\"";
-            // line 18
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_delete", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 18, $this->source); })()), "id", [], "any", false, false, false, 18)]), "html", null, true);
+            // line 19
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_delete", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 19, $this->source); })()), "id", [], "any", false, false, false, 19)]), "html", null, true);
             echo "\"
                 onsubmit=\"return confirm('Voulez vous vraiment supprimer ce musée')\">
                 <input type=\"hidden \" name=\"_method\" value=\"DELETE\" style=\"display: none;\">
                 <input type=\"hidden \" name=\"_token\" value=\"";
-            // line 21
-            echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 21, $this->source); })()), "id", [], "any", false, false, false, 21))), "html", null, true);
+            // line 22
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 22, $this->source); })()), "id", [], "any", false, false, false, 22))), "html", null, true);
             echo "\"
                     style=\"display: none;\">
                 <button class=\"btn btn-danger\">Supprimer</button>
             </form>
             ";
         }
-        // line 26
+        // line 27
         echo "        </div>
         <hr>
         <br>
         ";
-        // line 29
+        // line 30
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 29, $this->source); })()), "flashes", [0 => "success"], "method", false, false, false, 29));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 30, $this->source); })()), "flashes", [0 => "success"], "method", false, false, false, 30));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 30
+            // line 31
             echo "        <div class=\"alert alert-success\">
             ";
-            // line 31
+            // line 32
             echo twig_escape_filter($this->env, $context["message"], "html", null, true);
             echo "
         </div>
@@ -163,7 +164,7 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 34
+        // line 35
         echo "
     </div>
 </div>
@@ -171,49 +172,50 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
     <div class=\"row\">
         <div class=\"col-xl-6\">
             <div class=\"card border-success\">
-                <div class=\"card-header\">
-                    <h5 class=\"card-title\">Le Thème du musée et le(s) Artiste(s) et/où Personnages</h5>
+                <div class=\"card-header card-header-home\">
+                    <h5 class=\"card-title card-titleOne\"><i class=\"fas fa-male\"></i> Le Thème du musée et le(s)
+                        Artiste(s) et/où Personnages</h5>
                 </div>
                 <div class=\"card-body text-success\">
                     <p>Thème: ";
-        // line 45
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 45, $this->source); })()), "Themes", [], "any", false, false, false, 45), "html", null, true);
+        // line 47
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 47, $this->source); })()), "Themes", [], "any", false, false, false, 47), "html", null, true);
         echo "</p>
                     <p>Artiste(s): ";
-        // line 46
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 46, $this->source); })()), "Artiste", [], "any", false, false, false, 46), "html", null, true);
+        // line 48
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 48, $this->source); })()), "Artiste", [], "any", false, false, false, 48), "html", null, true);
         echo "</p>
                     <p>Personnages: ";
-        // line 47
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 47, $this->source); })()), "PersonnagePhare", [], "any", false, false, false, 47), "html", null, true);
+        // line 49
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 49, $this->source); })()), "PersonnagePhare", [], "any", false, false, false, 49), "html", null, true);
         echo "</p>
                 </div>
             </div>
             <br>
             <div class=\"card border-info\">
                 <div class=\"card-header\">
-                    <h5 class=\"card-title\">Histoire du musée</h5>
+                    <h5 class=\"card-title\"><i class=\"fas fa-atlas\"></i> Histoire du musée</h5>
                 </div>
                 <div class=\"card-body text-info\">
                     ";
-        // line 56
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 56, $this->source); })()), "Histoire", [], "any", false, false, false, 56), "html", null, true);
+        // line 58
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 58, $this->source); })()), "Histoire", [], "any", false, false, false, 58), "html", null, true);
         echo "
                 </div>
             </div>
             <br>
             <div class=\"card border-info\">
                 <div class=\"card-header\">
-                    <h5 class=\"card-title\">Coup d'oeil sur le Batîment</h5>
+                    <h5 class=\"card-title\"><i class=\"fas fa-landmark\"></i> Coup d'oeil sur le Batîment</h5>
                 </div>
                 <div class=\"card-body text-info\">
                     <p>Le batîment : ";
-        // line 65
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 65, $this->source); })()), "Protectionbatiment", [], "any", false, false, false, 65), "html", null, true);
+        // line 67
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 67, $this->source); })()), "Protectionbatiment", [], "any", false, false, false, 67), "html", null, true);
         echo "</p>
                     <p>Le site : ";
-        // line 66
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 66, $this->source); })()), "ProtectionEspace", [], "any", false, false, false, 66), "html", null, true);
+        // line 68
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 68, $this->source); })()), "ProtectionEspace", [], "any", false, false, false, 68), "html", null, true);
         echo "</p>
                 </div>
             </div>
@@ -221,36 +223,36 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
         <div class=\"col-xl-6\">
             <div class=\"card border-info\">
                 <div class=\"card-header\">
-                    <h5 class=\"card-title\">Coordonnées <span class=\"coordinates\"
+                    <h5 class=\"card-title\"><i class=\"fas fa-pen-fancy\"></i> Coordonnées <span class=\"coordinates\"
                             style=\"display:none;\">";
-        // line 74
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 74, $this->source); })()), "geolocalisation", [], "any", false, false, false, 74), "html", null, true);
+        // line 76
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 76, $this->source); })()), "geolocalisation", [], "any", false, false, false, 76), "html", null, true);
         echo "</span></h5>
                 </div>
                 <div class=\"card-body text-info\">
                     <p>";
-        // line 77
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 77, $this->source); })()), "Adresse", [], "any", false, false, false, 77), "html", null, true);
-        echo "</p>
-                    <p>";
-        // line 78
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 78, $this->source); })()), "Departement", [], "any", false, false, false, 78), "html", null, true);
-        echo "</p>
-                    <p>";
         // line 79
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 79, $this->source); })()), "Ville", [], "any", false, false, false, 79), "html", null, true);
-        echo " ";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 79, $this->source); })()), "CodePostal", [], "any", false, false, false, 79), "html", null, true);
-        echo " </p>
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 79, $this->source); })()), "Adresse", [], "any", false, false, false, 79), "html", null, true);
+        echo "</p>
                     <p>";
         // line 80
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 80, $this->source); })()), "Telephone", [], "any", false, false, false, 80), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 80, $this->source); })()), "Departement", [], "any", false, false, false, 80), "html", null, true);
+        echo "</p>
+                    <p>";
+        // line 81
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 81, $this->source); })()), "Ville", [], "any", false, false, false, 81), "html", null, true);
+        echo " ";
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 81, $this->source); })()), "CodePostal", [], "any", false, false, false, 81), "html", null, true);
+        echo " </p>
+                    <p>";
+        // line 82
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 82, $this->source); })()), "Telephone", [], "any", false, false, false, 82), "html", null, true);
         echo "</p>
                     <a href=\"http://";
-        // line 81
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 81, $this->source); })()), "URL", [], "any", false, false, false, 81), "html", null, true);
+        // line 83
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 83, $this->source); })()), "URL", [], "any", false, false, false, 83), "html", null, true);
         echo "\">";
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 81, $this->source); })()), "URL", [], "any", false, false, false, 81), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 83, $this->source); })()), "URL", [], "any", false, false, false, 83), "html", null, true);
         echo "</a>
                 </div>
             </div>
@@ -258,13 +260,61 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
             <div class=\"card border-success\">
                 <div class=\"card-header\">
                     <h5 class=\"card-title\">
-                        <i class=\"fas fa-map-marker-alt\"></i>
+                        <i class=\"fas fa-map-marked-alt\"></i>
                         Localisation du Musée
                     </h5>
                 </div>
                 <div id=\"map\">
-                    <div id=\"mapid\"></div>
+                    <div class=\"mapidShow\" id=\"mapid\" ></div>
                 </div>
+            </div>
+            <div class=\"formContact-CreateEdit-Registration-connexion formComment\">
+                ";
+        // line 99
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 99, $this->source); })()), "user", [], "any", false, false, false, 99)) {
+            echo "                
+                <div class=\"titleContact-CreateEdit-Registration-connexion\">
+                    <h4>Ecrivez votre commentaire</h4>
+                    <p>N'esitez pas a dire se que vous avez pensé du musée !</p>
+                </div>
+                ";
+        }
+        // line 105
+        echo "
+                <div class=\"col-xl-12\">
+                    ";
+        // line 107
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 107, $this->source); })()), "user", [], "any", false, false, false, 107)) {
+            // line 108
+            echo "                    ";
+            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formComment"]) || array_key_exists("formComment", $context) ? $context["formComment"] : (function () { throw new RuntimeError('Variable "formComment" does not exist.', 108, $this->source); })()), 'form_start');
+            echo "
+                    ";
+            // line 109
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formComment"]) || array_key_exists("formComment", $context) ? $context["formComment"] : (function () { throw new RuntimeError('Variable "formComment" does not exist.', 109, $this->source); })()), "author", [], "any", false, false, false, 109), 'row', ["label" => "Auteur : ", "attr" => ["placeholder" => "Votre Nom"], "required" => "required"]);
+            echo "
+                    ";
+            // line 110
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formComment"]) || array_key_exists("formComment", $context) ? $context["formComment"] : (function () { throw new RuntimeError('Variable "formComment" does not exist.', 110, $this->source); })()), "content", [], "any", false, false, false, 110), 'row', ["label" => "Le commentaire : ", "attr" => ["placeholder" => "Votre Commentaire"], "required" => "required"]);
+            echo "
+                    ";
+            // line 111
+            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formComment"]) || array_key_exists("formComment", $context) ? $context["formComment"] : (function () { throw new RuntimeError('Variable "formComment" does not exist.', 111, $this->source); })()), "content", [], "any", false, false, false, 111), 'row', ["label" => "Le commentaire : ", "attr" => ["placeholder" => "Votre Commentaire"], "required" => "required"]);
+            echo "
+                    <button type=\"submit\" class=\"btn btn-success\">Créer un commentaire</button>
+                    ";
+            // line 113
+            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formComment"]) || array_key_exists("formComment", $context) ? $context["formComment"] : (function () { throw new RuntimeError('Variable "formComment" does not exist.', 113, $this->source); })()), 'form_end');
+            echo "
+                    ";
+        } else {
+            // line 115
+            echo "                    <h4 class=\"title-noComment\"><i class=\"fas fa-comment-slash\"></i> Vous ne pouvez pas commenter sans
+                        être connécté </h4>
+                    ";
+        }
+        // line 118
+        echo "                </div>
             </div>
         </div>
     </div>
@@ -274,32 +324,35 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
         <div class=\"comments\">
             <div class=\"card border-success\">
                 <div class=\"card-header\">
-                    <h3 class=\"card-title\">";
-        // line 104
-        echo twig_escape_filter($this->env, twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 104, $this->source); })()), "comments", [], "any", false, false, false, 104)), "html", null, true);
-        echo " Commentaires :</h3>
+                    <h3 class=\"card-title\"><i class=\"fas fa-comments\"></i> ";
+        // line 128
+        echo twig_escape_filter($this->env, twig_length_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 128, $this->source); })()), "comments", [], "any", false, false, false, 128)), "html", null, true);
+        echo " Commentaires :
+                    </h3>
                 </div>
                 <div class=\"card-body text-success\">
                     ";
-        // line 107
+        // line 132
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 107, $this->source); })()), "comments", [], "any", false, false, false, 107));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["museum"]) || array_key_exists("museum", $context) ? $context["museum"] : (function () { throw new RuntimeError('Variable "museum" does not exist.', 132, $this->source); })()), "comments", [], "any", false, false, false, 132));
         foreach ($context['_seq'] as $context["_key"] => $context["comment"]) {
-            // line 108
+            // line 133
             echo "                    <div class=\"comment\">
                         <div class=\"row\">
                             <div class=\"col-md-3\">
-                                ";
-            // line 111
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "author", [], "any", false, false, false, 111), "html", null, true);
-            echo " ( <small> ";
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "createdAt", [], "any", false, false, false, 111), "d/m/Y à H:i"), "html", null, true);
+                                <i class=\"fas fa-comment-alt\"></i> ";
+            // line 136
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "author", [], "any", false, false, false, 136), "html", null, true);
+            echo " ( <small>
+                                    ";
+            // line 137
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, $context["comment"], "createdAt", [], "any", false, false, false, 137), "d/m/Y à H:i"), "html", null, true);
             echo " </small> )
                             </div>
-                            <div class=\"col-md\">
+                            <div class=\"col-md-9\">
                                 ";
-            // line 114
-            echo twig_get_attribute($this->env, $this->source, $context["comment"], "content", [], "any", false, false, false, 114);
+            // line 140
+            echo twig_get_attribute($this->env, $this->source, $context["comment"], "content", [], "any", false, false, false, 140);
             echo "
                             </div>
                         </div>
@@ -310,46 +363,13 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['comment'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 120
+        // line 146
         echo "                </div>
             </div>
         </div>
-        <div class=\"row commentForm\">
-            <div class=\"col-xl-12\">
-                ";
-        // line 125
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 125, $this->source); })()), "user", [], "any", false, false, false, 125)) {
-            // line 126
-            echo "                ";
-            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formComment"]) || array_key_exists("formComment", $context) ? $context["formComment"] : (function () { throw new RuntimeError('Variable "formComment" does not exist.', 126, $this->source); })()), 'form_start');
-            echo "
-                ";
-            // line 127
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formComment"]) || array_key_exists("formComment", $context) ? $context["formComment"] : (function () { throw new RuntimeError('Variable "formComment" does not exist.', 127, $this->source); })()), "author", [], "any", false, false, false, 127), 'row', ["label" => "Auteur : ", "attr" => ["placeholder" => "Votre Nom"], "required" => "required"]);
-            echo "
-                ";
-            // line 128
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formComment"]) || array_key_exists("formComment", $context) ? $context["formComment"] : (function () { throw new RuntimeError('Variable "formComment" does not exist.', 128, $this->source); })()), "content", [], "any", false, false, false, 128), 'row', ["label" => "Le commentaire : ", "attr" => ["placeholder" => "Votre Commentaire"], "required" => "required"]);
-            echo "
-                ";
-            // line 129
-            echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["formComment"]) || array_key_exists("formComment", $context) ? $context["formComment"] : (function () { throw new RuntimeError('Variable "formComment" does not exist.', 129, $this->source); })()), "content", [], "any", false, false, false, 129), 'row', ["label" => "Le commentaire : ", "attr" => ["placeholder" => "Votre Commentaire"], "required" => "required"]);
-            echo "
-                <button type=\"submit\" class=\"btn btn-success\">Créer un commentaire</button>
-                ";
-            // line 131
-            echo             $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["formComment"]) || array_key_exists("formComment", $context) ? $context["formComment"] : (function () { throw new RuntimeError('Variable "formComment" does not exist.', 131, $this->source); })()), 'form_end');
-            echo "
-                ";
-        } else {
-            // line 133
-            echo "                <h4>Vous ne pouvez pas commenter sans être connécté </h4>
-                ";
-        }
-        // line 135
-        echo "            </div>
-        </div>
-    </section>
+</div>
+
+</section>
 </div>
 
 
@@ -362,7 +382,7 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
 
     }
 
-    // line 142
+    // line 156
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -372,12 +392,12 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 143
+        // line 157
         echo "<script src=\"https://unpkg.com/leaflet@1.5.1/dist/leaflet.js\"
     integrity=\"sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==\"
     crossorigin=\"\"></script>
 <script src=\"";
-        // line 146
+        // line 160
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("js/showJs.js"), "html", null, true);
         echo "\"></script>
 ";
@@ -401,7 +421,7 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
 
     public function getDebugInfo()
     {
-        return array (  381 => 146,  376 => 143,  366 => 142,  350 => 135,  346 => 133,  341 => 131,  336 => 129,  332 => 128,  328 => 127,  323 => 126,  321 => 125,  314 => 120,  302 => 114,  294 => 111,  289 => 108,  285 => 107,  279 => 104,  251 => 81,  247 => 80,  241 => 79,  237 => 78,  233 => 77,  227 => 74,  216 => 66,  212 => 65,  200 => 56,  188 => 47,  184 => 46,  180 => 45,  167 => 34,  158 => 31,  155 => 30,  151 => 29,  146 => 26,  138 => 21,  132 => 18,  127 => 17,  125 => 16,  119 => 13,  114 => 10,  104 => 9,  91 => 5,  81 => 4,  61 => 3,  38 => 1,);
+        return array (  401 => 160,  396 => 157,  386 => 156,  367 => 146,  355 => 140,  349 => 137,  345 => 136,  340 => 133,  336 => 132,  329 => 128,  317 => 118,  312 => 115,  307 => 113,  302 => 111,  298 => 110,  294 => 109,  289 => 108,  287 => 107,  283 => 105,  274 => 99,  253 => 83,  249 => 82,  243 => 81,  239 => 80,  235 => 79,  229 => 76,  218 => 68,  214 => 67,  202 => 58,  190 => 49,  186 => 48,  182 => 47,  168 => 35,  159 => 32,  156 => 31,  152 => 30,  147 => 27,  139 => 22,  133 => 19,  127 => 17,  125 => 16,  119 => 13,  114 => 10,  104 => 9,  91 => 5,  81 => 4,  61 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -420,9 +440,10 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
     <div class=\"container\">
         <h3 class=\"display-4\">Visitez le <span id=\"museumName\">{{ museum.NomOfficiel|capitalize }}</span></h3>
         <p class=\"lead\">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-        <div class=\"row\">
+        <div class=\"row divBtnShow\">
             {% if is_granted('ROLE_ADMIN') %}
-            <a href=\"{{ path('museum_edit', {'id': museum.id}) }}\" class=\"btn btn-success\">Modifier les informations</a>
+            <a href=\"{{ path('museum_edit', {'id': museum.id}) }}\" class=\"btn btn-success btnShowOne\">Modifier les
+                informations</a>
             <form method=\"post\" action=\"{{ path('museum_delete', {'id': museum.id}) }}\"
                 onsubmit=\"return confirm('Voulez vous vraiment supprimer ce musée')\">
                 <input type=\"hidden \" name=\"_method\" value=\"DELETE\" style=\"display: none;\">
@@ -446,8 +467,9 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
     <div class=\"row\">
         <div class=\"col-xl-6\">
             <div class=\"card border-success\">
-                <div class=\"card-header\">
-                    <h5 class=\"card-title\">Le Thème du musée et le(s) Artiste(s) et/où Personnages</h5>
+                <div class=\"card-header card-header-home\">
+                    <h5 class=\"card-title card-titleOne\"><i class=\"fas fa-male\"></i> Le Thème du musée et le(s)
+                        Artiste(s) et/où Personnages</h5>
                 </div>
                 <div class=\"card-body text-success\">
                     <p>Thème: {{museum.Themes}}</p>
@@ -458,7 +480,7 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
             <br>
             <div class=\"card border-info\">
                 <div class=\"card-header\">
-                    <h5 class=\"card-title\">Histoire du musée</h5>
+                    <h5 class=\"card-title\"><i class=\"fas fa-atlas\"></i> Histoire du musée</h5>
                 </div>
                 <div class=\"card-body text-info\">
                     {{museum.Histoire}}
@@ -467,7 +489,7 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
             <br>
             <div class=\"card border-info\">
                 <div class=\"card-header\">
-                    <h5 class=\"card-title\">Coup d'oeil sur le Batîment</h5>
+                    <h5 class=\"card-title\"><i class=\"fas fa-landmark\"></i> Coup d'oeil sur le Batîment</h5>
                 </div>
                 <div class=\"card-body text-info\">
                     <p>Le batîment : {{museum.Protectionbatiment}}</p>
@@ -478,7 +500,7 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
         <div class=\"col-xl-6\">
             <div class=\"card border-info\">
                 <div class=\"card-header\">
-                    <h5 class=\"card-title\">Coordonnées <span class=\"coordinates\"
+                    <h5 class=\"card-title\"><i class=\"fas fa-pen-fancy\"></i> Coordonnées <span class=\"coordinates\"
                             style=\"display:none;\">{{museum.geolocalisation}}</span></h5>
                 </div>
                 <div class=\"card-body text-info\">
@@ -493,12 +515,34 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
             <div class=\"card border-success\">
                 <div class=\"card-header\">
                     <h5 class=\"card-title\">
-                        <i class=\"fas fa-map-marker-alt\"></i>
+                        <i class=\"fas fa-map-marked-alt\"></i>
                         Localisation du Musée
                     </h5>
                 </div>
                 <div id=\"map\">
-                    <div id=\"mapid\"></div>
+                    <div class=\"mapidShow\" id=\"mapid\" ></div>
+                </div>
+            </div>
+            <div class=\"formContact-CreateEdit-Registration-connexion formComment\">
+                {% if app.user %}                
+                <div class=\"titleContact-CreateEdit-Registration-connexion\">
+                    <h4>Ecrivez votre commentaire</h4>
+                    <p>N'esitez pas a dire se que vous avez pensé du musée !</p>
+                </div>
+                {% endif %}
+
+                <div class=\"col-xl-12\">
+                    {% if app.user %}
+                    {{ form_start(formComment) }}
+                    {{ form_row(formComment.author, {'label': \"Auteur : \", 'attr': {'placeholder': \"Votre Nom\"}, 'required': 'required'})}}
+                    {{ form_row(formComment.content, {'label': \"Le commentaire : \", 'attr': {'placeholder': \"Votre Commentaire\"}, 'required': 'required'})}}
+                    {{ form_row(formComment.content, {'label': \"Le commentaire : \", 'attr': {'placeholder': \"Votre Commentaire\"}, 'required': 'required'})}}
+                    <button type=\"submit\" class=\"btn btn-success\">Créer un commentaire</button>
+                    {{ form_end(formComment) }}
+                    {% else %}
+                    <h4 class=\"title-noComment\"><i class=\"fas fa-comment-slash\"></i> Vous ne pouvez pas commenter sans
+                        être connécté </h4>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -509,16 +553,18 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
         <div class=\"comments\">
             <div class=\"card border-success\">
                 <div class=\"card-header\">
-                    <h3 class=\"card-title\">{{museum.comments | length }} Commentaires :</h3>
+                    <h3 class=\"card-title\"><i class=\"fas fa-comments\"></i> {{museum.comments | length }} Commentaires :
+                    </h3>
                 </div>
                 <div class=\"card-body text-success\">
                     {% for comment in museum.comments %}
                     <div class=\"comment\">
                         <div class=\"row\">
                             <div class=\"col-md-3\">
-                                {{ comment.author }} ( <small> {{comment.createdAt | date('d/m/Y à H:i')}} </small> )
+                                <i class=\"fas fa-comment-alt\"></i> {{ comment.author }} ( <small>
+                                    {{comment.createdAt | date('d/m/Y à H:i')}} </small> )
                             </div>
-                            <div class=\"col-md\">
+                            <div class=\"col-md-9\">
                                 {{comment.content | raw}}
                             </div>
                         </div>
@@ -528,21 +574,9 @@ class __TwigTemplate_3fa1ca51ffad9c02bb693b94e56483dfe94e5b4d35fa2fb8d2c00cef71d
                 </div>
             </div>
         </div>
-        <div class=\"row commentForm\">
-            <div class=\"col-xl-12\">
-                {% if app.user %}
-                {{ form_start(formComment) }}
-                {{ form_row(formComment.author, {'label': \"Auteur : \", 'attr': {'placeholder': \"Votre Nom\"}, 'required': 'required'})}}
-                {{ form_row(formComment.content, {'label': \"Le commentaire : \", 'attr': {'placeholder': \"Votre Commentaire\"}, 'required': 'required'})}}
-                {{ form_row(formComment.content, {'label': \"Le commentaire : \", 'attr': {'placeholder': \"Votre Commentaire\"}, 'required': 'required'})}}
-                <button type=\"submit\" class=\"btn btn-success\">Créer un commentaire</button>
-                {{ form_end(formComment) }}
-                {% else %}
-                <h4>Vous ne pouvez pas commenter sans être connécté </h4>
-                {% endif %}
-            </div>
-        </div>
-    </section>
+</div>
+
+</section>
 </div>
 
 

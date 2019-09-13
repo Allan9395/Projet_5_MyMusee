@@ -12,9 +12,10 @@
     <div class="container">
         <h3 class="display-4">Visitez le <span id="museumName">{{ museum.NomOfficiel|capitalize }}</span></h3>
         <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-        <div class="row">
+        <div class="row divBtnShow">
             {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('museum_edit', {'id': museum.id}) }}" class="btn btn-success">Modifier les informations</a>
+            <a href="{{ path('museum_edit', {'id': museum.id}) }}" class="btn btn-success btnShowOne">Modifier les
+                informations</a>
             <form method="post" action="{{ path('museum_delete', {'id': museum.id}) }}"
                 onsubmit="return confirm('Voulez vous vraiment supprimer ce musée')">
                 <input type="hidden " name="_method" value="DELETE" style="display: none;">
@@ -38,8 +39,9 @@
     <div class="row">
         <div class="col-xl-6">
             <div class="card border-success">
-                <div class="card-header">
-                    <h5 class="card-title">Le Thème du musée et le(s) Artiste(s) et/où Personnages</h5>
+                <div class="card-header card-header-home">
+                    <h5 class="card-title card-titleOne"><i class="fas fa-male"></i> Le Thème du musée et le(s)
+                        Artiste(s) et/où Personnages</h5>
                 </div>
                 <div class="card-body text-success">
                     <p>Thème: {{museum.Themes}}</p>
@@ -50,7 +52,7 @@
             <br>
             <div class="card border-info">
                 <div class="card-header">
-                    <h5 class="card-title">Histoire du musée</h5>
+                    <h5 class="card-title"><i class="fas fa-atlas"></i> Histoire du musée</h5>
                 </div>
                 <div class="card-body text-info">
                     {{museum.Histoire}}
@@ -59,7 +61,7 @@
             <br>
             <div class="card border-info">
                 <div class="card-header">
-                    <h5 class="card-title">Coup d'oeil sur le Batîment</h5>
+                    <h5 class="card-title"><i class="fas fa-landmark"></i> Coup d'oeil sur le Batîment</h5>
                 </div>
                 <div class="card-body text-info">
                     <p>Le batîment : {{museum.Protectionbatiment}}</p>
@@ -70,7 +72,7 @@
         <div class="col-xl-6">
             <div class="card border-info">
                 <div class="card-header">
-                    <h5 class="card-title">Coordonnées <span class="coordinates"
+                    <h5 class="card-title"><i class="fas fa-pen-fancy"></i> Coordonnées <span class="coordinates"
                             style="display:none;">{{museum.geolocalisation}}</span></h5>
                 </div>
                 <div class="card-body text-info">
@@ -85,12 +87,34 @@
             <div class="card border-success">
                 <div class="card-header">
                     <h5 class="card-title">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-map-marked-alt"></i>
                         Localisation du Musée
                     </h5>
                 </div>
                 <div id="map">
-                    <div id="mapid"></div>
+                    <div class="mapidShow" id="mapid" ></div>
+                </div>
+            </div>
+            <div class="formContact-CreateEdit-Registration-connexion formComment">
+                {% if app.user %}                
+                <div class="titleContact-CreateEdit-Registration-connexion">
+                    <h4>Ecrivez votre commentaire</h4>
+                    <p>N'esitez pas a dire se que vous avez pensé du musée !</p>
+                </div>
+                {% endif %}
+
+                <div class="col-xl-12">
+                    {% if app.user %}
+                    {{ form_start(formComment) }}
+                    {{ form_row(formComment.author, {'label': "Auteur : ", 'attr': {'placeholder': "Votre Nom"}, 'required': 'required'})}}
+                    {{ form_row(formComment.content, {'label': "Le commentaire : ", 'attr': {'placeholder': "Votre Commentaire"}, 'required': 'required'})}}
+                    {{ form_row(formComment.content, {'label': "Le commentaire : ", 'attr': {'placeholder': "Votre Commentaire"}, 'required': 'required'})}}
+                    <button type="submit" class="btn btn-success">Créer un commentaire</button>
+                    {{ form_end(formComment) }}
+                    {% else %}
+                    <h4 class="title-noComment"><i class="fas fa-comment-slash"></i> Vous ne pouvez pas commenter sans
+                        être connécté </h4>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -101,16 +125,18 @@
         <div class="comments">
             <div class="card border-success">
                 <div class="card-header">
-                    <h3 class="card-title">{{museum.comments | length }} Commentaires :</h3>
+                    <h3 class="card-title"><i class="fas fa-comments"></i> {{museum.comments | length }} Commentaires :
+                    </h3>
                 </div>
                 <div class="card-body text-success">
                     {% for comment in museum.comments %}
                     <div class="comment">
                         <div class="row">
                             <div class="col-md-3">
-                                {{ comment.author }} ( <small> {{comment.createdAt | date('d/m/Y à H:i')}} </small> )
+                                <i class="fas fa-comment-alt"></i> {{ comment.author }} ( <small>
+                                    {{comment.createdAt | date('d/m/Y à H:i')}} </small> )
                             </div>
-                            <div class="col-md">
+                            <div class="col-md-9">
                                 {{comment.content | raw}}
                             </div>
                         </div>
@@ -120,21 +146,9 @@
                 </div>
             </div>
         </div>
-        <div class="row commentForm">
-            <div class="col-xl-12">
-                {% if app.user %}
-                {{ form_start(formComment) }}
-                {{ form_row(formComment.author, {'label': "Auteur : ", 'attr': {'placeholder': "Votre Nom"}, 'required': 'required'})}}
-                {{ form_row(formComment.content, {'label': "Le commentaire : ", 'attr': {'placeholder': "Votre Commentaire"}, 'required': 'required'})}}
-                {{ form_row(formComment.content, {'label': "Le commentaire : ", 'attr': {'placeholder': "Votre Commentaire"}, 'required': 'required'})}}
-                <button type="submit" class="btn btn-success">Créer un commentaire</button>
-                {{ form_end(formComment) }}
-                {% else %}
-                <h4>Vous ne pouvez pas commenter sans être connécté </h4>
-                {% endif %}
-            </div>
-        </div>
-    </section>
+</div>
+
+</section>
 </div>
 
 

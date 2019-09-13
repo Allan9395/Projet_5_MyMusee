@@ -125,8 +125,8 @@ $catalogue = new MessageCatalogue('fr', array (
   ),
   'knpPaginatorBundle' => 
   array (
-    'label_next' => 'Suivant',
-    'label_previous' => 'Précédent',
+    'label_next' => 'Suiv',
+    'label_previous' => 'Préc',
   ),
 ));
 

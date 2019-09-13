@@ -91,23 +91,33 @@ class __TwigTemplate_67635702b1c11efb0e8066501bc7c54533ef04465ee0d3afa0d38844460
 </div>
 
 <div class=\"container\">
-
-    <form action=\"";
-        // line 13
+<div class=\"formContact-CreateEdit-Registration-connexion formConnexion\">
+<div class=\"titleContact-CreateEdit-Registration-connexion\">
+        <h4>Connectez vous</h4>
+        <p>Si vous avez oublié vos identifiant envoyez nous un mail <a href=\"";
+        // line 15
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_contact");
+        echo "\">ici !</a></p>
+    </div>
+    <form class=\"formContact-CreateEdit-Registration-connexion\" action=\"";
+        // line 17
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("security_login");
         echo "\" method=\"post\">
 
-    <div class=\"form-group\">
-        <input type=\"text\" name=\"_username\" placeholder=\"Identifian\" required class=\"form-control\">
-    </div>
-    <div class=\"form-group\">
-        <input type=\"password\" name=\"_password\" placeholder=\"mot de passe\" required class=\"form-control\">
-    </div>
-    <div class=\"form-group\">
-        <button type=\"submit\" class=\"btn btn-success\">Connexion</button></div>
-    
-    </form>
+        <div class=\"form-group\">
+            <input type=\"text\" name=\"_username\" placeholder=\"Identifian\" required class=\"form-control\">
+        </div>
+        <div class=\"form-group\">
+            <input type=\"password\" name=\"_password\" placeholder=\"mot de passe\" required class=\"form-control\">
+        </div>
+        <div class=\"form-group btnGroup-btnContact-CreateEdit-Registration-connexion\">
+            <button type=\"submit\"
+                class=\"btn btn-success btn-btnContact-CreateEdit-Registration-connexion\">Connexion</button>
+        </div>
 
+    </form>
+</div>
+    
 </div>
 
 ";
@@ -131,7 +141,7 @@ class __TwigTemplate_67635702b1c11efb0e8066501bc7c54533ef04465ee0d3afa0d38844460
 
     public function getDebugInfo()
     {
-        return array (  97 => 13,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  104 => 17,  99 => 15,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -147,20 +157,27 @@ class __TwigTemplate_67635702b1c11efb0e8066501bc7c54533ef04465ee0d3afa0d38844460
 </div>
 
 <div class=\"container\">
-
-    <form action=\"{{ path('security_login')}}\" method=\"post\">
-
-    <div class=\"form-group\">
-        <input type=\"text\" name=\"_username\" placeholder=\"Identifian\" required class=\"form-control\">
+<div class=\"formContact-CreateEdit-Registration-connexion formConnexion\">
+<div class=\"titleContact-CreateEdit-Registration-connexion\">
+        <h4>Connectez vous</h4>
+        <p>Si vous avez oublié vos identifiant envoyez nous un mail <a href=\"{{path(\"museum_contact\")}}\">ici !</a></p>
     </div>
-    <div class=\"form-group\">
-        <input type=\"password\" name=\"_password\" placeholder=\"mot de passe\" required class=\"form-control\">
-    </div>
-    <div class=\"form-group\">
-        <button type=\"submit\" class=\"btn btn-success\">Connexion</button></div>
-    
+    <form class=\"formContact-CreateEdit-Registration-connexion\" action=\"{{ path('security_login')}}\" method=\"post\">
+
+        <div class=\"form-group\">
+            <input type=\"text\" name=\"_username\" placeholder=\"Identifian\" required class=\"form-control\">
+        </div>
+        <div class=\"form-group\">
+            <input type=\"password\" name=\"_password\" placeholder=\"mot de passe\" required class=\"form-control\">
+        </div>
+        <div class=\"form-group btnGroup-btnContact-CreateEdit-Registration-connexion\">
+            <button type=\"submit\"
+                class=\"btn btn-success btn-btnContact-CreateEdit-Registration-connexion\">Connexion</button>
+        </div>
+
     </form>
-
+</div>
+    
 </div>
 
 {% endblock %}", "security/login.html.twig", "/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/templates/security/login.html.twig");

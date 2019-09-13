@@ -1,34 +1,150 @@
+/* --------------------------------------------------------MY MUSEUM CSS-------------------------------------------------------*/
+/* --------------------------------------------------------BASE----------------------------------------------------------------*/
 body {
     width: 100%;
 }
-.presentation p {
-    font-size: 1rem;
+
+.navbar {
+    display: flex;
+    flex-direction: row;
 }
+
+.navbar-nav {
+    width: 100%;
+    margin: 0 30px;
+    justify-content: space-between;
+}
+
+.nav-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+    color: #6cff73;
+}
+
+/* --------------------------------------------------------BASE----------------------------------------------------------------*/
+
+/* --------------------------------------------------------HOME/INDEX----------------------------------------------------------*/
+.imageHome {
+    border: solid 1.5px #28a745;
+    padding: 7px;
+    height: fit-content;
+    background-color: #4ea74647;
+    margin-bottom: 20px;
+}
+
+.card-header-home {
+    height: 50px;
+    background-color: rgba(194, 229, 203, 0.61);
+}
+.card-header {
+    height: 50px;
+}
+
+.a-home {
+    color: #b58932;
+}
+
+.card-bodyText-home {
+    height: 640px;
+}
+
+.card-map {
+    height: 60px;
+    background-color: rgba(194, 229, 203, 0.61);
+    padding: 5px;
+}
+
 
 .panel-info {
     background-color: #4ea746;
     border-radius: 5px;
     padding: 3px;
 }
+
 .panel-title {
     padding: 4px;
     margin-left: 20px;
 }
+
 #mapid {
 
     width: 100%;
-    height: 500px;
+    height: 650px;
     border: 2px solid #4ea746;
     border-radius: 5px;
     z-index: 1;
 }
+
+.mapidShow {
+
+    width: 100%;
+    height: 450px !important;
+    border: 2px solid #4ea746;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+/* --------------------------------------------------------HOME/INDEX----------------------------------------------------------*/
+/* --------------------------------------------------------HOME/CONTACT--------------------------------------------------------*/
+.formContact-CreateEdit-Registration-connexion {
+    padding: 10px;
+    background-color: rgba(194, 229, 203, 0.61);
+    border-radius: 10px;
+    margin-bottom: 100px;
+
+}
+
+.titleContact-CreateEdit-Registration-connexion  {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px
+}
+
+.btnGroup-btnContact-CreateEdit-Registration-connexion {
+    display: flex;
+    justify-content: center
+}
+
+.btn-btnContact-CreateEdit-Registration-connexion {
+    width: 250px;
+}
+.formConnexion {
+    max-width: 490px;
+}
+
+/* --------------------------------------------------------HOME/CONTACT--------------------------------------------------------*/
+/* --------------------------------------------------------MUSEUM_SEARCH/INDEX-------------------------------------------------*/
+.div-card-bodyShow {
+    border: 2px solid #b4d09bb3;
+    background-color: #b4d09b12;
+}
+
 .navigation {
     margin: 0 auto;
+}
+
+.page-item.disabled {
+    display: none;
+}
+
+.page-item a[title*="3"] {
+    display: none;
 }
 
 .formSerach {
     justify-content: center;
 }
+
 .btnFormSearch {
     height: fit-content;
 }
@@ -36,3 +152,69 @@ body {
 .museumCard {
     height: 255px;
 }
+
+/* --------------------------------------------------------MUSEUM_SEARCH/INDEX-------------------------------------------------*/
+/* --------------------------------------------------------MUSEUM_SEARCH/INDEX / SHOW-------------------------------------------------*/
+.divBtnShow {
+    margin: 0 auto;
+}
+
+.btnShowOne {
+    margin-right: 25px;
+}
+
+.card-titleOne {
+    font-size: 1.10rem;
+}
+.title-noComment {
+    padding: 15px 10px;
+    margin: 15px 0px;
+    background-color: rgba(194, 229, 203, 0.61);
+}
+.formComment {
+    margin-top: 50px;
+}
+/* --------------------------------------------------------MUSEUM_SEARCH/INDEX-------------------------------------------------*/
+
+/* --------------------------------------------------------MEDIA QUERIES-------------------------------------------------------*/
+
+@media (max-width: 990px) {
+
+    .nav-group {
+        display: flex;
+        justify-content: end;
+    }
+
+    .nav-link {
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .nav-group {
+        display: flex;
+        justify-content: end;
+    }
+    #mapid {
+        width: 100%;
+        height: 450px;
+    }
+}
+@media (max-width: 400px) {
+
+    .nav-groupeOne {
+        display: flex;
+        flex-direction: column;
+    }
+    .card-header-home {
+        height: 65px;
+        background-color: rgba(194, 229, 203, 0.61);
+    }
+    #mapid {
+        width: 100%;
+        height: 400px;
+    }
+}
+/* --------------------------------------------------------MEDIA QUERIES-------------------------------------------------------*/
+/* --------------------------------------------------------MY MUSEUM CSS-------------------------------------------------------*/

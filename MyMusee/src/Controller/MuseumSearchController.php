@@ -35,7 +35,9 @@ class MuseumSearchController extends AbstractController
     {
 
         $search = new MuseumSearch();
+
         $form = $this->createForm(MuseumSearchType::class, $search);
+
         $form->handleRequest($request);
 
         $museums = $paginator->paginate(

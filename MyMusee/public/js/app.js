@@ -3,7 +3,7 @@ class Index {
     constructor() {
         this.urlMuseumsData = "https://data.culture.gouv.fr/api/records/1.0/search/?dataset=musees-de-france-base-museofile&rows=1216&facet=dompal&facet=region"
         this.title = this.museumsName
-        this.map = L.map('mapid').setView([48.860294, 2.338629], 6)
+        this.map = L.map('mapid').setView([46.50, 2.33], 6)
 
         this.createMap()
         this.getMuseumsData()

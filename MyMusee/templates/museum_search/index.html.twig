@@ -36,7 +36,7 @@
 
         <div class="col-md-4">
             <div class="card mb-4 museumCard">
-                <div class="card-body">
+                <div class="card-body div-card-bodyShow">
                     <h5 class="card-title">
                         <a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel|capitalize}}</a>
                     </h5>
@@ -47,6 +47,8 @@
         </div>
         {% endfor %}
         <div class="navigation">
+
+            <!-- Le paginator permet de paginer des élements d'une page -->
             {{ knp_pagination_render(museums) }}
         </div>
     </div>

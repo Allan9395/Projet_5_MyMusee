@@ -151,7 +151,7 @@ class __TwigTemplate_3b44c3f052f30cbd1b182ea4934309ff85a6be051a63cb8b074a7eaaf48
             echo "
         <div class=\"col-md-4\">
             <div class=\"card mb-4 museumCard\">
-                <div class=\"card-body\">
+                <div class=\"card-body div-card-bodyShow\">
                     <h5 class=\"card-title\">
                         <a href=\"";
             // line 41
@@ -178,9 +178,11 @@ class __TwigTemplate_3b44c3f052f30cbd1b182ea4934309ff85a6be051a63cb8b074a7eaaf48
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 49
         echo "        <div class=\"navigation\">
+
+            <!-- Le paginator permet de paginer des élements d'une page -->
             ";
-        // line 50
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["museums"]) || array_key_exists("museums", $context) ? $context["museums"] : (function () { throw new RuntimeError('Variable "museums" does not exist.', 50, $this->source); })()));
+        // line 52
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["museums"]) || array_key_exists("museums", $context) ? $context["museums"] : (function () { throw new RuntimeError('Variable "museums" does not exist.', 52, $this->source); })()));
         echo "
         </div>
     </div>
@@ -207,7 +209,7 @@ class __TwigTemplate_3b44c3f052f30cbd1b182ea4934309ff85a6be051a63cb8b074a7eaaf48
 
     public function getDebugInfo()
     {
-        return array (  183 => 50,  180 => 49,  169 => 44,  165 => 43,  158 => 41,  151 => 36,  147 => 35,  142 => 32,  133 => 29,  130 => 28,  126 => 27,  121 => 25,  114 => 21,  108 => 18,  102 => 15,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  185 => 52,  180 => 49,  169 => 44,  165 => 43,  158 => 41,  151 => 36,  147 => 35,  142 => 32,  133 => 29,  130 => 28,  126 => 27,  121 => 25,  114 => 21,  108 => 18,  102 => 15,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -250,7 +252,7 @@ class __TwigTemplate_3b44c3f052f30cbd1b182ea4934309ff85a6be051a63cb8b074a7eaaf48
 
         <div class=\"col-md-4\">
             <div class=\"card mb-4 museumCard\">
-                <div class=\"card-body\">
+                <div class=\"card-body div-card-bodyShow\">
                     <h5 class=\"card-title\">
                         <a href=\"{{ path('museum_show', {'id': museum.id}) }}\"> {{museum.NomOfficiel|capitalize}}</a>
                     </h5>
@@ -261,6 +263,8 @@ class __TwigTemplate_3b44c3f052f30cbd1b182ea4934309ff85a6be051a63cb8b074a7eaaf48
         </div>
         {% endfor %}
         <div class=\"navigation\">
+
+            <!-- Le paginator permet de paginer des élements d'une page -->
             {{ knp_pagination_render(museums) }}
         </div>
     </div>

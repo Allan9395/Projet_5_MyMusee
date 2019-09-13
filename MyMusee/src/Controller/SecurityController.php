@@ -34,6 +34,7 @@ class SecurityController extends AbstractController
         }
 
         return $this->render('security/registration.html.twig', [
+            'current_menu' => 'properties_museumRegistration',
             'form' => $form->createView()
         ]);
     }
@@ -43,7 +44,11 @@ class SecurityController extends AbstractController
      */
     public function login()
     {
-        return $this->render('security/login.html.twig');
+        
+        return $this->render('security/login.html.twig',[
+            'current_menu' => 'properties_museumConnexion',
+
+        ]);
     }
 
     /**

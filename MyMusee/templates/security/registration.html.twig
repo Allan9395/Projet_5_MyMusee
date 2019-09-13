@@ -9,13 +9,23 @@
 </div>
 
 <div class="container">
-    {{ form_start(form) }}
-    {{ form_row(form.username, {'label': "Nom d'utilisateur : ", 'attr': {'placeholder': "Votre Nom"}, 'required': 'required'})}}
-    {{ form_row(form.email, {'label': "Email : ", 'attr': {'placeholder': "Votre adresse email"}, 'required': 'required'})}}
-    {{ form_row(form.password, {'label': "Mot de passe : ", 'attr': {'placeholder': "Votre mot de passe"}, 'required': 'required'})}}
-    {{ form_row(form.confirm_password, {'label': "Confirmer votre mot de passe : ", 'attr': {'placeholder': "Repetez votre mot de passe"}, 'required': 'required'})}}
-    <button type="submit" class="btn btn-success">Inscription</button>
-    {{ form_end(form) }}
+    <div class="formContact-CreateEdit-Registration-connexion">
+        <div class="titleContact-CreateEdit-Registration-connexion">
+            <h4>S'inscrire</h4>
+            <p>Inscrivez-vous pour pouvoir comenter un musée</p>
+        </div>
+        {{ form_start(form) }}
+        {{ form_row(form.username, {'label': "Nom d'utilisateur : ", 'attr': {'placeholder': "Votre Nom"}, 'required': 'required'})}}
+        {{ form_row(form.email, {'label': "Email : ", 'attr': {'placeholder': "Votre adresse email"}, 'required': 'required'})}}
+        {{ form_row(form.password, {'label': "Mot de passe : ", 'attr': {'placeholder': "Votre mot de passe"}, 'required': 'required'})}}
+        {{ form_row(form.confirm_password, {'label': "Confirmer votre mot de passe : ", 'attr': {'placeholder': "Repetez votre mot de passe"}, 'required': 'required'})}}
+        <div class="btnGroup-btnContact-CreateEdit-Registration-connexion">
+            <button type="submit"
+                class="btn btn-success btn-btnContact-CreateEdit-Registration-connexion">Inscription</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
 </div>
+
 
 {% endblock %}

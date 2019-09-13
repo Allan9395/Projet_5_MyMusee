@@ -133,7 +133,7 @@ class __TwigTemplate_f36b61159e0d4cc796bfb9f4d5fc4f6c9bde5e4bebd02ea860294430d16
         echo "</div>
 <div class=\"container\">
     <div class=\"row\">
-        <div class=\"col-lg-6\">
+        <div class=\"col-lg-6 imageHome\">
             <img src=\"";
         // line 34
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/musee_de_france.jpg"), "html", null, true);
@@ -160,79 +160,79 @@ class __TwigTemplate_f36b61159e0d4cc796bfb9f4d5fc4f6c9bde5e4bebd02ea860294430d16
     </div>
     <div class=\"container\">
         <div class=\"row\">
-            <div class=\"col\">
+            <div class=\"col-md-6\">
                 <div class=\"card border-success mb-4 MuseumsRegionCard\">
-                    <div class=\"card-header\">
-                        <h5 class=\"card-title info\"> Les musées par régions</h5>
+                    <div class=\"card-header card-header-home\">
+                        <h5 class=\"card-title info\"> <i class=\"fas fa-check\"></i>  Les musées par régions</h5>
                     </div>
-                    <div class=\"card-body text-success\">
+                    <div class=\"card-body text-success card-bodyText-home\">
                         <p> <a href=\"";
         // line 63
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Auvergne-Rhône-Alpes"]);
-        echo "\">Musée en
+        echo "\" class=\"a-home\">Musée en
                                 Auvergne-Rhône-Alpes</a></p>
                         <p> <a href=\"";
         // line 65
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Bourgogne-Franche-Comté"]);
-        echo "\">Musée en
+        echo "\" class=\"a-home\">Musée en
                                 Bourgogne-Franche-Comté</a></p>
                         <p> <a href=\"";
         // line 67
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Bretagne"]);
-        echo "\">Musée en Bretagne</a></p>
+        echo "\" class=\"a-home\">Musée en Bretagne</a></p>
                         <p> <a href=\"";
         // line 68
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Centre-Val de Loire"]);
-        echo "\">Musée en
+        echo "\" class=\"a-home\">Musée en
                                 Centre-Val de Loire</a></p>
                         <p> <a href=\"";
         // line 70
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Corse"]);
-        echo "\">Musée en Corse</a></p>
+        echo "\" class=\"a-home\">Musée en Corse</a></p>
                         <p> <a href=\"";
         // line 71
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Grand Est"]);
-        echo "\">Musée en Grand Est</a></p>
+        echo "\" class=\"a-home\">Musée en Grand Est</a></p>
                         <p> <a href=\"";
         // line 72
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Hauts-de-France"]);
-        echo "\">Musée en
+        echo "\" class=\"a-home\">Musée en
                                 Hauts-de-France</a></p>
                         <p> <a href=\"";
         // line 74
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Île-de-France"]);
-        echo "\">Musée en
+        echo "\" class=\"a-home\">Musée en
                                 Île-de-France</a></p>
                         <p> <a href=\"";
         // line 76
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Normandie"]);
-        echo "\">Musée en Normandie</a></p>
+        echo "\" class=\"a-home\">Musée en Normandie</a></p>
                         <p> <a href=\"";
         // line 77
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Nouvelle-Aquitaine"]);
-        echo "\">Musée en
+        echo "\" class=\"a-home\">Musée en
                                 Nouvelle-Aquitaine</a></p>
                         <p> <a href=\"";
         // line 79
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Occitanie"]);
-        echo "\">Musée en Occitanie</a></p>
+        echo "\" class=\"a-home\">Musée en Occitanie</a></p>
                         <p> <a href=\"";
         // line 80
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Pays-de-la-Loire"]);
-        echo "\">Musée en Pays de la
+        echo "\" class=\"a-home\">Musée en Pays de la
                                 Loire</a></p>
                         <p> <a href=\"";
         // line 82
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_region", ["region" => "Provence-Alpes-Côte d'Azur"]);
-        echo "\">Musée en
+        echo "\" class=\"a-home\">Musée en
                                 Provence-Alpes-Côte d'Azur</a></p>
                     </div>
                 </div>
             </div>
-            <div class=\"col\">
+            <div class=\"col-xl-6\">
                 <div class=\"card border-success mb-4 MuseumsRegionCard\">
-                    <div class=\"card-header\">
-                        <h5 class=\"card-title info\">Quelques musées au hasard</h5>
+                    <div class=\"card-header card-header-home\">
+                        <h5 class=\"card-title info\"> <i class=\"fas fa-check\"></i>  Quelques musées au hasard</h5>
                     </div>
                     <div class=\"card-body text-success\">
 
@@ -247,7 +247,7 @@ class __TwigTemplate_f36b61159e0d4cc796bfb9f4d5fc4f6c9bde5e4bebd02ea860294430d16
                                 href=\"";
             // line 97
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("museum_show", ["id" => twig_get_attribute($this->env, $this->source, $context["museum"], "id", [], "any", false, false, false, 97)]), "html", null, true);
-            echo "\">";
+            echo "\" class=\"a-home\">";
             echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, twig_get_attribute($this->env, $this->source, $context["museum"], "NomOfficiel", [], "any", false, false, false, 97)), "html", null, true);
             echo "</a>
                         </p>
@@ -266,11 +266,11 @@ class __TwigTemplate_f36b61159e0d4cc796bfb9f4d5fc4f6c9bde5e4bebd02ea860294430d16
 
         <footer>
             <div class=\"card border-success\">
-                <div class=\"card-header\">
-                    <h3 class=\"panel-title\">
+                <div class=\"card-header card-map\">
+                    <h5 class=\"panel-title\">
                         <i class=\"fas fa-map-marker-alt\"></i>
                         Localisation de tout les Musées de France
-                    </h3>
+                    </h5>
                 </div>
                 <div id=\"map\">
                     <div id=\"mapid\"></div>
@@ -365,7 +365,7 @@ class __TwigTemplate_f36b61159e0d4cc796bfb9f4d5fc4f6c9bde5e4bebd02ea860294430d16
 </div>
 <div class=\"container\">
     <div class=\"row\">
-        <div class=\"col-lg-6\">
+        <div class=\"col-lg-6 imageHome\">
             <img src=\"{{ asset(\"images/musee_de_france.jpg\") }}\" class=\"img-fluid\" alt=\"Musée du Louvre\">
         </div>
         <div class=\"col-lg-6 presentation \">
@@ -389,47 +389,47 @@ class __TwigTemplate_f36b61159e0d4cc796bfb9f4d5fc4f6c9bde5e4bebd02ea860294430d16
     </div>
     <div class=\"container\">
         <div class=\"row\">
-            <div class=\"col\">
+            <div class=\"col-md-6\">
                 <div class=\"card border-success mb-4 MuseumsRegionCard\">
-                    <div class=\"card-header\">
-                        <h5 class=\"card-title info\"> Les musées par régions</h5>
+                    <div class=\"card-header card-header-home\">
+                        <h5 class=\"card-title info\"> <i class=\"fas fa-check\"></i>  Les musées par régions</h5>
                     </div>
-                    <div class=\"card-body text-success\">
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Auvergne-Rhône-Alpes'})  }}\">Musée en
+                    <div class=\"card-body text-success card-bodyText-home\">
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Auvergne-Rhône-Alpes'})  }}\" class=\"a-home\">Musée en
                                 Auvergne-Rhône-Alpes</a></p>
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Bourgogne-Franche-Comté'})  }}\">Musée en
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Bourgogne-Franche-Comté'})  }}\" class=\"a-home\">Musée en
                                 Bourgogne-Franche-Comté</a></p>
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Bretagne'})  }}\">Musée en Bretagne</a></p>
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Centre-Val de Loire'})  }}\">Musée en
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Bretagne'})  }}\" class=\"a-home\">Musée en Bretagne</a></p>
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Centre-Val de Loire'})  }}\" class=\"a-home\">Musée en
                                 Centre-Val de Loire</a></p>
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Corse'})  }}\">Musée en Corse</a></p>
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Grand Est'})  }}\">Musée en Grand Est</a></p>
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Hauts-de-France'})  }}\">Musée en
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Corse'})  }}\" class=\"a-home\">Musée en Corse</a></p>
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Grand Est'})  }}\" class=\"a-home\">Musée en Grand Est</a></p>
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Hauts-de-France'})  }}\" class=\"a-home\">Musée en
                                 Hauts-de-France</a></p>
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Île-de-France'})  }}\">Musée en
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Île-de-France'})  }}\" class=\"a-home\">Musée en
                                 Île-de-France</a></p>
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Normandie'})  }}\">Musée en Normandie</a></p>
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Nouvelle-Aquitaine'})  }}\">Musée en
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Normandie'})  }}\" class=\"a-home\">Musée en Normandie</a></p>
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Nouvelle-Aquitaine'})  }}\" class=\"a-home\">Musée en
                                 Nouvelle-Aquitaine</a></p>
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Occitanie'})  }}\">Musée en Occitanie</a></p>
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Pays-de-la-Loire'})  }}\">Musée en Pays de la
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Occitanie'})  }}\" class=\"a-home\">Musée en Occitanie</a></p>
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Pays-de-la-Loire'})  }}\" class=\"a-home\">Musée en Pays de la
                                 Loire</a></p>
-                        <p> <a href=\"{{ path('museum_region', {'region': 'Provence-Alpes-Côte d\\'Azur'})  }}\">Musée en
+                        <p> <a href=\"{{ path('museum_region', {'region': 'Provence-Alpes-Côte d\\'Azur'})  }}\" class=\"a-home\">Musée en
                                 Provence-Alpes-Côte d'Azur</a></p>
                     </div>
                 </div>
             </div>
-            <div class=\"col\">
+            <div class=\"col-xl-6\">
                 <div class=\"card border-success mb-4 MuseumsRegionCard\">
-                    <div class=\"card-header\">
-                        <h5 class=\"card-title info\">Quelques musées au hasard</h5>
+                    <div class=\"card-header card-header-home\">
+                        <h5 class=\"card-title info\"> <i class=\"fas fa-check\"></i>  Quelques musées au hasard</h5>
                     </div>
                     <div class=\"card-body text-success\">
 
                         {% for museum in museums %}
 
                         <p> <a
-                                href=\"{{ path('museum_show', {'id': museum.id} ) }}\">{{museum.NomOfficiel|capitalize}}</a>
+                                href=\"{{ path('museum_show', {'id': museum.id} ) }}\" class=\"a-home\">{{museum.NomOfficiel|capitalize}}</a>
                         </p>
 
                         {% endfor %}
@@ -441,11 +441,11 @@ class __TwigTemplate_f36b61159e0d4cc796bfb9f4d5fc4f6c9bde5e4bebd02ea860294430d16
 
         <footer>
             <div class=\"card border-success\">
-                <div class=\"card-header\">
-                    <h3 class=\"panel-title\">
+                <div class=\"card-header card-map\">
+                    <h5 class=\"panel-title\">
                         <i class=\"fas fa-map-marker-alt\"></i>
                         Localisation de tout les Musées de France
-                    </h3>
+                    </h5>
                 </div>
                 <div id=\"map\">
                     <div id=\"mapid\"></div>

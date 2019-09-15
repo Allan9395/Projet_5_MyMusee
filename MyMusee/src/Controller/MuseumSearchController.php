@@ -16,6 +16,8 @@ use Knp\Component\Pager\PaginatorInterface;
 use App\Entity\Museums;
 use App\Repository\MuseumsRepository;
 use App\Entity\Comment;
+use App\Repository\CommentRepository;
+
 use App\Form\CommentType;
 use App\Form\MuseumsType;
 use App\Entity\MuseumSearch;
@@ -83,6 +85,7 @@ class MuseumSearchController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/admin/museum/{id}/edit", name="museum_edit", methods="GET|POST")
      * 
@@ -124,6 +127,22 @@ class MuseumSearchController extends AbstractController
         }
         return $this->redirectToRoute('museum_search');
     }
+
+    /**
+     * @Route("/admin/comment/{id}/delete", name="comment_delete", methods="DELETE")
+     */
+    public function commentDelete(Comment $comment, Request $request)
+    {
+        if ($this->isCsrfTokenValid('delete'. $comment->getId(), $request->get('_token'))) {
+            $em=$this->getDoctrine()->getManager();
+            $em->remove($comment);
+            $em->flush();
+            $this->addFlash('success', 'Vous avez bien supprimé le commentaire');
+
+        }
+        return $this->redirectToRoute('museum_search');
+    }
+
 
     /**
      * @Route("/museum/{id}", name="museum_show")

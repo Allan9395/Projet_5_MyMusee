@@ -22,6 +22,7 @@ return [
     'museum_create' => [[], ['_controller' => 'App\\Controller\\MuseumSearchController::museumCreate'], [], [['text', '/admin/museum/new']], [], []],
     'museum_edit' => [['id'], ['_controller' => 'App\\Controller\\MuseumSearchController::museumEdit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/museum']], [], []],
     'museum_delete' => [['id'], ['_controller' => 'App\\Controller\\MuseumSearchController::museumDelete'], [], [['text', '/delete'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/museum']], [], []],
+    'comment_delete' => [['id'], ['_controller' => 'App\\Controller\\MuseumSearchController::commentDelete'], [], [['text', '/delete'], ['variable', '/', '[^/]++', 'id', true], ['text', '/admin/comment']], [], []],
     'museum_show' => [['id'], ['_controller' => 'App\\Controller\\MuseumSearchController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/museum']], [], []],
     'security_registration' => [[], ['_controller' => 'App\\Controller\\SecurityController::registration'], [], [['text', '/inscription']], [], []],
     'security_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/connexion']], [], []],

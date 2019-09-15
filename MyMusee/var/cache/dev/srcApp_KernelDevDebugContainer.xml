@@ -101,7 +101,7 @@
       <parameter key="cookie_samesite">lax</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path"></parameter>
+    <parameter key="session.save_path">/Applications/MAMP/tmp/php</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="form.type_extension.csrf.enabled">true</parameter>
     <parameter key="form.type_extension.csrf.field_name">_token</parameter>
@@ -254,12 +254,11 @@
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
     <parameter key="swiftmailer.mailer.default.transport.name">dynamic</parameter>
-    <parameter key="swiftmailer.spool.default.memory.path">/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/var/cache/dev/swiftmailer/spool/default</parameter>
-    <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
+    <parameter key="swiftmailer.mailer.default.spool.enabled">false</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
     <parameter key="swiftmailer.mailer.default.delivery.enabled">true</parameter>
-    <parameter key="swiftmailer.spool.enabled">true</parameter>
+    <parameter key="swiftmailer.spool.enabled">false</parameter>
     <parameter key="swiftmailer.delivery.enabled">true</parameter>
     <parameter key="swiftmailer.single_address">null</parameter>
     <parameter key="swiftmailer.mailers" type="collection">
@@ -976,7 +975,7 @@
       <deprecated>The "%service_id%" service is deprecated since Symfony 4.2, use "identity_translator" instead.</deprecated>
     </service>
     <service id=".1_NativeFileSessionHandler~AiXigJ6" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler" public="false">
-      <argument></argument>
+      <argument>/Applications/MAMP/tmp/php</argument>
     </service>
     <service id="session" class="Symfony\Component\HttpFoundation\Session\Session" public="true">
       <argument type="service" id="session.storage.native"/>
@@ -2206,14 +2205,6 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
-        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -4016,7 +4007,7 @@
     <service id=".2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~Fmb9Had" class="Swift_Transport_Esmtp_Auth_LoginAuthenticator" public="false"/>
     <service id=".1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~Fmb9Had" class="Swift_Transport_Esmtp_Auth_CramMd5Authenticator" public="false"/>
     <service id="swiftmailer.mailer.abstract" class="Swift_Mailer" public="true" abstract="true">
-      <argument type="service" id="swiftmailer.mailer.default.transport.spool"/>
+      <argument type="service" id="swiftmailer.mailer.default.transport.dynamic"/>
     </service>
     <service id="swiftmailer.transport.smtp.configurator.abstract" class="Symfony\Bundle\SwiftmailerBundle\DependencyInjection\SmtpTransportConfigurator" public="false" abstract="true"/>
     <service id="swiftmailer.transport.sendmail.abstract" class="Swift_Transport_SendmailTransport" public="false" abstract="true"/>
@@ -4091,18 +4082,13 @@
       </argument>
       <argument type="service" id="router.request_context" on-invalid="null"/>
       <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
-      <factory class="Symfony\Bundle\SwiftmailerBundle\DependencyInjection\SwiftmailerTransportFactory" method="createTransport"/>
-    </service>
-    <service id="swiftmailer.mailer.default" class="Swift_Mailer" public="true">
-      <argument type="service" id="swiftmailer.mailer.default.transport.spool"/>
-    </service>
-    <service id="swiftmailer.mailer.default.spool.memory" class="Swift_MemorySpool" public="false"/>
-    <service id="swiftmailer.mailer.default.transport.spool" class="Swift_Transport_SpoolTransport" public="false">
-      <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
-      <argument type="service" id="swiftmailer.mailer.default.spool.memory"/>
       <call method="registerPlugin">
         <argument type="service" id="swiftmailer.mailer.default.plugin.messagelogger"/>
       </call>
+      <factory class="Symfony\Bundle\SwiftmailerBundle\DependencyInjection\SwiftmailerTransportFactory" method="createTransport"/>
+    </service>
+    <service id="swiftmailer.mailer.default" class="Swift_Mailer" public="true">
+      <argument type="service" id="swiftmailer.mailer.default.transport.dynamic"/>
     </service>
     <service id="swiftmailer.mailer.default.plugin.messagelogger" class="Swift_Plugins_MessageLogger" public="true">
       <tag name="swiftmailer.default.plugin"/>
@@ -4768,7 +4754,7 @@
       <tag name="console.command" command="server:run"/>
       <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/public</argument>
       <argument>dev</argument>
-      <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee</argument>
+      <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/var/cache</argument>
       <call method="setName">
         <argument>server:run</argument>
       </call>
@@ -4777,21 +4763,21 @@
       <tag name="console.command" command="server:start"/>
       <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/public</argument>
       <argument>dev</argument>
-      <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee</argument>
+      <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/var/cache</argument>
       <call method="setName">
         <argument>server:start</argument>
       </call>
     </service>
     <service id="web_server.command.server_stop" class="Symfony\Bundle\WebServerBundle\Command\ServerStopCommand" public="false">
       <tag name="console.command" command="server:stop"/>
-      <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee</argument>
+      <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/var/cache</argument>
       <call method="setName">
         <argument>server:stop</argument>
       </call>
     </service>
     <service id="web_server.command.server_status" class="Symfony\Bundle\WebServerBundle\Command\ServerStatusCommand" public="false">
       <tag name="console.command" command="server:status"/>
-      <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee</argument>
+      <argument>/Applications/MAMP/htdocs/OpenClassRooms/Projet_5/MyMusee/var/cache</argument>
       <call method="setName">
         <argument>server:status</argument>
       </call>
@@ -5063,6 +5049,12 @@
         <argument key="museum" type="service" id=".errored..service_locator..xsEcvu.App\Entity\Museums"/>
       </argument>
     </service>
+    <service id=".service_locator.Gn3oxQ2" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="comment" type="service" id=".errored..service_locator.Gn3oxQ2.App\Entity\Comment"/>
+      </argument>
+    </service>
     <service id=".service_locator.qUk3ozV" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5077,12 +5069,13 @@
         <argument key="manager" type="service" id="doctrine.orm.default_entity_manager"/>
       </argument>
     </service>
-    <service id=".service_locator.gP_LTzd" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.veK7PLj" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\HomeController::contact" type="service" id=".service_locator.fkaj4ua"/>
         <argument key="App\Controller\HomeController::index" type="service" id=".service_locator.h_R3xFD"/>
         <argument key="App\Controller\HomeController::regionsList" type="service" id=".service_locator.h_R3xFD"/>
+        <argument key="App\Controller\MuseumSearchController::commentDelete" type="service" id=".service_locator.Gn3oxQ2"/>
         <argument key="App\Controller\MuseumSearchController::index" type="service" id=".service_locator.ASezHR8"/>
         <argument key="App\Controller\MuseumSearchController::museumCreate" type="service" id=".service_locator.L3sV_kn"/>
         <argument key="App\Controller\MuseumSearchController::museumDelete" type="service" id=".service_locator..xsEcvu"/>
@@ -5092,6 +5085,7 @@
         <argument key="App\Controller\HomeController:contact" type="service" id=".service_locator.fkaj4ua"/>
         <argument key="App\Controller\HomeController:index" type="service" id=".service_locator.h_R3xFD"/>
         <argument key="App\Controller\HomeController:regionsList" type="service" id=".service_locator.h_R3xFD"/>
+        <argument key="App\Controller\MuseumSearchController:commentDelete" type="service" id=".service_locator.Gn3oxQ2"/>
         <argument key="App\Controller\MuseumSearchController:index" type="service" id=".service_locator.ASezHR8"/>
         <argument key="App\Controller\MuseumSearchController:museumCreate" type="service" id=".service_locator.L3sV_kn"/>
         <argument key="App\Controller\MuseumSearchController:museumDelete" type="service" id=".service_locator..xsEcvu"/>
@@ -5516,14 +5510,15 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.gP_LTzd"/>
+      <argument type="service" id=".service_locator.veK7PLj"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.gP_LTzd"/>
+      <argument type="service" id=".service_locator.veK7PLj"/>
     </service>
     <service id=".errored..service_locator..xsEcvu.App\Entity\Museums" class="App\Entity\Museums"/>
+    <service id=".errored..service_locator.Gn3oxQ2.App\Entity\Comment" class="App\Entity\Comment"/>
     <service id=".errored..service_locator.qUk3ozV.App\Entity\Museums" class="App\Entity\Museums"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.UvMMnf."/>
@@ -5861,23 +5856,18 @@
     <service id="security.authentication.session_strategy.main" alias="security.authentication.session_strategy"/>
     <service id="security.user_checker.main" alias="security.user_checker" public="false"/>
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker" public="false"/>
-    <service id="swiftmailer.mailer.default.transport" alias="swiftmailer.mailer.default.transport.spool"/>
-    <service id="swiftmailer.mailer.default.spool" alias="swiftmailer.mailer.default.spool.memory"/>
-    <service id="swiftmailer.mailer.default.transport.real" alias="swiftmailer.mailer.default.transport.dynamic" public="true"/>
-    <service id="swiftmailer.spool" alias="swiftmailer.mailer.default.spool.memory"/>
-    <service id="swiftmailer.transport.real" alias="swiftmailer.mailer.default.transport.dynamic"/>
-    <service id="Swift_Spool" alias="swiftmailer.mailer.default.spool.memory" public="false"/>
+    <service id="swiftmailer.mailer.default.transport" alias="swiftmailer.mailer.default.transport.dynamic"/>
     <service id="swiftmailer.plugin.messagelogger" alias="swiftmailer.mailer.default.plugin.messagelogger"/>
     <service id="swiftmailer.mailer" alias="swiftmailer.mailer.default"/>
-    <service id="swiftmailer.transport" alias="swiftmailer.mailer.default.transport.spool" public="true"/>
+    <service id="swiftmailer.transport" alias="swiftmailer.mailer.default.transport.dynamic" public="true"/>
     <service id="Swift_Mailer" alias="swiftmailer.mailer.default" public="false"/>
-    <service id="Swift_Transport" alias="swiftmailer.mailer.default.transport.spool" public="false"/>
+    <service id="Swift_Transport" alias="swiftmailer.mailer.default.transport.dynamic" public="false"/>
     <service id="Twig_Environment" alias="twig" public="false"/>
     <service id="Twig\Environment" alias="twig" public="false"/>
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.gP_LTzd"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.veK7PLj"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="validator" alias="debug.validator" public="true"/>

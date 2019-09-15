@@ -38,7 +38,7 @@ class HomeController extends AbstractController
 
             $notification->notify($contact);
 
-            $this->addFlash('successMail', 'Votre email à bien été envoyé');
+            $this->addFlash('successMail', 'Votre email a bien été envoyé');
             return $this->redirectToRoute('home');
         }
 

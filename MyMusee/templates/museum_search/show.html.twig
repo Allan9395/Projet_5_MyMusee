@@ -11,7 +11,6 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h3 class="display-4">Visitez le <span id="museumName">{{ museum.NomOfficiel|capitalize }}</span></h3>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
         <div class="row divBtnShow">
             {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('museum_edit', {'id': museum.id}) }}" class="btn btn-success btnShowOne">Modifier les
@@ -40,8 +39,8 @@
         <div class="col-xl-6">
             <div class="card border-success">
                 <div class="card-header card-header-home">
-                    <h5 class="card-title card-titleOne"><i class="fas fa-male"></i> Le Thème du musée et le(s)
-                        Artiste(s) et/où Personnages</h5>
+                    <h5 class="card-title card-titleOne"><i class="fas fa-male"></i> Le thème du musée et le(s)
+                        Artiste(s) et/ou Personnages</h5>
                 </div>
                 <div class="card-body text-success">
                     <p>Thème: {{museum.Themes}}</p>
@@ -61,7 +60,7 @@
             <br>
             <div class="card border-info">
                 <div class="card-header">
-                    <h5 class="card-title"><i class="fas fa-landmark"></i> Coup d'oeil sur le Batîment</h5>
+                    <h5 class="card-title"><i class="fas fa-landmark"></i> Coup d'oeil sur le Bâtiment</h5>
                 </div>
                 <div class="card-body text-info">
                     <p>Le batîment : {{museum.Protectionbatiment}}</p>
@@ -92,14 +91,14 @@
                     </h5>
                 </div>
                 <div id="map">
-                    <div class="mapidShow" id="mapid" ></div>
+                    <div class="mapidShow" id="mapid"></div>
                 </div>
             </div>
             <div class="formContact-CreateEdit-Registration-connexion formComment">
-                {% if app.user %}                
+                {% if app.user %}
                 <div class="titleContact-CreateEdit-Registration-connexion">
-                    <h4>Ecrivez votre commentaire</h4>
-                    <p>N'esitez pas a dire se que vous avez pensé du musée !</p>
+                    <h4>Écrivez votre commentaire</h4>
+                    <p>N'hésitez pas à dire ce que vous avez pensé du musée !</p>
                 </div>
                 {% endif %}
 
@@ -113,7 +112,7 @@
                     {{ form_end(formComment) }}
                     {% else %}
                     <h4 class="title-noComment"><i class="fas fa-comment-slash"></i> Vous ne pouvez pas commenter sans
-                        être connécté </h4>
+                        être connecté </h4>
                     {% endif %}
                 </div>
             </div>
@@ -136,7 +135,20 @@
                                 <i class="fas fa-comment-alt"></i> {{ comment.author }} ( <small>
                                     {{comment.createdAt | date('d/m/Y à H:i')}} </small> )
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-2">
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <div class="delateComment">
+                                    <form method="post" action="{{ path('comment_delete', {'id': comment.id}) }}"
+                                        onsubmit="return confirm('Voulez vous vraiment supprimer ce commentaire')">
+                                        <input type="hidden " name="_method" value="DELETE" style="display: none;">
+                                        <input type="hidden " name="_token"
+                                            value="{{ csrf_token('delete' ~ comment.id) }}" style="display: none;">
+                                        <button class="btn btn-danger btnDeleteComment">Supprimer</button>
+                                    </form>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-7">
                                 {{comment.content | raw}}
                             </div>
                         </div>

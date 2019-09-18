@@ -145,7 +145,7 @@ class MuseumSearchController extends AbstractController
 
 
     /**
-     * @Route("/museum/{id}", name="museum_show")
+     * @Route("/museum/{id}", name="museum_show" )
      **/
     public function show(Museums $museums, Request $request, ObjectManager $manager)
     {        
@@ -161,7 +161,8 @@ class MuseumSearchController extends AbstractController
             $manager->persist($comment);
             $manager->flush();
 
-            return $this->redirectToRoute('museum_show', ['id' => $museums->getId()
+            return $this->redirectToRoute('museum_show', [
+                'id' => $museums->getId(),
             ]);
         }
 

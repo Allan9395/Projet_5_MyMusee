@@ -140,7 +140,7 @@ class MuseumSearchType extends AbstractType
                     'Martinique' => 'Martinique',
                     'Guyane' => 'Guyane',
                     'La réunion' => 'La réunion',
-                    'Mayotte' => 'Ain',
+                    'Mayotte' => 'Mayotte',
                 ],
                 'required' => false,
                 'label' => false,

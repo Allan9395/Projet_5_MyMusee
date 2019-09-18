@@ -20,6 +20,7 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
             ->add('firstname', TextType::class, [
                 'label' => false,
                 'attr' => [
@@ -66,8 +67,7 @@ class ContactType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Votre Message'
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

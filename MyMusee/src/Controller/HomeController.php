@@ -49,7 +49,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/museum/region/{region}", name="museum_region")
+     * @Route("/region/{region}", name="museum_region")
      */
     public function regionsList($region, MuseumsRepository $repo)
     {

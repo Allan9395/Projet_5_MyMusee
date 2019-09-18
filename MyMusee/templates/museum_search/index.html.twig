@@ -38,7 +38,7 @@
             <div class="card mb-4 museumCard">
                 <div class="card-body div-card-bodyShow">
                     <h5 class="card-title">
-                        <a href="{{ path('museum_show', {'id': museum.id}) }}"> {{museum.NomOfficiel|capitalize}}</a>
+                        <a href="{{ path('museum_show', {'id': museum.id, 'name': museum.NomOfficiel}) }}"> {{museum.NomOfficiel|capitalize}}</a>
                     </h5>
                     <p class="card-text"> {{museum.Ville}}</p>
                     <p class="card-text"> {{museum.themes[:100]}}</p>

@@ -429,7 +429,7 @@ class __TwigTemplate_f36b61159e0d4cc796bfb9f4d5fc4f6c9bde5e4bebd02ea860294430d16
                         {% for museum in museums %}
 
                         <p> <a
-                                href=\"{{ path('museum_show', {'id': museum.id} ) }}\" class=\"a-home\">{{museum.NomOfficiel|capitalize}}</a>
+                                href=\"{{ path('museum_show', {'id': museum.id}) }}\" class=\"a-home\">{{museum.NomOfficiel|capitalize}}</a>
                         </p>
 
                         {% endfor %}

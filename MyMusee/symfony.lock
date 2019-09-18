@@ -150,20 +150,20 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
-    "swiftmailer/swiftmailer": {
-        "version": "v6.2.1"
-    },
-    "symfony/apache-pack": {
-        "version": "1.0",
+    "sensiolabs/security-checker": {
+        "version": "4.0",
         "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
+            "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "1.0",
-            "ref": "c82bead70f9a4f656354a193df7bf0ca2114efa0"
+            "version": "4.0",
+            "ref": "160c9b600564faa1224e8f387d49ef13ceb8b793"
         },
         "files": [
-            "public/.htaccess"
+            "config/packages/security_checker.yaml"
         ]
+    },
+    "swiftmailer/swiftmailer": {
+        "version": "v6.2.1"
     },
     "symfony/asset": {
         "version": "v4.3.3"

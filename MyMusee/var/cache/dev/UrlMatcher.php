@@ -38,17 +38,15 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/museum/(?'
-                    .'|region/([^/]++)(*:195)'
-                    .'|([^/]++)(*:211)'
-                .')'
+                .'|/region/([^/]++)(*:185)'
                 .'|/admin/(?'
                     .'|museum/([^/]++)/(?'
-                        .'|edit(*:253)'
-                        .'|delete(*:267)'
+                        .'|edit(*:226)'
+                        .'|delete(*:240)'
                     .')'
-                    .'|comment/([^/]++)/delete(*:299)'
+                    .'|comment/([^/]++)/delete(*:272)'
                 .')'
+                .'|/museum/([^/]++)(*:297)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -59,12 +57,12 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        195 => [[['_route' => 'museum_region', '_controller' => 'App\\Controller\\HomeController::regionsList'], ['region'], null, null, false, true, null]],
-        211 => [[['_route' => 'museum_show', '_controller' => 'App\\Controller\\MuseumSearchController::show'], ['id'], null, null, false, true, null]],
-        253 => [[['_route' => 'museum_edit', '_controller' => 'App\\Controller\\MuseumSearchController::museumEdit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        267 => [[['_route' => 'museum_delete', '_controller' => 'App\\Controller\\MuseumSearchController::museumDelete'], ['id'], ['DELETE' => 0], null, false, false, null]],
-        299 => [
-            [['_route' => 'comment_delete', '_controller' => 'App\\Controller\\MuseumSearchController::commentDelete'], ['id'], ['DELETE' => 0], null, false, false, null],
+        185 => [[['_route' => 'museum_region', '_controller' => 'App\\Controller\\HomeController::regionsList'], ['region'], null, null, false, true, null]],
+        226 => [[['_route' => 'museum_edit', '_controller' => 'App\\Controller\\MuseumSearchController::museumEdit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        240 => [[['_route' => 'museum_delete', '_controller' => 'App\\Controller\\MuseumSearchController::museumDelete'], ['id'], ['DELETE' => 0], null, false, false, null]],
+        272 => [[['_route' => 'comment_delete', '_controller' => 'App\\Controller\\MuseumSearchController::commentDelete'], ['id'], ['DELETE' => 0], null, false, false, null]],
+        297 => [
+            [['_route' => 'museum_show', '_controller' => 'App\\Controller\\MuseumSearchController::show'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

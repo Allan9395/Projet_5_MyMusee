@@ -163,7 +163,7 @@ class __TwigTemplate_8f028fd9e1210483a6eb1e591b646cb25913fcaf483ae181f0e6596ade7
             <div class=\"col-md-6\">
                 <div class=\"card border-success mb-4 MuseumsRegionCard\">
                     <div class=\"card-header card-header-home\">
-                        <h5 class=\"card-title info\"> <i class=\"fas fa-check\"></i>  Les musées par régions</h5>
+                        <h5 class=\"card-title info\"> <i class=\"fas fa-check\"></i>  Les musées par région</h5>
                     </div>
                     <div class=\"card-body text-success card-bodyText-home\">
                         <p> <a href=\"";
@@ -269,7 +269,7 @@ class __TwigTemplate_8f028fd9e1210483a6eb1e591b646cb25913fcaf483ae181f0e6596ade7
                 <div class=\"card-header card-map\">
                     <h5 class=\"panel-title\">
                         <i class=\"fas fa-map-marker-alt\"></i>
-                        Localisation de tout les Musées de France
+                        Localisation de tous les Musées de France
                     </h5>
                 </div>
                 <div id=\"map\">
@@ -392,7 +392,7 @@ class __TwigTemplate_8f028fd9e1210483a6eb1e591b646cb25913fcaf483ae181f0e6596ade7
             <div class=\"col-md-6\">
                 <div class=\"card border-success mb-4 MuseumsRegionCard\">
                     <div class=\"card-header card-header-home\">
-                        <h5 class=\"card-title info\"> <i class=\"fas fa-check\"></i>  Les musées par régions</h5>
+                        <h5 class=\"card-title info\"> <i class=\"fas fa-check\"></i>  Les musées par région</h5>
                     </div>
                     <div class=\"card-body text-success card-bodyText-home\">
                         <p> <a href=\"{{ path('museum_region', {'region': 'Auvergne-Rhône-Alpes'})  }}\" class=\"a-home\">Musée en
@@ -429,7 +429,7 @@ class __TwigTemplate_8f028fd9e1210483a6eb1e591b646cb25913fcaf483ae181f0e6596ade7
                         {% for museum in museums %}
 
                         <p> <a
-                                href=\"{{ path('museum_show', {'id': museum.id} ) }}\" class=\"a-home\">{{museum.NomOfficiel|capitalize}}</a>
+                                href=\"{{ path('museum_show', {'id': museum.id}) }}\" class=\"a-home\">{{museum.NomOfficiel|capitalize}}</a>
                         </p>
 
                         {% endfor %}
@@ -444,7 +444,7 @@ class __TwigTemplate_8f028fd9e1210483a6eb1e591b646cb25913fcaf483ae181f0e6596ade7
                 <div class=\"card-header card-map\">
                     <h5 class=\"panel-title\">
                         <i class=\"fas fa-map-marker-alt\"></i>
-                        Localisation de tout les Musées de France
+                        Localisation de tous les Musées de France
                     </h5>
                 </div>
                 <div id=\"map\">
